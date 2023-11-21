@@ -1,0 +1,18 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/alu.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'alu'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/control.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'control'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/dmem.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'dmem'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/dreg.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'dreg'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/imem.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'imem'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/out_reg.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'reg'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/pc.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'pc'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/top.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'OneCycleCPUwithIO'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sim_1/imports/oneio/tb_OneCycleCPU.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'tb_OneCycleCPUwithIO'
