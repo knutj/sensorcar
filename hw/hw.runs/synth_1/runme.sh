@@ -37,4 +37,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log limit_checker.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source limit_checker.tcl
+EAStep vivado -log pwm_reader.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source pwm_reader.tcl
