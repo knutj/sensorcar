@@ -40,16 +40,16 @@ use IEEE.NUMERIC_STD.ALL;
 entity limit_checker is
     Port ( clk             : in  std_logic;
            reset           : in  std_logic;
-           threshold_limit : in  std_logic_vector(7 downto 0);
-           write_limit     : in  std_logic_vector(7 downto 0);
-           PWM_in          : in  std_logic_vector(7 downto 0);
+           threshold_limit : in  std_logic_vector(19 downto 0);
+           write_limit     : in  std_logic;
+           PWM_in          : in  std_logic_vector(15 downto 0);
            above_limit     : out std_logic);
 end limit_checker;
 
 architecture Behavioral of limit_checker is
     signal counter       : unsigned(7 downto 0) := (others => '0');
-    signal hold_register : std_logic_vector(7 downto 0);
-    signal threshold_reg : std_logic_vector(7 downto 0);
+    signal hold_register : std_logic_vector(15 downto 0);
+    signal threshold_reg : std_logic_vector(19 downto 0);
 begin
     -- Up Counter
     process(clk, reset)
@@ -70,7 +70,7 @@ begin
     -- Comparator Logic
     process(counter, hold_register, threshold_reg, write_limit)
     begin
-        if unsigned(hold_register) > unsigned(threshold_reg) and unsigned(hold_register) < unsigned(write_limit) then
+        if unsigned(hold_register) > unsigned(threshold_reg) and write_limit = '1' then
             above_limit <= '1';
         else
             above_limit <= '0';

@@ -1,0 +1,4 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/knutjb/Vivado/hw/hw.srcs/sources_1/new/pwm.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'limit_checker'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/knutjb/Vivado/hw/hw.srcs/sim_1/new/pwm_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'limit_checker_tb'
