@@ -22,39 +22,81 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 2734554
+INFO: [Synth 8-7075] Helper process launched with PID 3324192
 ---------------------------------------------------------------------------------
-Starting Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1789.379 ; gain = 408.598 ; free physical = 67384 ; free virtual = 235125
+Starting Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1789.961 ; gain = 409.598 ; free physical = 67660 ; free virtual = 235567
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'limit_checker' [/home/knutjb/Vivado/hw/hw.srcs/sources_1/new/pwm.vhd:49]
-INFO: [Synth 8-256] done synthesizing module 'limit_checker' (0#1) [/home/knutjb/Vivado/hw/hw.srcs/sources_1/new/pwm.vhd:49]
-WARNING: [Synth 8-6014] Unused sequential element counter_reg was removed.  [/home/knutjb/Vivado/hw/hw.srcs/sources_1/new/pwm.vhd:58]
+INFO: [Synth 8-638] synthesizing module 'limit_checker' [/home/knutjb/Vivado/hw/hw.srcs/sources_1/new/pwm.vhd:16]
+INFO: [Synth 8-256] done synthesizing module 'limit_checker' (0#1) [/home/knutjb/Vivado/hw/hw.srcs/sources_1/new/pwm.vhd:16]
+WARNING: [Synth 8-3848] Net pwm_out in module/entity limit_checker does not have driver. [/home/knutjb/Vivado/hw/hw.srcs/sources_1/new/pwm.vhd:12]
+WARNING: [Synth 8-3330] design limit_checker has an empty top module
+WARNING: [Synth 8-7129] Port pwm_out in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port clk in module limit_checker is either unconnected or has no load
 WARNING: [Synth 8-7129] Port reset in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[19] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[18] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[17] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[16] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[15] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[14] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[13] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[12] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[11] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[10] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[9] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[8] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[7] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[6] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[5] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[4] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[3] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[2] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[1] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[0] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port write_limit in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[19] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[18] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[17] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[16] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[15] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[14] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[13] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[12] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[11] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[10] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[9] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[8] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[7] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[6] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[5] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[4] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[3] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[2] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[1] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[0] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port above_limit in module limit_checker is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1864.316 ; gain = 483.535 ; free physical = 67289 ; free virtual = 235031
+Finished Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1863.930 ; gain = 483.566 ; free physical = 67559 ; free virtual = 235467
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1882.129 ; gain = 501.348 ; free physical = 67295 ; free virtual = 235037
+Finished Constraint Validation : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1881.742 ; gain = 501.379 ; free physical = 67557 ; free virtual = 235464
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z010clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1890.133 ; gain = 509.352 ; free physical = 67295 ; free virtual = 235037
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1889.746 ; gain = 509.383 ; free physical = 67557 ; free virtual = 235464
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7z010clg400-1
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1899.039 ; gain = 518.258 ; free physical = 67283 ; free virtual = 235025
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1898.652 ; gain = 518.289 ; free physical = 67551 ; free virtual = 235460
 ---------------------------------------------------------------------------------
 No constraint files found.
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
-+---Registers : 
-	               20 Bit    Registers := 1     
-	               16 Bit    Registers := 1     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -72,22 +114,67 @@ No constraint files found.
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-3330] design limit_checker has an empty top module
+WARNING: [Synth 8-7129] Port pwm_out in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port clk in module limit_checker is either unconnected or has no load
 WARNING: [Synth 8-7129] Port reset in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[19] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[18] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[17] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[16] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[15] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[14] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[13] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[12] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[11] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[10] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[9] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[8] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[7] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[6] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[5] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[4] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[3] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[2] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[1] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port threshold_limit[0] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port write_limit in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[19] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[18] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[17] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[16] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[15] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[14] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[13] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[12] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[11] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[10] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[9] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[8] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[7] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[6] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[5] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[4] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[3] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[2] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[1] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PWM_in[0] in module limit_checker is either unconnected or has no load
+WARNING: [Synth 8-7129] Port above_limit in module limit_checker is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2003.570 ; gain = 622.789 ; free physical = 67170 ; free virtual = 234927
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2003.184 ; gain = 622.820 ; free physical = 67453 ; free virtual = 235364
 ---------------------------------------------------------------------------------
 No constraint files found.
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2003.570 ; gain = 622.789 ; free physical = 67148 ; free virtual = 234905
+Finished Timing Optimization : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2003.184 ; gain = 622.820 ; free physical = 67454 ; free virtual = 235365
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2003.570 ; gain = 622.789 ; free physical = 67141 ; free virtual = 234898
+Finished Technology Mapping : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2003.184 ; gain = 622.820 ; free physical = 67447 ; free virtual = 235358
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -105,37 +192,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2003.570 ; gain = 622.789 ; free physical = 67199 ; free virtual = 234944
+Finished IO Insertion : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2003.184 ; gain = 622.820 ; free physical = 67443 ; free virtual = 235354
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2003.570 ; gain = 622.789 ; free physical = 67199 ; free virtual = 234944
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2003.184 ; gain = 622.820 ; free physical = 67443 ; free virtual = 235354
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2003.570 ; gain = 622.789 ; free physical = 67199 ; free virtual = 234944
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2003.184 ; gain = 622.820 ; free physical = 67443 ; free virtual = 235354
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2003.570 ; gain = 622.789 ; free physical = 67199 ; free virtual = 234944
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2003.184 ; gain = 622.820 ; free physical = 67443 ; free virtual = 235354
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2003.570 ; gain = 622.789 ; free physical = 67199 ; free virtual = 234944
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2003.184 ; gain = 622.820 ; free physical = 67443 ; free virtual = 235354
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2003.570 ; gain = 622.789 ; free physical = 67199 ; free virtual = 234944
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2003.184 ; gain = 622.820 ; free physical = 67443 ; free virtual = 235354
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -148,48 +235,40 @@ Report BlackBoxes:
 +-+--------------+----------+
 
 Report Cell Usage: 
-+------+-------+------+
-|      |Cell   |Count |
-+------+-------+------+
-|1     |BUFG   |     1|
-|2     |CARRY4 |     3|
-|3     |LUT2   |     3|
-|4     |LUT4   |    16|
-|5     |FDRE   |    36|
-|6     |IBUF   |    38|
-|7     |OBUF   |     1|
-+------+-------+------+
++------+------+------+
+|      |Cell  |Count |
++------+------+------+
+|1     |OBUFT |     1|
++------+------+------+
 
 Report Instance Areas: 
 +------+---------+-------+------+
 |      |Instance |Module |Cells |
 +------+---------+-------+------+
-|1     |top      |       |    98|
+|1     |top      |       |     1|
 +------+---------+-------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2003.570 ; gain = 622.789 ; free physical = 67198 ; free virtual = 234943
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2003.184 ; gain = 622.820 ; free physical = 67443 ; free virtual = 235354
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 4 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2003.570 ; gain = 622.789 ; free physical = 67199 ; free virtual = 234944
-Synthesis Optimization Complete : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2003.578 ; gain = 622.789 ; free physical = 67199 ; free virtual = 234944
+Synthesis finished with 0 errors, 0 critical warnings and 94 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2003.184 ; gain = 622.820 ; free physical = 67443 ; free virtual = 235354
+Synthesis Optimization Complete : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2003.191 ; gain = 622.820 ; free physical = 67443 ; free virtual = 235354
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2016.445 ; gain = 0.000 ; free physical = 67474 ; free virtual = 235219
-INFO: [Netlist 29-17] Analyzing 3 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2009.121 ; gain = 0.000 ; free physical = 67725 ; free virtual = 235636
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2101.102 ; gain = 0.000 ; free physical = 67364 ; free virtual = 235109
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2096.746 ; gain = 0.000 ; free physical = 67629 ; free virtual = 235540
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete | Checksum: 6a8bac27
+Synth Design complete | Checksum: 121c766f
 INFO: [Common 17-83] Releasing license: Synthesis
-18 Infos, 4 Warnings, 0 Critical Warnings and 0 Errors encountered.
+16 Infos, 94 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:08 ; elapsed = 00:00:07 . Memory (MB): peak = 2101.137 ; gain = 730.262 ; free physical = 67364 ; free virtual = 235109
-INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1401.984; main = 1401.984; forked = 0.000
-INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 2101.105; main = 2101.105; forked = 0.000
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2125.113 ; gain = 0.000 ; free physical = 67362 ; free virtual = 235107
+synth_design: Time (s): cpu = 00:00:08 ; elapsed = 00:00:07 . Memory (MB): peak = 2096.781 ; gain = 725.324 ; free physical = 67632 ; free virtual = 235544
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1393.485; main = 1393.485; forked = 0.000
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 2096.750; main = 2096.750; forked = 0.000
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2120.758 ; gain = 0.000 ; free physical = 67634 ; free virtual = 235545
 INFO: [Common 17-1381] The checkpoint '/home/knutjb/Vivado/hw/hw.runs/synth_1/limit_checker.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file limit_checker_utilization_synth.rpt -pb limit_checker_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed Nov 22 08:19:02 2023...
+INFO: [Common 17-206] Exiting Vivado at Wed Nov 22 10:34:13 2023...

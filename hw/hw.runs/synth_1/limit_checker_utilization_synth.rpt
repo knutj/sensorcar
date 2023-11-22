@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-| Date         : Wed Nov 22 08:19:02 2023
+| Date         : Wed Nov 22 10:34:13 2023
 | Host         : ubuntu.knut running 64-bit Ubuntu 22.04.3 LTS
 | Command      : report_utilization -file limit_checker_utilization_synth.rpt -pb limit_checker_utilization_synth.pb
 | Design       : limit_checker
@@ -31,11 +31,11 @@ Table of Contents
 +-------------------------+------+-------+------------+-----------+-------+
 |        Site Type        | Used | Fixed | Prohibited | Available | Util% |
 +-------------------------+------+-------+------------+-----------+-------+
-| Slice LUTs*             |   11 |     0 |          0 |     17600 |  0.06 |
-|   LUT as Logic          |   11 |     0 |          0 |     17600 |  0.06 |
+| Slice LUTs*             |    0 |     0 |          0 |     17600 |  0.00 |
+|   LUT as Logic          |    0 |     0 |          0 |     17600 |  0.00 |
 |   LUT as Memory         |    0 |     0 |          0 |      6000 |  0.00 |
-| Slice Registers         |   36 |     0 |          0 |     35200 |  0.10 |
-|   Register as Flip Flop |   36 |     0 |          0 |     35200 |  0.10 |
+| Slice Registers         |    0 |     0 |          0 |     35200 |  0.00 |
+|   Register as Flip Flop |    0 |     0 |          0 |     35200 |  0.00 |
 |   Register as Latch     |    0 |     0 |          0 |     35200 |  0.00 |
 | F7 Muxes                |    0 |     0 |          0 |      8800 |  0.00 |
 | F8 Muxes                |    0 |     0 |          0 |      4400 |  0.00 |
@@ -59,7 +59,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 | 0     |          Yes |           - |          Set |
 | 0     |          Yes |           - |        Reset |
 | 0     |          Yes |         Set |            - |
-| 36    |          Yes |       Reset |            - |
+| 0     |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -92,7 +92,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 +-----------------------------+------+-------+------------+-----------+-------+
 |          Site Type          | Used | Fixed | Prohibited | Available | Util% |
 +-----------------------------+------+-------+------------+-----------+-------+
-| Bonded IOB                  |   39 |     0 |          0 |       100 | 39.00 |
+| Bonded IOB                  |    1 |     0 |          0 |       100 |  1.00 |
 | Bonded IPADs                |    0 |     0 |          0 |         2 |  0.00 |
 | Bonded IOPADs               |    0 |     0 |          0 |       130 |  0.00 |
 | PHY_CONTROL                 |    0 |     0 |          0 |         2 |  0.00 |
@@ -115,7 +115,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 +------------+------+-------+------------+-----------+-------+
 |  Site Type | Used | Fixed | Prohibited | Available | Util% |
 +------------+------+-------+------------+-----------+-------+
-| BUFGCTRL   |    1 |     0 |          0 |        32 |  3.13 |
+| BUFGCTRL   |    0 |     0 |          0 |        32 |  0.00 |
 | BUFIO      |    0 |     0 |          0 |         8 |  0.00 |
 | MMCME2_ADV |    0 |     0 |          0 |         2 |  0.00 |
 | PLLE2_ADV  |    0 |     0 |          0 |         2 |  0.00 |
@@ -148,13 +148,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| IBUF     |   38 |                  IO |
-| FDRE     |   36 |        Flop & Latch |
-| LUT4     |   16 |                 LUT |
-| LUT2     |    3 |                 LUT |
-| CARRY4   |    3 |          CarryLogic |
-| OBUF     |    1 |                  IO |
-| BUFG     |    1 |               Clock |
+| OBUFT    |    1 |                  IO |
 +----------+------+---------------------+
 
 

@@ -1,13 +1,9 @@
-----------------------------------------------------------------------------------
--- Testbench for limit_checker
-----------------------------------------------------------------------------------
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity limit_checker_tb is
--- Testbench has no ports!
+    -- Testbench has no ports!
 end limit_checker_tb;
 
 architecture behavior of limit_checker_tb is 
@@ -17,8 +13,9 @@ architecture behavior of limit_checker_tb is
                reset           : in  std_logic;
                threshold_limit : in  std_logic_vector(19 downto 0);
                write_limit     : in  std_logic;
-               PWM_in          : in  std_logic_vector(15 downto 0);
-               above_limit     : out std_logic);
+               PWM_in          : in  std_logic_vector(19 downto 0);
+               above_limit     : in  std_logic;  -- Changed to 'in'
+               pwm_out         : out std_logic); -- Added output port
     end component;
 
     --Inputs
@@ -26,10 +23,11 @@ architecture behavior of limit_checker_tb is
     signal reset           : std_logic := '0';
     signal threshold_limit : std_logic_vector(19 downto 0) := (others => '0');
     signal write_limit     : std_logic := '0';
-    signal PWM_in          : std_logic_vector(15 downto 0) := (others => '0');
+    signal PWM_in          : std_logic_vector(19 downto 0) := (others => '0');
+    signal above_limit     : std_logic := '0';  -- Added signal for above_limit
 
     --Outputs
-    signal above_limit     : std_logic;
+    signal pwm_out         : std_logic;  -- Added signal for pwm_out
 
     -- Clock period definitions
     constant clk_period : time := 10 ns;
@@ -42,7 +40,8 @@ begin
           threshold_limit => threshold_limit,
           write_limit => write_limit,
           PWM_in => PWM_in,
-          above_limit => above_limit
+          above_limit => above_limit,  -- Connected
+          pwm_out => pwm_out          -- Connected
         );
 
     -- Clock process definitions
@@ -61,31 +60,32 @@ begin
         reset <= '1';
         wait for clk_period;	
         reset <= '0';
-        threshold_limit <= "00000000111100001111"; -- 3855
+        threshold_limit <= "00000000000000001111"; -- Example value
         write_limit <= '1';
         wait for clk_period;
         write_limit <= '0';
         for i in 0 to 3 loop
-            PWM_in <= "0000000011110000"; -- Example value
+            PWM_in <= "00000000000000001111"; -- Example value
             wait for clk_period*5000;
-            PWM_in <= "0000000000000000"; -- Example value
+            PWM_in <= (others => '0');
             wait for clk_period*95000;
         end loop;
-        threshold_limit <= "00000001111100001111"; -- 7951
+        threshold_limit <= "00000000000000111111"; -- Example value
         write_limit <= '1';
         wait for clk_period;
         write_limit <= '0';	
         for i in 0 to 3 loop
-            PWM_in <= "0000000011110000"; -- Example value
+            PWM_in <= "00000000000000001111"; -- Example value
             wait for clk_period*5000;
-            PWM_in <= "0000000000000000"; -- Example value
+            PWM_in <= (others => '0');
             wait for clk_period*95000;
         end loop;        
         for i in 0 to 3 loop
-            PWM_in <= "0000000011110000"; -- Example value
+            PWM_in <= "00000000000000001111"; -- Example value
             wait for clk_period*30000;
-            PWM_in <= "0000000000000000"; -- Example value
+            PWM_in <= (others => '0');
             wait for clk_period*70000;
         end loop;
     end process;
 end behavior;
+

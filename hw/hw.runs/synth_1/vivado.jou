@@ -3,12 +3,12 @@
 # SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Wed Nov 22 08:18:49 2023
-# Process ID: 2734025
+# Start of session at: Wed Nov 22 10:34:00 2023
+# Process ID: 3323743
 # Current directory: /home/knutjb/Vivado/hw/hw.runs/synth_1
 # Command line: vivado -log limit_checker.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source limit_checker.tcl
 # Log file: /home/knutjb/Vivado/hw/hw.runs/synth_1/limit_checker.vds
 # Journal file: /home/knutjb/Vivado/hw/hw.runs/synth_1/vivado.jou
-# Running On: ubuntu.knut, OS: Linux, CPU Frequency: 5464.484 MHz, CPU Physical cores: 32, Host memory: 134225 MB
+# Running On: ubuntu.knut, OS: Linux, CPU Frequency: 5426.715 MHz, CPU Physical cores: 32, Host memory: 134225 MB
 #-----------------------------------------------------------
 source limit_checker.tcl -notrace
