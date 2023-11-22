@@ -2,7 +2,7 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 11/22/2023 05:49:35 AM
+-- Create Date: 11/22/2023 05:32:36 AM
 -- Design Name: 
 -- Module Name: pwm - Behavioral
 -- Project Name: 
@@ -31,16 +31,50 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity pwm is
-    Port ( threshold_limit : in STD_LOGIC;
-           write_limit : in STD_LOGIC;
-           PWM_in : in STD_LOGIC;
-           above_limit : out STD_LOGIC_VECTOR (3 downto 0));
-end pwm;
+-- https://vhdlwhiz.com/pwm-controller/
 
-architecture Behavioral of pwm is
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
+entity limit_checker is
+    Port ( clk             : in  std_logic;
+           reset           : in  std_logic;
+           threshold_limit : in  std_logic_vector(7 downto 0);
+           write_limit     : in  std_logic_vector(7 downto 0);
+           PWM_in          : in  std_logic_vector(7 downto 0);
+           above_limit     : out std_logic);
+end limit_checker;
+
+architecture Behavioral of limit_checker is
+    signal counter       : unsigned(7 downto 0) := (others => '0');
+    signal hold_register : std_logic_vector(7 downto 0);
+    signal threshold_reg : std_logic_vector(7 downto 0);
 begin
+    -- Up Counter
+    process(clk, reset)
+    begin
+        if reset = '1' then
+            counter <= (others => '0');
+        elsif rising_edge(clk) then
+            counter <= counter + 1;
+        end if;
+    end process;
 
+    -- Hold Register
+    hold_register <= PWM_in when rising_edge(clk);
 
+    -- Threshold Register
+    threshold_reg <= threshold_limit when rising_edge(clk);
+
+    -- Comparator Logic
+    process(counter, hold_register, threshold_reg, write_limit)
+    begin
+        if unsigned(hold_register) > unsigned(threshold_reg) and unsigned(hold_register) < unsigned(write_limit) then
+            above_limit <= '1';
+        else
+            above_limit <= '0';
+        end if;
+    end process;
 end Behavioral;
+
