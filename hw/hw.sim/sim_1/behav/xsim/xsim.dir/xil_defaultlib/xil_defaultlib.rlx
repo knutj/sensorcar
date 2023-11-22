@@ -3,7 +3,9 @@
 Oct 13 2023
 20:21:30
 /home/knutjb/Vivado/hw/hw.srcs/sim_1/imports/pwm_reader_files/tb_pwmreader.vhd,1695962802,vhdl,,,,tb_pwm_reader,,,,,,,,
+/home/knutjb/Vivado/hw/hw.srcs/sim_1/new/motor_tb.vhd,1700664816,vhdl,,,,motor_control_tb,,,,,,,,
 /home/knutjb/Vivado/hw/hw.srcs/sources_1/imports/pwm_reader_files/control_path.vhd,1695964330,vhdl,/home/knutjb/Vivado/hw/hw.srcs/sources_1/imports/pwm_reader_files/top_level.vhd,,,fsm,,,,,,,,
 /home/knutjb/Vivado/hw/hw.srcs/sources_1/imports/pwm_reader_files/counter.vhd,1695956064,vhdl,/home/knutjb/Vivado/hw/hw.srcs/sources_1/imports/pwm_reader_files/top_level.vhd,,,up_counter,,,,,,,,
 /home/knutjb/Vivado/hw/hw.srcs/sources_1/imports/pwm_reader_files/reg.vhd,1695960322,vhdl,/home/knutjb/Vivado/hw/hw.srcs/sources_1/imports/pwm_reader_files/top_level.vhd,,,reg,,,,,,,,
-/home/knutjb/Vivado/hw/hw.srcs/sources_1/imports/pwm_reader_files/top_level.vhd,1695962300,vhdl,,,,pwm_reader,,,,,,,,
+/home/knutjb/Vivado/hw/hw.srcs/sources_1/imports/pwm_reader_files/top_level.vhd,1700665005,vhdl,,,,pwm_reader,,,,,,,,
+/home/knutjb/Vivado/hw/hw.srcs/sources_1/new/motor.vhd,1700664816,vhdl,,,,motor_control,,,,,,,,
