@@ -1,7 +1,7 @@
 Vivado Simulator v2023.2
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
-Running: /home/knutjb/Xilinx/Vivado/2023.2/bin/unwrapped/lnx64.o/xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot limit_checker_tb_behav xil_defaultlib.limit_checker_tb -log elaborate.log 
+Running: /home/knutjb/Xilinx/Vivado/2023.2/bin/unwrapped/lnx64.o/xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot tb_pwm_reader_behav xil_defaultlib.tb_pwm_reader -log elaborate.log 
 Using 8 slave threads.
 WARNING: [XSIM 43-3431] One or more environment variables have been detected which affect the operation of the C compiler. These are typically not set in standard installations and are not tested by AMD, however they may be appropriate for your system, so the flow will attempt to continue.  If errors occur, try running xelab with the "-mt off -v 1" switches to see more information from the C compiler. The following environment variables have been detected:
 Starting static elaboration
@@ -13,6 +13,9 @@ Compiling package std.standard
 Compiling package std.textio
 Compiling package ieee.std_logic_1164
 Compiling package ieee.numeric_std
-Compiling architecture behavioral of entity xil_defaultlib.limit_checker [limit_checker_default]
-Compiling architecture behavior of entity xil_defaultlib.limit_checker_tb
-Built simulation snapshot limit_checker_tb_behav
+Compiling architecture arch of entity xil_defaultlib.up_counter [up_counter_default]
+Compiling architecture arch of entity xil_defaultlib.reg [reg_default]
+Compiling architecture arch of entity xil_defaultlib.fsm [fsm_default]
+Compiling architecture arch of entity xil_defaultlib.pwm_reader [pwm_reader_default]
+Compiling architecture behavior of entity xil_defaultlib.tb_pwm_reader
+Built simulation snapshot tb_pwm_reader_behav

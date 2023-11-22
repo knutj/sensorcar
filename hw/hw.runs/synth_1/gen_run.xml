@@ -1,25 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7z010clg400-1" LaunchTime="1700645639" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/limit_checker.dcp">
-  <File Type="VDS-TIMING-PB" Name="limit_checker_timing_summary_synth.pb"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="limit_checker_timing_summary_synth.rpt"/>
-  <File Type="RDS-DCP" Name="limit_checker.dcp"/>
-  <File Type="RDS-UTIL-PB" Name="limit_checker_utilization_synth.pb"/>
-  <File Type="RDS-UTIL" Name="limit_checker_utilization_synth.rpt"/>
-  <File Type="RDS-PROPCONSTRS" Name="limit_checker_drc_synth.rpt"/>
-  <File Type="RDS-RDS" Name="limit_checker.vds"/>
-  <File Type="REPORTS-TCL" Name="limit_checker_reports.tcl"/>
-  <File Type="PA-TCL" Name="limit_checker.tcl"/>
+<GenRun Id="synth_1" LaunchPart="xc7z010clg400-1" LaunchTime="1700647556" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/limit_checker.dcp">
+  <File Type="VDS-TIMING-PB" Name="pwm_reader_timing_summary_synth.pb"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="pwm_reader_timing_summary_synth.rpt"/>
+  <File Type="RDS-DCP" Name="pwm_reader.dcp"/>
+  <File Type="RDS-UTIL-PB" Name="pwm_reader_utilization_synth.pb"/>
+  <File Type="RDS-UTIL" Name="pwm_reader_utilization_synth.rpt"/>
+  <File Type="RDS-PROPCONSTRS" Name="pwm_reader_drc_synth.rpt"/>
+  <File Type="RDS-RDS" Name="pwm_reader.vds"/>
+  <File Type="REPORTS-TCL" Name="pwm_reader_reports.tcl"/>
+  <File Type="PA-TCL" Name="pwm_reader.tcl"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
-    <File Path="$PSRCDIR/sources_1/new/pwm.vhd">
+    <File Path="$PSRCDIR/sources_1/imports/pwm_reader_files/control_path.vhd">
       <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../D/pwm_reader_files/control_path.vhd"/>
+        <Attr Name="ImportTime" Val="1695964330"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/pwm_reader_files/counter.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../D/pwm_reader_files/counter.vhd"/>
+        <Attr Name="ImportTime" Val="1695956064"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/pwm_reader_files/reg.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../D/pwm_reader_files/reg.vhd"/>
+        <Attr Name="ImportTime" Val="1695960322"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/pwm_reader_files/top_level.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../D/pwm_reader_files/top_level.vhd"/>
+        <Attr Name="ImportTime" Val="1695962300"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="limit_checker"/>
+      <Option Name="TopModule" Val="pwm_reader"/>
       <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>
   </FileSet>
