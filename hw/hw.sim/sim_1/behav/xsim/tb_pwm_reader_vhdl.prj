@@ -1,6 +1,5 @@
 # compile vhdl design source files
 vhdl xil_defaultlib  \
-"../../../../hw.srcs/sources_1/imports/pwm_reader_files/control_path.vhd" \
 "../../../../hw.srcs/sources_1/imports/pwm_reader_files/counter.vhd" \
 "../../../../hw.srcs/sources_1/imports/pwm_reader_files/reg.vhd" \
 "../../../../hw.srcs/sources_1/imports/pwm_reader_files/top_level.vhd" \
