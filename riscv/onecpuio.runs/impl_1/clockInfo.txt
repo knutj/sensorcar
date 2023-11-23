@@ -1,6 +1,6 @@
 -------------------------------------
 | Tool Version : Vivado v.2023.2
-| Date         : Tue Nov 21 21:34:26 2023
+| Date         : Thu Nov 23 11:58:56 2023
 | Host         : ubuntu.knut
 | Design       : design_1
 | Device       : xc7z010-clg400-1--

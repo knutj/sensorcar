@@ -18,7 +18,10 @@ entity OneCycleCPUwithIO is
    );
    port(clk, rst: in std_logic;
    dig_in: in std_logic_vector(DRDATA_WIDTH-1 downto 0);
-   dig_out: out std_logic_vector(DRDATA_WIDTH-1 downto 0));
+   dig_out: out std_logic_vector(DRDATA_WIDTH-1 downto 0);
+   pwm_in: in std_logic;  -- Input for PWM radar
+   pwm_out: inout std_logic  -- Output for PWM radar control);
+   );
 end OneCycleCPUwithIO;
 
 architecture arch of OneCycleCPUwithIO is
@@ -32,9 +35,22 @@ architecture arch of OneCycleCPUwithIO is
    signal alu_ctr_in: std_logic_vector(OPCODE_WIDTH-1 downto 0);
    signal in_mux_ctr, out_reg_wr: std_logic;
    signal in_mux_out: std_logic_vector(DRDATA_WIDTH-1 downto 0);
+   signal pwm_start, pwm_stop, pwm_read: std_logic;  -- Control signals for PWM radar
 
 begin
 
+     -- Instantiate PWM Radar FSM
+    pwm_radar: entity work.pwm_fsm(arch)
+    port map(
+        clk => clk,
+        rst => rst,
+        pwm_in => pwm_in,
+        pwm_start => pwm_start,
+        pwm_stop => pwm_stop,
+        pwm_read => pwm_read,
+        pwm_out => pwm_out  -- Output control signal for PWM radar
+    );
+    
     -- instantiate program counter
     pc: entity work.pc(arch)
     port map(clk=>clk, rst=>rst, reg_d=>pc_in, 
