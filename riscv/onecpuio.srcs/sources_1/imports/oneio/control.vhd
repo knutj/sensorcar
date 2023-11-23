@@ -12,7 +12,9 @@ entity control is
       opcode: in std_logic_vector(OPCODE_WIDTH-1 downto 0);
       pc_mux_ctr, dreg_write, alu_mux_ctr, dreg_mux_ctr, dmem_write: out std_logic;
       in_mux_ctr, out_reg_write: out std_logic;
-      alu_ctr: out std_logic_vector(OPCODE_WIDTH-1 downto 0)
+      alu_ctr: out std_logic_vector(OPCODE_WIDTH-1 downto 0);
+      -- PWM Radar control signals
+      pwm_start, pwm_stop, pwm_read: out std_logic
    );
 end control;
 
@@ -35,6 +37,11 @@ architecture arch of control is
    constant J_imm:         std_logic_vector(OPCODE_WIDTH-1 downto 0) :="0001110";
    constant LD_Ri_IN:      std_logic_vector(OPCODE_WIDTH-1 downto 0) :="0001111";
    constant ST_Ri_OUT:     std_logic_vector(OPCODE_WIDTH-1 downto 0) :="0010000";
+   
+   -- PWM Radar opcode constants
+    constant START_PWM: std_logic_vector(OPCODE_WIDTH-1 downto 0) := "0010001";
+    constant STOP_PWM: std_logic_vector(OPCODE_WIDTH-1 downto 0) := "0010010";
+    constant READ_PWM: std_logic_vector(OPCODE_WIDTH-1 downto 0) := "0010011";
       
    type state_type is (s0);
    signal st_reg, st_next: state_type;
@@ -62,6 +69,10 @@ begin
 	  in_mux_ctr <= '0'; 
 	  out_reg_write <= '0';
 	  alu_ctr <= opcode;
+	  -- Default PWM radar control signals to '0'
+      pwm_start <= '0';
+      pwm_stop <= '0';
+      pwm_read <= '0';
 	  
       case st_reg is
          when s0 =>
@@ -130,6 +141,13 @@ begin
                 pc_mux_ctr <= '1';    
 	            out_reg_write <= '1';   
 	         end if;
+	         if opcode = START_PWM then
+                pwm_start <= '1';
+             elsif opcode = STOP_PWM then
+                pwm_stop <= '1';
+             elsif opcode = READ_PWM then
+                pwm_read <= '1';
+             end if;
       end case;
       
    end process;
