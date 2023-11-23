@@ -70,10 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 8
-set_param checkpoint.writeSynthRtdsInDcp 1
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z010clg400-1
 
@@ -97,6 +93,9 @@ read_vhdl -library xil_defaultlib {
   /home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/imem.vhd
   /home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/out_reg.vhd
   /home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/pc.vhd
+  /home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/new/pwm.vhd
+  /home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/new/pwm_fsm.vhd
+  /home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/new/sensor.vhd
   /home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/top.vhd
 }
 OPTRACE "Adding files" END { }
@@ -112,6 +111,8 @@ read_xdc /home/knutjb/Vivado/onecpuio/onecpuio.srcs/constrs_1/imports/zybo/ZYBO_
 set_property used_in_implementation false [get_files /home/knutjb/Vivado/onecpuio/onecpuio.srcs/constrs_1/imports/zybo/ZYBO_Master.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
+
+read_checkpoint -auto_incremental -incremental /home/knutjb/Vivado/onecpuio/onecpuio.srcs/utils_1/imports/synth_1/OneCycleCPUwithIO.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-| Date         : Tue Nov 21 21:34:31 2023
+| Date         : Thu Nov 23 14:31:45 2023
 | Host         : ubuntu.knut running 64-bit Ubuntu 22.04.3 LTS
 | Command      : report_methodology -file OneCycleCPUwithIO_methodology_drc_routed.rpt -pb OneCycleCPUwithIO_methodology_drc_routed.pb -rpx OneCycleCPUwithIO_methodology_drc_routed.rpx
 | Design       : OneCycleCPUwithIO
@@ -23,12 +23,13 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 69
-+-----------+------------------+-----------------------------+------------+
-| Rule      | Severity         | Description                 | Violations |
-+-----------+------------------+-----------------------------+------------+
-| TIMING-17 | Critical Warning | Non-clocked sequential cell | 69         |
-+-----------+------------------+-----------------------------+------------+
+             Violations found: 70
++-----------+------------------+----------------------------------+------------+
+| Rule      | Severity         | Description                      | Violations |
++-----------+------------------+----------------------------------+------------+
+| TIMING-17 | Critical Warning | Non-clocked sequential cell      | 69         |
+| HPDR-1    | Warning          | Port pin direction inconsistency | 1          |
++-----------+------------------+----------------------------------+------------+
 
 2. REPORT DETAILS
 -----------------
@@ -375,6 +376,11 @@ Related violations: <none>
 TIMING-17#69 Critical Warning
 Non-clocked sequential cell  
 The clock pin pc/reg_q_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+HPDR-1#1 Warning
+Port pin direction inconsistency  
+Hierarchical port(pin) pwm_out direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (pwm_out) connected to this Port, but both were not found.
 Related violations: <none>
 
 

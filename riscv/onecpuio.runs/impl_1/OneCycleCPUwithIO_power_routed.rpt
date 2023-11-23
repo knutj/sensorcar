@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-| Date             : Tue Nov 21 21:34:32 2023
+| Date             : Thu Nov 23 14:31:45 2023
 | Host             : ubuntu.knut running 64-bit Ubuntu 22.04.3 LTS
 | Command          : report_power -file OneCycleCPUwithIO_power_routed.rpt -pb OneCycleCPUwithIO_power_summary_routed.pb -rpx OneCycleCPUwithIO_power_routed.rpx
 | Design           : OneCycleCPUwithIO
@@ -52,16 +52,16 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Slice Logic              |     2.850 |      273 |       --- |             --- |
+| Slice Logic              |     2.850 |      274 |       --- |             --- |
 |   LUT as Logic           |     2.336 |      156 |     17600 |            0.89 |
 |   LUT as Distributed RAM |     0.413 |       44 |      6000 |            0.73 |
 |   CARRY4                 |     0.052 |        8 |      4400 |            0.18 |
 |   F7/F8 Muxes            |     0.038 |       24 |     17600 |            0.14 |
 |   BUFG                   |     0.006 |        1 |        32 |            3.13 |
 |   Register               |     0.006 |       13 |     35200 |            0.04 |
-|   Others                 |     0.000 |        5 |       --- |             --- |
+|   Others                 |     0.000 |        6 |       --- |             --- |
 | Signals                  |     3.144 |      212 |       --- |             --- |
-| I/O                      |     0.062 |       18 |       100 |           18.00 |
+| I/O                      |     0.062 |       19 |       100 |           19.00 |
 | Static Power             |     0.354 |          |           |                 |
 | Total                    |     6.409 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
