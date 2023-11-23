@@ -39,7 +39,7 @@ begin
             end if;
 
             -- Echo duration measurement
-            case state is
+           case state is
                 when '0' =>
                     if echo = '1' then
                         state <= '1';
@@ -50,8 +50,13 @@ begin
                         echo_duration <= echo_duration + 1;
                     else
                         state <= '0';
+                        -- Distance calculation based on echo_duration
+                        distance <= echo_duration; -- Placeholder, modify as needed
                     end if;
-            end case;
+                when others =>
+                    -- Handle unexpected state or perform error handling
+                    -- You can also leave it empty or reset the state if appropriate
+         end case;
         end if;
     end process;
 
