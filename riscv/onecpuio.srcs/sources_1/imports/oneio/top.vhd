@@ -5,6 +5,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+
 entity OneCycleCPUwithIO is
    generic(
       PCDATA_WIDTH: integer:=8;
@@ -43,6 +44,7 @@ architecture arch of OneCycleCPUwithIO is
     signal distance_signal   : unsigned(15 downto 0);
     signal threshold_value: unsigned(15 downto 0) := X"000F"; -- Define threshold value
     signal distance: unsigned(15 downto 0); -- Signal to hold distance from sensor
+     signal pwm_input_signal : std_logic;
 
 begin
 
@@ -62,7 +64,7 @@ begin
     port map(
         clk => clk,
         rst => rst,
-        pwm_in => pwm_in,
+        pwm_in => pwm_input_signal,
         pwm_start => pwm_start,
         pwm_stop => pwm_stop,
         pwm_read => pwm_read,
