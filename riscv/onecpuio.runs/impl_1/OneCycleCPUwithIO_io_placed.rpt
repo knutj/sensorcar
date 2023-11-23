@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-| Date                      : Thu Nov 23 11:58:56 2023
+| Date                      : Thu Nov 23 14:31:40 2023
 | Host                      : ubuntu.knut running 64-bit Ubuntu 22.04.3 LTS
 | Command                   : report_io -file OneCycleCPUwithIO_io_placed.rpt
 | Design                    : OneCycleCPUwithIO
@@ -414,7 +414,7 @@ Table of Contents
 | W17        |             | High Range | VCCO_34                 | VCCO          |             |      34 |            |      |                     |                      |    1.80 |            |           |          |      |                  |              |                   |              |
 | W18        | dig_in[6]   | High Range | IO_L22P_T3_34           | INPUT         | LVCMOS18    |      34 |            |      |                     |                 NONE |         | FIXED      |           |          |      | NONE             |              |                   |              |
 | W19        | dig_in[5]   | High Range | IO_L22N_T3_34           | INPUT         | LVCMOS18    |      34 |            |      |                     |                 NONE |         | FIXED      |           |          |      | NONE             |              |                   |              |
-| W20        |             | High Range | IO_L16N_T2_34           | User IO       |             |      34 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
+| W20        | pwm_out     | High Range | IO_L16N_T2_34           | BIDIR         | LVCMOS18*   |      34 |         12 | SLOW |                     |            FP_VTT_50 |         | UNFIXED    |           |          |      | NONE             |              |                   |              |
 | Y1         |             |            | PS_DDR_DM3_502          | PSS IO        |             |         |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | Y2         |             |            | PS_DDR_DQ28_502         | PSS IO        |             |         |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | Y3         |             |            | PS_DDR_DQ25_502         | PSS IO        |             |         |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |

@@ -95,6 +95,7 @@ read_vhdl -library xil_defaultlib {
   /home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/pc.vhd
   /home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/new/pwm.vhd
   /home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/new/pwm_fsm.vhd
+  /home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/new/sensor.vhd
   /home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/top.vhd
 }
 OPTRACE "Adding files" END { }
