@@ -1,8 +1,8 @@
 -------------------------------------
 | Tool Version : Vivado v.2023.2
-| Date         : Thu Nov 23 14:31:39 2023
+| Date         : Fri Nov 24 10:35:00 2023
 | Host         : ubuntu.knut
-| Design       : design_1
+| Design       : checkpoint_OneCycleCPUwithIO
 | Device       : xc7z010-clg400-1--
 -------------------------------------
 

@@ -35,3 +35,9 @@ set_property src_info {type:XDC file:1 line:183 export:INPUT save:INPUT read:REA
 set_property PACKAGE_PIN V17 [get_ports rst]
 set_property src_info {type:XDC file:1 line:184 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN U14 [get_ports clk]
+set_property src_info {type:XDC file:1 line:188 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN F19 [get_ports pwm_in]
+set_property src_info {type:XDC file:1 line:191 export:INPUT save:INPUT read:READ} [current_design]
+set_input_jitter clk 0.500
+set_property src_info {type:XDC file:1 line:199 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN J15 [get_ports pwm_out]

@@ -45,6 +45,7 @@ architecture arch of OneCycleCPUwithIO is
     signal threshold_value: unsigned(15 downto 0) := X"000F"; -- Define threshold value
     signal distance: unsigned(15 downto 0); -- Signal to hold distance from sensor
      signal pwm_input_signal : std_logic;
+     signal pwm_gen_output : std_logic;  -- Output signal from PWM_Generator
 
 begin
 
@@ -72,6 +73,15 @@ begin
         distance => distance,  -- Connect distance signal
         threshold => threshold_value  -- Pass threshold value to pwm_fsm
     );
+    
+    pwm_gen_inst: entity work.PWM_Generator(arch)
+    port map(clk => clk,
+             rst =>  rst,
+             pwm_in => pwm_out,
+             pwm_out => pwm_gen_output);
+    
+    -- Connect pwm_gen_output to pwm_out (top-level port)
+    pwm_out <= pwm_gen_output;
     
     -- instantiate program counter
     pc: entity work.pc(arch)
