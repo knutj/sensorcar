@@ -182,3 +182,21 @@ set_property PACKAGE_PIN T17 [get_ports {dig_out[1]}]
 set_property PACKAGE_PIN R18 [get_ports {dig_out[0]}]
 set_property PACKAGE_PIN V17 [get_ports rst]
 set_property PACKAGE_PIN U14 [get_ports clk]
+
+set_property IOSTANDARD LVCMOS33 [get_ports pwm_in]
+set_property IOSTANDARD LVCMOS33 [get_ports pwm_out]
+set_property PACKAGE_PIN F19 [get_ports pwm_in]
+
+create_clock -period 100.000 -name clk -waveform {0.000 50.000} -add [get_ports clk]
+set_input_jitter clk 0.500
+set_input_delay -clock [get_clocks clk] -min -add_delay 1.200 [get_ports {dig_in[*]}]
+set_input_delay -clock [get_clocks clk] -max -add_delay 6.000 [get_ports {dig_in[*]}]
+set_input_delay -clock [get_clocks clk] -min -add_delay 1.200 [get_ports rst]
+set_input_delay -clock [get_clocks clk] -max -add_delay 5.200 [get_ports rst]
+set_output_delay -clock [get_clocks clk] -min -add_delay 2.000 [get_ports {dig_out[*]}]
+set_output_delay -clock [get_clocks clk] -max -add_delay 2.000 [get_ports {dig_out[*]}]
+
+set_property PACKAGE_PIN J15 [get_ports pwm_out]
+
+
+

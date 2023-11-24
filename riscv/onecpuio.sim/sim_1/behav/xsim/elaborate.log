@@ -15,6 +15,7 @@ Compiling package ieee.std_logic_1164
 Compiling package ieee.numeric_std
 Compiling architecture arch of entity xil_defaultlib.Ultrasonic_Sensor [ultrasonic_sensor_default]
 Compiling architecture arch of entity xil_defaultlib.pwm_fsm [pwm_fsm_default]
+Compiling architecture arch of entity xil_defaultlib.PWM_Generator [pwm_generator_default]
 Compiling architecture arch of entity xil_defaultlib.pc [pc_default]
 Compiling architecture arch of entity xil_defaultlib.imem [imem_default]
 Compiling architecture arch of entity xil_defaultlib.dreg [dreg_default]
