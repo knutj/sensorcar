@@ -1,0 +1,1 @@
+--incr --debug "typical" --relax --mt "8" -L "xil_defaultlib" -L "work" -L "secureip" --snapshot "pwm_reader_behav" "xil_defaultlib.pwm_reader" -log "elaborate.log" 
