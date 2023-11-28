@@ -91,6 +91,7 @@ read_vhdl -library xil_defaultlib {
   /home/knutjb/Vivado/hw/hw.srcs/sources_1/imports/pwm_reader_files/reg.vhd
   /home/knutjb/Vivado/hw/hw.srcs/sources_1/imports/pwm_reader_files/top_level.vhd
 }
+read_vhdl -library work /home/knutjb/Vivado/hw/hw.srcs/sources_1/new/sensor.vhd
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
