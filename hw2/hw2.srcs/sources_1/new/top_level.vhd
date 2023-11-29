@@ -11,7 +11,13 @@ entity pwm_reader is
         -- Ports for MotorControl
         -- motor_stop: in std_logic; -- Signal to stop motors
         motor_pwm_out: out std_logic; -- PWM output for motor speed control
-        motor_dir_A, motor_dir_B: out std_logic_vector(1 downto 0) -- Motor direction control);
+        motor_dir_A, motor_dir_B: out std_logic_vector(1 downto 0); -- Motor direction control);
+         -- Ports for Ultrasonic Sensor
+        sensor_trig: out std_logic;
+        sensor_echo: in std_logic;
+        led: out std_logic;
+        led2: out std_logic;
+        distance: inout integer -- Adjust the bit-width as needed
         );
 end pwm_reader;
 
@@ -33,8 +39,34 @@ architecture arch of pwm_reader is
        );
    end component;
 
+   -- Instantiate Ultrasonic_Sensor component
+   component Ultrasonic_Sensor
+       Port ( clk : in STD_LOGIC;
+           rst : in STD_LOGIC;
+           trigPin : out STD_LOGIC;
+           echoPin : in STD_LOGIC;
+           led : out STD_LOGIC;
+           led2 : out STD_LOGIC;
+           distance: inout integer);
+   end component; 
+
+
+
    
 begin
+
+    --instant ultrasound
+    sensor: entity work.Ultrasonic_Sensor_Controller(arch)
+    port map(clk => clk,
+             rst => rst,
+             trigPin =>sensor_trig,
+             echoPin => sensor_echo,
+             led => led,
+             led2 => led2,
+               distance => distance
+    );
+
+
     -- instantiate up counter
     counter: entity work.up_counter(arch)
     port map(clk=>clk, rst=>rst, uc_clr=>top_clr, 
@@ -64,7 +96,9 @@ begin
 	width_count <= top_hrq;
 	
 	-- Motor control logic
-    motor_stop_signal <= '1' when over_the_limit = '0' else '0';
+   -- Combine conditions for motor stop signal
+      motor_stop_signal <= '1' when over_the_limit = '0' or distance < 100 else '0';
+
 
     -- Instantiate MotorControl component
     motor_control_inst: entity work. MotorControl(arch)

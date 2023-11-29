@@ -13,3 +13,8 @@
     <Process Command="vivado.bat" Owner="user" Host="DESKTOP-UMKSJRU" Pid="20484" HostCore="12" HostMemory="016880644096">
     </Process>
 </ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado" Owner="knutjb" Host="ubuntu.knut" Pid="1950967" HostCore="32" HostMemory="131079556">
+    </Process>
+</ProcessHandle>
