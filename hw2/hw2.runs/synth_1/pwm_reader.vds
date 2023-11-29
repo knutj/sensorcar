@@ -1,0 +1,249 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Wed Nov 29 19:24:28 2023
+# Process ID: 2238924
+# Current directory: /home/knutjb/Vivado/hw2/hw2.runs/synth_1
+# Command line: vivado -log pwm_reader.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source pwm_reader.tcl
+# Log file: /home/knutjb/Vivado/hw2/hw2.runs/synth_1/pwm_reader.vds
+# Journal file: /home/knutjb/Vivado/hw2/hw2.runs/synth_1/vivado.jou
+# Running On: ubuntu.knut, OS: Linux, CPU Frequency: 5361.847 MHz, CPU Physical cores: 32, Host memory: 134225 MB
+#-----------------------------------------------------------
+source pwm_reader.tcl -notrace
+Command: read_checkpoint -auto_incremental -incremental /home/knutjb/Vivado/hw2/hw2.srcs/utils_1/imports/synth_1/pwm_reader.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from /home/knutjb/Vivado/hw2/hw2.srcs/utils_1/imports/synth_1/pwm_reader.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top pwm_reader -part xc7z010clg400-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 2239462
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1790.371 ; gain = 408.684 ; free physical = 55925 ; free virtual = 235899
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'pwm_reader' [/home/knutjb/Vivado/hw2/hw2.srcs/sources_1/new/top_level.vhd:24]
+INFO: [Synth 8-638] synthesizing module 'Ultrasonic_Sensor_Controller' [/home/knutjb/Vivado/hw2/hw2.srcs/sources_1/new/Ultrasonic_Sensor_Controller.vhd:44]
+INFO: [Synth 8-226] default block is never used [/home/knutjb/Vivado/hw2/hw2.srcs/sources_1/new/Ultrasonic_Sensor_Controller.vhd:64]
+INFO: [Synth 8-256] done synthesizing module 'Ultrasonic_Sensor_Controller' (0#1) [/home/knutjb/Vivado/hw2/hw2.srcs/sources_1/new/Ultrasonic_Sensor_Controller.vhd:44]
+INFO: [Synth 8-638] synthesizing module 'up_counter' [/home/knutjb/Vivado/hw2/hw2.srcs/sources_1/new/counter.vhd:13]
+INFO: [Synth 8-256] done synthesizing module 'up_counter' (0#1) [/home/knutjb/Vivado/hw2/hw2.srcs/sources_1/new/counter.vhd:13]
+INFO: [Synth 8-638] synthesizing module '\reg ' [/home/knutjb/Vivado/hw2/hw2.srcs/sources_1/new/reg.vhd:11]
+INFO: [Synth 8-256] done synthesizing module '\reg ' (0#1) [/home/knutjb/Vivado/hw2/hw2.srcs/sources_1/new/reg.vhd:11]
+INFO: [Synth 8-638] synthesizing module 'fsm' [/home/knutjb/Vivado/hw2/hw2.srcs/sources_1/new/control_path.vhd:11]
+INFO: [Synth 8-256] done synthesizing module 'fsm' (0#1) [/home/knutjb/Vivado/hw2/hw2.srcs/sources_1/new/control_path.vhd:11]
+INFO: [Synth 8-638] synthesizing module 'MotorControl' [/home/knutjb/Vivado/hw2/hw2.srcs/sources_1/new/MotorControl.vhd:69]
+INFO: [Synth 8-256] done synthesizing module 'MotorControl' (0#1) [/home/knutjb/Vivado/hw2/hw2.srcs/sources_1/new/MotorControl.vhd:69]
+INFO: [Synth 8-256] done synthesizing module 'pwm_reader' (0#1) [/home/knutjb/Vivado/hw2/hw2.srcs/sources_1/new/top_level.vhd:24]
+WARNING: [Synth 8-6014] Unused sequential element trigSignal_reg was removed.  [/home/knutjb/Vivado/hw2/hw2.srcs/sources_1/new/Ultrasonic_Sensor_Controller.vhd:62]
+WARNING: [Synth 8-3848] Net trigPin in module/entity Ultrasonic_Sensor_Controller does not have driver. [/home/knutjb/Vivado/hw2/hw2.srcs/sources_1/new/Ultrasonic_Sensor_Controller.vhd:37]
+WARNING: [Synth 8-7129] Port trigPin in module Ultrasonic_Sensor_Controller is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1867.309 ; gain = 485.621 ; free physical = 55819 ; free virtual = 235794
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1885.121 ; gain = 503.434 ; free physical = 55819 ; free virtual = 235795
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z010clg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1893.125 ; gain = 511.438 ; free physical = 55819 ; free virtual = 235794
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z010clg400-1
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'Ultrasonic_Sensor_Controller'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                               00 |                               00
+           trigger_pulse |                               01 |                               01
+               wait_echo |                               10 |                               10
+               calculate |                               11 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'Ultrasonic_Sensor_Controller'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1902.031 ; gain = 520.344 ; free physical = 55807 ; free virtual = 235783
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   32 Bit       Adders := 2     
+	   2 Input   31 Bit       Adders := 1     
+	   2 Input    8 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 3     
+	               20 Bit    Registers := 2     
+	                8 Bit    Registers := 1     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 4     
++---Multipliers : 
+	              17x32  Multipliers := 1     
++---Muxes : 
+	   2 Input   32 Bit        Muxes := 2     
+	   4 Input   32 Bit        Muxes := 1     
+	   2 Input   31 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 1     
+	   4 Input    2 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 2     
+	   4 Input    1 Bit        Muxes := 5     
+	   2 Input    1 Bit        Muxes := 6     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 80 (col length:40)
+BRAMs: 120 (col length: RAMB18 40 RAMB36 20)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-7129] Port sensor_trig in module pwm_reader is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2033.484 ; gain = 651.797 ; free physical = 55675 ; free virtual = 235654
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2033.484 ; gain = 651.797 ; free physical = 55657 ; free virtual = 235636
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2041.492 ; gain = 659.805 ; free physical = 55644 ; free virtual = 235623
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2041.492 ; gain = 659.805 ; free physical = 55627 ; free virtual = 235606
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2041.492 ; gain = 659.805 ; free physical = 55627 ; free virtual = 235606
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2041.492 ; gain = 659.805 ; free physical = 55625 ; free virtual = 235604
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2041.492 ; gain = 659.805 ; free physical = 55626 ; free virtual = 235605
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2041.492 ; gain = 659.805 ; free physical = 55630 ; free virtual = 235609
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2041.492 ; gain = 659.805 ; free physical = 55629 ; free virtual = 235608
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |    87|
+|3     |LUT1   |    39|
+|4     |LUT2   |   165|
+|5     |LUT3   |   100|
+|6     |LUT4   |    74|
+|7     |LUT5   |    59|
+|8     |LUT6   |   130|
+|9     |FDCE   |   105|
+|10    |FDPE   |     1|
+|11    |FDRE   |    66|
+|12    |IBUF   |    25|
+|13    |OBUF   |    60|
+|14    |OBUFT  |     1|
++------+-------+------+
+
+Report Instance Areas: 
++------+---------------------+-----------------------------+------+
+|      |Instance             |Module                       |Cells |
++------+---------------------+-----------------------------+------+
+|1     |top                  |                             |   913|
+|2     |  control_path       |fsm                          |     3|
+|3     |  counter            |up_counter                   |    45|
+|4     |  hold_reg           |\reg                         |    36|
+|5     |  motor_control_inst |MotorControl                 |    30|
+|6     |  sensor             |Ultrasonic_Sensor_Controller |   683|
+|7     |  threshold_reg      |reg_0                        |    27|
++------+---------------------+-----------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2041.492 ; gain = 659.805 ; free physical = 55628 ; free virtual = 235607
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 5 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2041.492 ; gain = 659.805 ; free physical = 55628 ; free virtual = 235607
+Synthesis Optimization Complete : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2041.500 ; gain = 659.805 ; free physical = 55628 ; free virtual = 235607
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2041.500 ; gain = 0.000 ; free physical = 55926 ; free virtual = 235905
+INFO: [Netlist 29-17] Analyzing 87 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2174.238 ; gain = 0.000 ; free physical = 55866 ; free virtual = 235845
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: f91745fb
+INFO: [Common 17-83] Releasing license: Synthesis
+31 Infos, 5 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:09 ; elapsed = 00:00:08 . Memory (MB): peak = 2174.273 ; gain = 801.492 ; free physical = 55870 ; free virtual = 235849
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1434.626; main = 1434.626; forked = 0.000
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 2174.242; main = 2174.242; forked = 0.000
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2198.250 ; gain = 0.000 ; free physical = 55869 ; free virtual = 235848
+INFO: [Common 17-1381] The checkpoint '/home/knutjb/Vivado/hw2/hw2.runs/synth_1/pwm_reader.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file pwm_reader_utilization_synth.rpt -pb pwm_reader_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed Nov 29 19:24:41 2023...

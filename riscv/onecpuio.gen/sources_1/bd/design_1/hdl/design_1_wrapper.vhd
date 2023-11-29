@@ -2,7 +2,7 @@
 --Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
---Date        : Tue Nov 21 21:39:03 2023
+--Date        : Fri Nov 24 09:28:30 2023
 --Host        : ubuntu.knut running 64-bit Ubuntu 22.04.3 LTS
 --Command     : generate_target design_1_wrapper.bd
 --Design      : design_1_wrapper
@@ -36,6 +36,7 @@ entity design_1_wrapper is
     FIXED_IO_ps_porb : inout STD_LOGIC;
     FIXED_IO_ps_srstb : inout STD_LOGIC;
     btns_4bits_tri_i : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    leds_4bits_tri_o : out STD_LOGIC_VECTOR ( 3 downto 0 );
     reset_rtl : in STD_LOGIC;
     sws_4bits_tri_i : in STD_LOGIC_VECTOR ( 3 downto 0 );
     sys_clock : in STD_LOGIC
@@ -68,6 +69,7 @@ architecture STRUCTURE of design_1_wrapper is
     FIXED_IO_ps_porb : inout STD_LOGIC;
     btns_4bits_tri_i : in STD_LOGIC_VECTOR ( 3 downto 0 );
     sws_4bits_tri_i : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    leds_4bits_tri_o : out STD_LOGIC_VECTOR ( 3 downto 0 );
     sys_clock : in STD_LOGIC;
     reset_rtl : in STD_LOGIC
   );
@@ -97,6 +99,7 @@ design_1_i: component design_1
       FIXED_IO_ps_porb => FIXED_IO_ps_porb,
       FIXED_IO_ps_srstb => FIXED_IO_ps_srstb,
       btns_4bits_tri_i(3 downto 0) => btns_4bits_tri_i(3 downto 0),
+      leds_4bits_tri_o(3 downto 0) => leds_4bits_tri_o(3 downto 0),
       reset_rtl => reset_rtl,
       sws_4bits_tri_i(3 downto 0) => sws_4bits_tri_i(3 downto 0),
       sys_clock => sys_clock

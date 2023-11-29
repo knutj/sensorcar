@@ -23,16 +23,19 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 329407
+INFO: [Synth 8-7075] Helper process launched with PID 1574954
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2106.738 ; gain = 404.715 ; free physical = 42768 ; free virtual = 232068
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2106.320 ; gain = 405.684 ; free physical = 26968 ; free virtual = 224803
 ---------------------------------------------------------------------------------
 CRITICAL WARNING: [Synth 8-9871] overwriting existing primary unit 'pwm_fsm' [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/new/pwm_fsm.vhd:5]
-INFO: [Synth 8-638] synthesizing module 'OneCycleCPUwithIO' [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/top.vhd:27]
+INFO: [Synth 8-638] synthesizing module 'OneCycleCPUwithIO' [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/top.vhd:28]
 INFO: [Synth 8-638] synthesizing module 'Ultrasonic_Sensor' [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/new/sensor.vhd:16]
+INFO: [Synth 8-226] default block is never used [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/new/sensor.vhd:42]
 INFO: [Synth 8-256] done synthesizing module 'Ultrasonic_Sensor' (0#1) [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/new/sensor.vhd:16]
 INFO: [Synth 8-638] synthesizing module 'pwm_fsm' [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/new/pwm_fsm.vhd:15]
 INFO: [Synth 8-256] done synthesizing module 'pwm_fsm' (0#1) [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/new/pwm_fsm.vhd:15]
+INFO: [Synth 8-638] synthesizing module 'PWM_Generator' [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/new/PWM_Generator.vhd:35]
+INFO: [Synth 8-256] done synthesizing module 'PWM_Generator' (0#1) [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/new/PWM_Generator.vhd:35]
 INFO: [Synth 8-638] synthesizing module 'pc' [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/pc.vhd:16]
 INFO: [Synth 8-256] done synthesizing module 'pc' (0#1) [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/pc.vhd:16]
 INFO: [Synth 8-638] synthesizing module 'imem' [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/imem.vhd:19]
@@ -48,28 +51,30 @@ WARNING: [Synth 8-614] signal 'st_reg' is read in the process but is not in the 
 INFO: [Synth 8-256] done synthesizing module 'control' (0#1) [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/control.vhd:21]
 INFO: [Synth 8-638] synthesizing module '\reg ' [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/out_reg.vhd:14]
 INFO: [Synth 8-256] done synthesizing module '\reg ' (0#1) [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/out_reg.vhd:14]
-INFO: [Synth 8-256] done synthesizing module 'OneCycleCPUwithIO' (0#1) [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/top.vhd:27]
-WARNING: [Synth 8-3848] Net distance in module/entity OneCycleCPUwithIO does not have driver. [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/top.vhd:45]
-WARNING: [Synth 8-3848] Net pwm_start in module/entity OneCycleCPUwithIO does not have driver. [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/top.vhd:38]
-WARNING: [Synth 8-3848] Net pwm_stop in module/entity OneCycleCPUwithIO does not have driver. [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/top.vhd:38]
-WARNING: [Synth 8-3848] Net pwm_read in module/entity OneCycleCPUwithIO does not have driver. [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/top.vhd:38]
-WARNING: [Synth 8-3848] Net trig_pulse_signal in module/entity OneCycleCPUwithIO does not have driver. [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/top.vhd:40]
-WARNING: [Synth 8-3848] Net echo_signal in module/entity OneCycleCPUwithIO does not have driver. [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/top.vhd:41]
+INFO: [Synth 8-256] done synthesizing module 'OneCycleCPUwithIO' (0#1) [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/top.vhd:28]
+WARNING: [Synth 8-3848] Net distance in module/entity OneCycleCPUwithIO does not have driver. [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/top.vhd:46]
+WARNING: [Synth 8-3848] Net pwm_input_signal in module/entity OneCycleCPUwithIO does not have driver. [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/top.vhd:47]
+WARNING: [Synth 8-3848] Net pwm_start in module/entity OneCycleCPUwithIO does not have driver. [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/top.vhd:39]
+WARNING: [Synth 8-3848] Net pwm_stop in module/entity OneCycleCPUwithIO does not have driver. [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/top.vhd:39]
+WARNING: [Synth 8-3848] Net pwm_read in module/entity OneCycleCPUwithIO does not have driver. [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/top.vhd:39]
+WARNING: [Synth 8-3848] Net trig_pulse_signal in module/entity OneCycleCPUwithIO does not have driver. [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/top.vhd:41]
+WARNING: [Synth 8-3848] Net echo_signal in module/entity OneCycleCPUwithIO does not have driver. [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/top.vhd:42]
 WARNING: [Synth 8-7129] Port clk in module control is either unconnected or has no load
 WARNING: [Synth 8-7129] Port rst in module control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port pwm_in in module OneCycleCPUwithIO is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 2191.707 ; gain = 489.684 ; free physical = 42655 ; free virtual = 231956
+Finished RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 2192.258 ; gain = 491.621 ; free physical = 26884 ; free virtual = 224720
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 2209.520 ; gain = 507.496 ; free physical = 42653 ; free virtual = 231954
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 2210.070 ; gain = 509.434 ; free physical = 26882 ; free virtual = 224718
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 2209.520 ; gain = 507.496 ; free physical = 42653 ; free virtual = 231954
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 2210.070 ; gain = 509.434 ; free physical = 26882 ; free virtual = 224718
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2209.520 ; gain = 0.000 ; free physical = 42654 ; free virtual = 231955
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2210.070 ; gain = 0.000 ; free physical = 26882 ; free virtual = 224718
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -80,28 +85,28 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/OneCycleCPUwithIO_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2356.301 ; gain = 0.000 ; free physical = 42653 ; free virtual = 231952
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2355.852 ; gain = 0.000 ; free physical = 26855 ; free virtual = 224691
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2356.336 ; gain = 0.000 ; free physical = 42653 ; free virtual = 231951
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2355.887 ; gain = 0.000 ; free physical = 26855 ; free virtual = 224690
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2356.336 ; gain = 654.312 ; free physical = 42642 ; free virtual = 231940
+Finished Constraint Validation : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2355.887 ; gain = 655.250 ; free physical = 26833 ; free virtual = 224668
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z010clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2356.336 ; gain = 654.312 ; free physical = 42642 ; free virtual = 231940
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2355.887 ; gain = 655.250 ; free physical = 26831 ; free virtual = 224667
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2356.336 ; gain = 654.312 ; free physical = 42642 ; free virtual = 231940
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2355.887 ; gain = 655.250 ; free physical = 26833 ; free virtual = 224669
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'st_reg_reg' in module 'pwm_fsm'
 ---------------------------------------------------------------------------------------------------
@@ -113,7 +118,7 @@ INFO: [Synth 8-802] inferred FSM for state register 'st_reg_reg' in module 'pwm_
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'st_reg_reg' using encoding 'one-hot' in module 'pwm_fsm'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2356.336 ; gain = 654.312 ; free physical = 42635 ; free virtual = 231934
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2355.887 ; gain = 655.250 ; free physical = 26842 ; free virtual = 224678
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -122,14 +127,17 @@ Detailed RTL Component Info :
 +---Adders : 
 	   2 Input    8 Bit       Adders := 6     
 	   3 Input    8 Bit       Adders := 3     
+	   2 Input    5 Bit       Adders := 1     
 +---Registers : 
 	                8 Bit    Registers := 2     
-	                1 Bit    Registers := 1     
+	                5 Bit    Registers := 2     
+	                1 Bit    Registers := 2     
 +---Muxes : 
 	   6 Input    8 Bit        Muxes := 1     
 	   2 Input    8 Bit        Muxes := 10    
+	   2 Input    5 Bit        Muxes := 1     
 	   8 Input    3 Bit        Muxes := 1     
-	   2 Input    1 Bit        Muxes := 17    
+	   2 Input    1 Bit        Muxes := 18    
 	   3 Input    1 Bit        Muxes := 2     
 	  16 Input    1 Bit        Muxes := 2     
 	  13 Input    1 Bit        Muxes := 2     
@@ -151,11 +159,15 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-7129] Port pwm_in in module OneCycleCPUwithIO is either unconnected or has no load
 WARNING: [Synth 8-3332] Sequential element (pwm_radar/FSM_onehot_st_reg_reg[2]) is unused and will be removed from module OneCycleCPUwithIO.
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'pwm_radar/FSM_onehot_st_reg_reg[2]/Q' [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/new/pwm_fsm.vhd:24]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/new/pwm_fsm.vhd:24]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [/home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/new/pwm_fsm.vhd:24]
 WARNING: [Synth 8-3332] Sequential element (pwm_radar/FSM_onehot_st_reg_reg[1]) is unused and will be removed from module OneCycleCPUwithIO.
 WARNING: [Synth 8-3332] Sequential element (pwm_radar/FSM_onehot_st_reg_reg[0]) is unused and will be removed from module OneCycleCPUwithIO.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2356.336 ; gain = 654.312 ; free physical = 42652 ; free virtual = 231956
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2355.887 ; gain = 655.250 ; free physical = 26832 ; free virtual = 224672
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -186,13 +198,13 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2356.336 ; gain = 654.312 ; free physical = 42656 ; free virtual = 231959
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2355.887 ; gain = 655.250 ; free physical = 26768 ; free virtual = 224669
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2356.336 ; gain = 654.312 ; free physical = 42656 ; free virtual = 231959
+Finished Timing Optimization : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2355.887 ; gain = 655.250 ; free physical = 26767 ; free virtual = 224669
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -213,7 +225,7 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2356.336 ; gain = 654.312 ; free physical = 42656 ; free virtual = 231959
+Finished Technology Mapping : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2355.887 ; gain = 655.250 ; free physical = 26765 ; free virtual = 224669
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -231,37 +243,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2356.336 ; gain = 654.312 ; free physical = 42656 ; free virtual = 231943
+Finished IO Insertion : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2355.887 ; gain = 655.250 ; free physical = 26770 ; free virtual = 224671
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2356.336 ; gain = 654.312 ; free physical = 42656 ; free virtual = 231943
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2355.887 ; gain = 655.250 ; free physical = 26770 ; free virtual = 224671
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2356.336 ; gain = 654.312 ; free physical = 42656 ; free virtual = 231943
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2355.887 ; gain = 655.250 ; free physical = 26767 ; free virtual = 224669
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2356.336 ; gain = 654.312 ; free physical = 42656 ; free virtual = 231943
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2355.887 ; gain = 655.250 ; free physical = 26767 ; free virtual = 224669
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2356.336 ; gain = 654.312 ; free physical = 42656 ; free virtual = 231943
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2355.887 ; gain = 655.250 ; free physical = 26767 ; free virtual = 224669
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2356.336 ; gain = 654.312 ; free physical = 42656 ; free virtual = 231943
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2355.887 ; gain = 655.250 ; free physical = 26767 ; free virtual = 224669
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -279,11 +291,11 @@ Report Cell Usage:
 +------+----------+------+
 |1     |BUFG      |     1|
 |2     |CARRY4    |     8|
-|3     |LUT2      |     2|
-|4     |LUT3      |    13|
-|5     |LUT4      |    12|
+|3     |LUT2      |     6|
+|4     |LUT3      |    12|
+|5     |LUT4      |    28|
 |6     |LUT5      |    57|
-|7     |LUT6      |    82|
+|7     |LUT6      |    60|
 |8     |RAM256X1S |     8|
 |9     |RAM32M    |     2|
 |10    |RAM32X1D  |     4|
@@ -292,33 +304,33 @@ Report Cell Usage:
 |13    |OBUF      |     9|
 +------+----------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2356.336 ; gain = 654.312 ; free physical = 42656 ; free virtual = 231943
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2355.887 ; gain = 655.250 ; free physical = 26767 ; free virtual = 224669
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 4 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2356.336 ; gain = 507.496 ; free physical = 42656 ; free virtual = 231943
-Synthesis Optimization Complete : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2356.336 ; gain = 654.312 ; free physical = 42656 ; free virtual = 231943
+Synthesis finished with 0 errors, 3 critical warnings and 5 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2355.887 ; gain = 509.434 ; free physical = 26773 ; free virtual = 224675
+Synthesis Optimization Complete : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2355.887 ; gain = 655.250 ; free physical = 26773 ; free virtual = 224675
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2356.336 ; gain = 0.000 ; free physical = 42945 ; free virtual = 232231
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2355.887 ; gain = 0.000 ; free physical = 27070 ; free virtual = 224972
 INFO: [Netlist 29-17] Analyzing 22 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2356.336 ; gain = 0.000 ; free physical = 42961 ; free virtual = 232248
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2355.887 ; gain = 0.000 ; free physical = 27063 ; free virtual = 224965
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 14 instances were transformed.
   RAM256X1S => RAM256X1S (MUXF7(x2), MUXF8, RAMS64E(x4)): 8 instances
   RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 2 instances
   RAM32X1D => RAM32X1D (RAMD32(x2)): 4 instances
 
-Synth Design complete | Checksum: 52fa6634
+Synth Design complete | Checksum: b1177dae
 INFO: [Common 17-83] Releasing license: Synthesis
-43 Infos, 13 Warnings, 1 Critical Warnings and 0 Errors encountered.
+46 Infos, 16 Warnings, 4 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:13 ; elapsed = 00:00:12 . Memory (MB): peak = 2356.336 ; gain = 985.523 ; free physical = 42956 ; free virtual = 232242
-INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1569.170; main = 1569.170; forked = 0.000
-INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 2356.305; main = 2356.305; forked = 0.000
+synth_design: Time (s): cpu = 00:00:13 ; elapsed = 00:00:12 . Memory (MB): peak = 2355.887 ; gain = 984.461 ; free physical = 27063 ; free virtual = 224965
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1838.601; main = 1504.906; forked = 359.485
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3316.195; main = 2355.855; forked = 992.355
 INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2380.312 ; gain = 0.000 ; free physical = 42956 ; free virtual = 232242
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2379.863 ; gain = 0.000 ; free physical = 27062 ; free virtual = 224964
 INFO: [Common 17-1381] The checkpoint '/home/knutjb/Vivado/onecpuio/onecpuio.runs/synth_1/OneCycleCPUwithIO.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file OneCycleCPUwithIO_utilization_synth.rpt -pb OneCycleCPUwithIO_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Nov 23 14:30:57 2023...
+INFO: [Common 17-206] Exiting Vivado at Fri Nov 24 10:31:56 2023...

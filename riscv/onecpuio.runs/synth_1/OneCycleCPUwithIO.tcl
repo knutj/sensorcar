@@ -70,6 +70,7 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 8
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z010clg400-1
 
@@ -86,6 +87,7 @@ set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_vhdl -library xil_defaultlib {
+  /home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/new/PWM_Generator.vhd
   /home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/alu.vhd
   /home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/control.vhd
   /home/knutjb/Vivado/onecpuio/onecpuio.srcs/sources_1/imports/oneio/dmem.vhd

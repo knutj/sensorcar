@@ -9,7 +9,7 @@ entity Ultrasonic_Sensor is
         trig_pulse  : in  std_logic;
         echo        : in  std_logic;
         trig        : out std_logic;
-        distance    : out unsigned(15 downto 0)
+        distance    : out unsigned(31 downto 0)
     );
 end Ultrasonic_Sensor;
 
@@ -50,6 +50,8 @@ begin
                     else
                         state <= '0';
                     end if;
+                when others =>
+                    state <='0';
             end case;
         end if;
     end process;
