@@ -1,11 +1,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
-use work.opcodes.all;
+use work.constants.all;
 
-entity control is
-    generic (
-        OPCODE_WIDTH : integer := 7
-    );
+entity control_asip is
     port ( 
         clk             : in    std_logic;
         rst             : in    std_logic;
@@ -20,9 +17,9 @@ entity control is
         dmem_write      : out   std_logic;
         out_reg_write   : out   std_logic
     );
-end control;
+end control_asip;
 
-architecture arch of control is
+architecture arch of control_asip is
 begin
     process (opcode, alu_zero)
     begin

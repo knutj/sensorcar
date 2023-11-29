@@ -1,12 +1,9 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+use work.constants.all;
 
 entity dreg is
-    generic (
-        DR_ADDR_WIDTH : integer := 3;
-        DR_DATA_WIDTH : integer := 8
-    );
     port ( 
         clk         : in    std_logic;
         dr_wr_ctr   : in    std_logic;

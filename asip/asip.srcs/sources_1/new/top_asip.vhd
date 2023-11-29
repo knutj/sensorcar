@@ -1,27 +1,22 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+use work.constants.all;
 
-entity asip_top is
+entity top_asip is
     generic (
-        PC_DATA_WIDTH : integer := 8;
-        IM_ADDR_WIDTH : integer := 5;
-        IM_DATA_WIDTH : integer := 24;
-        DR_ADDR_WIDTH : integer := 3;
-        DR_DATA_WIDTH : integer := 8;
-        DM_ADDR_WIDTH : integer := 8;
-        DM_DATA_WIDTH : integer := 8;
-        OP_CODE_WIDTH : integer := 7
+        threshold_limit : std_logic_vector (PWM_WIDTH - 9 downto 0) := "000000100000"
     );
     port ( 
         clk     : in    std_logic;
         rst     : in    std_logic;
+        pwm_in  : in    std_logic;
         dig_in  : in    std_logic_vector (DR_DATA_WIDTH - 1 downto 0);
         dig_out : out   std_logic_vector (DR_DATA_WIDTH - 1 downto 0)
     );
-end asip_top;
+end top_asip;
 
-architecture arch of asip_top is
+architecture arch of top_asip is
     signal dr_wr_ctr    :   std_logic;
     signal dm_wr_ctr    :   std_logic;
     signal alu_zero     :   std_logic;
@@ -37,10 +32,16 @@ architecture arch of asip_top is
     signal alu_dout     :   std_logic_vector(DR_DATA_WIDTH - 1 downto 0);
     signal dm_dout      :   std_logic_vector(DM_DATA_WIDTH - 1 downto 0);
     signal dr_mux_out   :   std_logic_vector(DM_DATA_WIDTH - 1 downto 0);
-    signal alu_ctr_in   :   std_logic_vector(OP_CODE_WIDTH - 1 downto 0);
+    signal alu_ctr_in   :   std_logic_vector(OPCODE_WIDTH - 1 downto 0);
     signal in_mux_ctr   :   std_logic;
     signal out_reg_wr   :   std_logic;
-    signal in_mux_out   :   std_logic_vector(OP_CODE_WIDTH - 1 downto 0);
+    signal in_mux_out   :   std_logic_vector(OPCODE_WIDTH - 1 downto 0);
+    
+    -- Sensor PWM
+    signal write        :   std_logic;
+    signal threshold    :   std_logic_vector(PWM_WIDTH - 1 downto 0);
+    signal over_limit   :   std_logic;
+    signal width_count  :   std_logic_vector(PWM_WIDTH - 1 downto 0);
 begin
     -- Program Counter
     pc : entity work.pc(arch)
@@ -92,7 +93,7 @@ begin
     );
     
     -- Control Path
-    control : entity work.control(arch)
+    control_asip : entity work.control_asip(arch)
     port map (
         clk             => clk,
         rst             => rst,
@@ -102,26 +103,38 @@ begin
         dreg_mux_ctr    => dreg_mux_ctr,
         in_mux_ctr      => in_mux_ctr,
         out_reg_write   => out_reg_wr,
-        opcode          => opcd_out(OP_CODE_WIDTH - 1 downto 0), 
+        opcode          => opcd_out(OPCODE_WIDTH - 1 downto 0), 
         dreg_write      => dr_wr_ctr, 
         dmem_write      => dm_wr_ctr,
         alu_ctr         => alu_ctr_in
     );
     
     -- Output Register
-    out_reg : entity work.out_reg(arch)
+    out_reg : entity work.reg(arch)
     port map (
         clk             => clk,
         rst             => rst,
         reg_ld          => out_reg_wr,
-        reg_din         => dr2_dout,
-        reg_dout        => dig_out
+        reg_d           => dr2_dout,
+        reg_q           => dig_out
+    );
+    
+    -- Sensor PWM
+    pwm : entity work.top_pwm(arch)
+    port map (
+        clk             => clk,
+        rst             => rst,
+        write           => write,
+        pwm_in          => pwm_in,
+        threshold       => threshold,
+        over_limit      => over_limit,
+        width_count     => width_count
     );
     
     -- Glue pc_mux
     pc_din <= 
-        std_logic_vector(unsigned(pc_dout) + 1) when pc_mux_ctr = '1' else
-        std_logic_vector(unsigned(pc_dout) + unsigned(opcd_out(23 downto 16))) when opcd_out(23) = '0' else
+        std_logic_vector(unsigned(pc_dout) + 1)                                 when pc_mux_ctr = '1' else
+        std_logic_vector(unsigned(pc_dout) + unsigned(opcd_out(23 downto 16)))  when opcd_out(23) = '0' else
         std_logic_vector(unsigned(pc_dout) - not(unsigned(opcd_out(23 downto 16)) - 1));
 
     -- Glue alu_mux
@@ -132,5 +145,8 @@ begin
     
     -- Glue in_mux
     in_mux_out <= dig_in when in_mux_ctr = '1' else dr_mux_out;
+    
+    -- Concatenate threshold limit
+    threshold <= threshold_limit & dr2_dout;
     
 end arch;

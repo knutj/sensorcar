@@ -1,15 +1,13 @@
 library ieee;
 use ieee.std_logic_1164.all;
+use work.constants.all;
 
 entity pc is
-    generic (
-        DATA_WIDTH : integer := 8
-    );
     port (
-        clk         : in    std_logic;
-        rst         : in    std_logic;
-        pc_din      : in    std_logic_vector(DATA_WIDTH - 1 downto 0);
-        pc_dout     : out   std_logic_vector(DATA_WIDTH - 1 downto 0)
+        clk     : in    std_logic;
+        rst     : in    std_logic;
+        pc_din  : in    std_logic_vector(PC_DATA_WIDTH - 1 downto 0);
+        pc_dout : out   std_logic_vector(PC_DATA_WIDTH - 1 downto 0)
     );
 end pc;
 

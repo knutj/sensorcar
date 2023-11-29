@@ -1,12 +1,9 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+use work.constants.all;
 
 entity imem is
-    generic (
-        IM_ADDR_WIDTH   : integer := 5;
-        IM_DATA_WIDTH   : integer := 24
-    );
     Port ( 
         im_addr     : in    std_logic_vector (IM_ADDR_WIDTH - 1 downto 0);
         im_dout     : out   std_logic_vector (IM_DATA_WIDTH - 1 downto 0));
