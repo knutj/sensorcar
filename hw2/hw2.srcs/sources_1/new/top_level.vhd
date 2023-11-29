@@ -25,8 +25,7 @@ architecture arch of pwm_reader is
    signal top_clr, top_cnt, top_ld: std_logic;
    signal top_ucq, top_hrq, top_trq: std_logic_vector(19 downto 0);
    signal motor_stop_signal: std_logic;
-   
-  
+      
    
        -- Instantiate MotorControl
    component MotorControl
@@ -103,7 +102,7 @@ begin
     -- Instantiate MotorControl component
     motor_control_inst: entity work. MotorControl(arch)
         port map(
-            stop => motor_stop_signal,
+            stop =>motor_stop_signal,
             clk => clk,
             reset => rst,
             pwm_out => motor_pwm_out,

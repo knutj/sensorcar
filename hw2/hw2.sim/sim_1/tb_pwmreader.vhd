@@ -1,133 +1,106 @@
-LIBRARY ieee;
-USE ieee.std_logic_1164.ALL;
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
 
-ENTITY tb_pwm_reader IS
-END tb_pwm_reader;
+entity top_level_tb is
+    -- Testbench has no ports
+end entity top_level_tb;
 
-ARCHITECTURE arch OF tb_pwm_reader IS 
+architecture behavior of top_level_tb is
+    -- Component Declaration for the Unit Under Test (UUT)
+    component top_level
+        port(
+            clk             : in  std_logic;
+            rst             : in  std_logic;
+            write           : in  std_logic;
+            pwm_in          : in  std_logic;
+            threshold_limit : in  std_logic_vector(19 downto 0);
+            over_the_limit  : out std_logic;
+            width_count     : out std_logic_vector(19 downto 0);
+            sensor_trig     : out std_logic;
+            sensor_echo     : in  std_logic;
+            distance : inout integer;
+            motor_pwm_out   : out std_logic;
+            motor_dir_A     : out std_logic_vector(1 downto 0);
+            motor_dir_B     : out std_logic_vector(1 downto 0)
+        );
+    end component;
 
-    -- Component Declaration for the Unit Under Test (UUT) 
-    COMPONENT pwm_reader
-    PORT(
-        clk, rst, write, pwm_in: in std_logic;
-        threshold_limit: in std_logic_vector(19 downto 0);
-        over_the_limit: inout std_logic;
-        width_count: out std_logic_vector(19 downto 0);
-        -- Ports for MotorControl
-        -- motor_stop: in std_logic; -- Signal to stop motors
-        motor_pwm_out: out std_logic; -- PWM output for motor speed control
-        motor_dir_A, motor_dir_B: out std_logic_vector(1 downto 0) -- Motor direction control);
-    );
-    END COMPONENT;
+    -- Inputs
+    signal clk             : std_logic := '0';
+    signal rst             : std_logic := '0';
+    signal write           : std_logic := '0';
+    signal pwm_in          : std_logic := '0';
+    signal threshold_limit : std_logic_vector(19 downto 0) := (others => '0');
+    signal sensor_echo     : std_logic := '0';
 
-    -- Additional Component Declaration for MotorControl
-    COMPONENT MotorControl
-    PORT(
-        stop        : in std_logic;
-        clk         : in std_logic;
-        reset       : in std_logic;
-        pwm_out     : out std_logic;
-        motor_dir_A : out std_logic_vector(1 downto 0);
-        motor_dir_B : out std_logic_vector(1 downto 0)
-    );
-    END COMPONENT;
+    -- Outputs
+    signal over_the_limit  : std_logic;
+    signal width_count     : std_logic_vector(19 downto 0);
+    signal sensor_trig     : std_logic;
+    signal distance : integer;
+    signal motor_pwm_out   : std_logic;
+    signal motor_dir_A     : std_logic_vector(1 downto 0);
+    signal motor_dir_B     : std_logic_vector(1 downto 0);
 
-    --Inputs
-    signal clk : std_logic := '0';
-    signal rst : std_logic;
-    signal write : std_logic;
-    signal pwm_in : std_logic;
-    signal threshold_limit : std_logic_vector(19 downto 0);
-
-    --Outputs
-    signal over_the_limit : std_logic;
-    signal width_count : std_logic_vector(19 downto 0);
-
-    -- Additional signals for MotorControl
-    signal motor_stop        : std_logic;
-    signal motor_pwm_out     : std_logic;
-    signal motor_dir_A       : std_logic_vector(1 downto 0);
-    signal motor_dir_B       : std_logic_vector(1 downto 0);
-
-    -- Clock period definition
+    -- Clock period definitions
     constant clk_period : time := 10 ns;
 
-BEGIN
+begin
+    -- Instantiate the Unit Under Test (UUT)
+    uut: top_level
+        port map(
+            clk             => clk,
+            rst             => rst,
+            write           => write,
+            pwm_in          => pwm_in,
+            threshold_limit => threshold_limit,
+            over_the_limit  => over_the_limit,
+            width_count     => width_count,
+            sensor_trig     => sensor_trig,
+            sensor_echo     => sensor_echo,
+            distance    =>     distance,
+            motor_pwm_out   => motor_pwm_out,
+            motor_dir_A     => motor_dir_A,
+            motor_dir_B     => motor_dir_B
+        );
 
-    -- Instantiate the PWM Reader Unit Under Test (UUT)
-    uut_pwm_reader: pwm_reader PORT MAP (
-        clk             => clk,
-        rst             => rst,
-        write           => write,
-        pwm_in          => pwm_in,
-        threshold_limit => threshold_limit,
-        over_the_limit  => over_the_limit,
-        width_count     => width_count
-    );
-
-    -- Instantiate the MotorControl
-    uut_motor_control: MotorControl PORT MAP (
-        stop        => motor_stop,
-        clk         => clk,
-        reset       => rst,
-        pwm_out     => motor_pwm_out,
-        motor_dir_A => motor_dir_A,
-        motor_dir_B => motor_dir_B
-    );
-
-    -- Clock process definition
+    -- Clock process definitions
     clk_process: process
     begin
         clk <= '0';
-        wait for clk_period / 2;
+        wait for clk_period/2;
         clk <= '1';
-        wait for clk_period / 2;
+        wait for clk_period/2;
     end process;
 
-    -- Stimulus process
+    -- Test process
     stim_proc: process
     begin
         -- Initialize Inputs
         rst <= '1';
-        wait for clk_period;  
+        wait for 100 ns;
         rst <= '0';
 
-        -- Test PWM Reader Functionality
-        threshold_limit <= "00000000111100001111"; -- 3855
+        -- Add stimulus here
+        -- Example: Test PWM functionality
         write <= '1';
-        wait for clk_period;
-        write <= '0';
-        for i in 0 to 3 loop
-            pwm_in <= '1';
-            wait for clk_period * 5000;
-            pwm_in <= '0';
-            wait for clk_period * 95000;
-        end loop;
+        threshold_limit <= "10101010101010101010";  -- Example threshold
+        pwm_in <= '1';
+        wait for 50 ns;
+        pwm_in <= '0';
+        wait for 50 ns;
         
-        threshold_limit <= "00000001111100001111"; -- 7951
-        write <= '1';
-        wait for clk_period;
-        write <= '0';
-        for i in 0 to 3 loop
-            pwm_in <= '1';
-            wait for clk_period * 5000;
-            pwm_in <= '0';
-            wait for clk_period * 95000;
-        end loop;
+        -- Example: Test Sensor functionality
+        -- Simulate echo signal from sensor
+        sensor_echo <= '0';
+        wait for 100 ns;
+        sensor_echo <= '1';
+        wait for 30 ns;  -- Echo duration
+        sensor_echo <= '0';
 
-        -- Test MotorControl Functionality
-        -- Example: Toggle motor stop/start and change direction
-        motor_stop <= '0'; -- Start motor
-        for i in 0 to 3 loop
-            -- Test various motor directions and speeds
-            motor_stop <= '1';
-            motor_stop <= '0';
-            
-            -- ...
-        end loop;
-        motor_stop <= '1'; -- Stop motor
+        -- Example: Test Motor Control functionality
+        -- ...
 
         wait; -- Will run indefinitely
     end process;
-
-END arch;
+end architecture;
