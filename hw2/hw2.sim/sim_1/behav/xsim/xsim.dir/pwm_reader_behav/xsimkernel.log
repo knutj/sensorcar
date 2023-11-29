@@ -1,0 +1,4 @@
+Running: xsim.dir/pwm_reader_behav/xsimk -simmode gui -wdb pwm_reader_behav.wdb -simrunnum 0 -socket 42187
+Design successfully loaded
+Design Loading Memory Usage: 23564 KB (Peak: 24120 KB)
+Design Loading CPU Usage: 30 ms
