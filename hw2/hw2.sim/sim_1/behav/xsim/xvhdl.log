@@ -1,12 +1,2 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "/home/knutjb/Vivado/hw2/hw2.srcs/sources_1/new/MotorControl.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'MotorControl'
-INFO: [VRFC 10-163] Analyzing VHDL file "/home/knutjb/Vivado/hw2/hw2.srcs/sources_1/new/control_path.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'fsm'
-INFO: [VRFC 10-163] Analyzing VHDL file "/home/knutjb/Vivado/hw2/hw2.srcs/sources_1/new/counter.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'up_counter'
-INFO: [VRFC 10-163] Analyzing VHDL file "/home/knutjb/Vivado/hw2/hw2.srcs/sources_1/new/reg.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'reg'
-INFO: [VRFC 10-163] Analyzing VHDL file "/home/knutjb/Vivado/hw2/hw2.srcs/sources_1/new/top_level.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'pwm_reader'
 INFO: [VRFC 10-163] Analyzing VHDL file "/home/knutjb/Vivado/hw2/hw2.sim/sim_1/tb_pwmreader.vhd" into library xil_defaultlib
 INFO: [VRFC 10-3107] analyzing entity 'tb_pwm_reader'
