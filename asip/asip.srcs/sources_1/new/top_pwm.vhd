@@ -31,7 +31,7 @@ begin
         uc_q        => top_ucq
     );
     
-    hold_reg : entity work.reg(arch)
+    hold_reg : entity work.reg_pwm(arch)
     port map (
         clk         => clk,
         rst         => rst,
@@ -40,7 +40,7 @@ begin
         reg_q       => top_hrq
     );
     
-    threshold_reg : entity work.reg(arch)
+    threshold_reg : entity work.reg_pwm(arch)
     port map (
         clk         => clk,
         rst         => rst,

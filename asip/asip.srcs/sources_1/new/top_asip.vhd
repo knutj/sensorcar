@@ -35,7 +35,7 @@ architecture arch of top_asip is
     signal alu_ctr_in   :   std_logic_vector(OPCODE_WIDTH - 1 downto 0);
     signal in_mux_ctr   :   std_logic;
     signal out_reg_wr   :   std_logic;
-    signal in_mux_out   :   std_logic_vector(OPCODE_WIDTH - 1 downto 0);
+    signal in_mux_out   :   std_logic_vector(DR_DATA_WIDTH - 1 downto 0);
     
     -- Sensor PWM
     signal write        :   std_logic;
@@ -110,7 +110,7 @@ begin
     );
     
     -- Output Register
-    out_reg : entity work.reg(arch)
+    out_reg : entity work.reg_dr(arch)
     port map (
         clk             => clk,
         rst             => rst,

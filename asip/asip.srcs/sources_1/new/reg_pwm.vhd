@@ -2,17 +2,17 @@ library ieee;
 use ieee.std_logic_1164.all;
 use work.constants_pkg.all;
 
-entity reg is
+entity reg_pwm is
     port ( 
         clk     : in    std_logic;
         rst     : in    std_logic;
         reg_ld  : in    std_logic;
-        reg_d   : in    std_logic_vector(REG_DATA_WIDTH - 1 downto 0);
-        reg_q   : out   std_logic_vector(REG_DATA_WIDTH - 1 downto 0)
+        reg_d   : in    std_logic_vector(PWM_WIDTH - 1 downto 0);
+        reg_q   : out   std_logic_vector(PWM_WIDTH - 1 downto 0)
     );
-end reg;
+end reg_pwm;
 
-architecture arch of reg is
+architecture arch of reg_pwm is
 begin
     process (clk, rst)
     begin

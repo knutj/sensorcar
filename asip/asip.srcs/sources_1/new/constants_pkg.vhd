@@ -12,7 +12,6 @@ package constants_pkg is
     constant OPCODE_WIDTH   : integer := 7;
     constant PC_DATA_WIDTH  : integer := 8;
     constant PWM_WIDTH      : integer := 20;
-    constant REG_DATA_WIDTH : integer := 8;
     
     constant LD_Ri_imm:     std_logic_vector(OPCODE_WIDTH - 1 downto 0) := "0000000";
     constant LD_Ri_Rj:      std_logic_vector(OPCODE_WIDTH - 1 downto 0) := "0000001";
