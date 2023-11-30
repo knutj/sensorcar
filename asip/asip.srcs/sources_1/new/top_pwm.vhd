@@ -1,6 +1,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
-use work.constants.all;
+use work.constants_pkg.all;
 
 entity top_pwm is
     port (

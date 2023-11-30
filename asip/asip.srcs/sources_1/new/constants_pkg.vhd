@@ -1,8 +1,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-package constants is
-    constant AL_DATA_WIDTH   : integer := 8;
+package constants_pkg is
+    constant AL_DATA_WIDTH  : integer := 8;
     constant DM_ADDR_WIDTH  : integer := 8;
     constant DM_DATA_WIDTH  : integer := 8;
     constant DR_ADDR_WIDTH  : integer := 3;
@@ -31,4 +31,4 @@ package constants is
     constant J_imm:         std_logic_vector(OPCODE_WIDTH - 1 downto 0) := "0001110";
     constant LD_Ri_IN:      std_logic_vector(OPCODE_WIDTH - 1 downto 0) := "0001111";
     constant ST_Ri_OUT:     std_logic_vector(OPCODE_WIDTH - 1 downto 0) := "0010000";
-end package constants;
+end package constants_pkg;
