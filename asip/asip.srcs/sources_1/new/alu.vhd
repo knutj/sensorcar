@@ -7,7 +7,7 @@ entity alu is
     port ( 
         alu_din_hi  : in    STD_LOGIC_VECTOR (AL_DATA_WIDTH - 1 downto 0);
         alu_din_lo  : in    STD_LOGIC_VECTOR (AL_DATA_WIDTH - 1 downto 0);
-        alu_ctr_In  : in    STD_LOGIC_VECTOR (OPCODE_WIDTH - 1 downto 0);
+        alu_ctr_in  : in    STD_LOGIC_VECTOR (OPCODE_WIDTH - 1 downto 0);
         alu_dout    : out   STD_LOGIC_VECTOR (AL_DATA_WIDTH - 1 downto 0);
         alu_zero    : out   STD_LOGIC);
 end alu;
