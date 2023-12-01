@@ -1,1 +1,0 @@
---incr --debug "typical" --relax --mt "8" -L "xil_defaultlib" -L "secureip" --snapshot "limit_checker_tb_behav" "xil_defaultlib.limit_checker_tb" -log "elaborate.log" 
