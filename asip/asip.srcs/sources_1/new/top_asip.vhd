@@ -5,14 +5,14 @@ use work.constants_pkg.all;
 
 entity top_asip is
     generic (
-        threshold_limit : std_logic_vector (PWM_WIDTH - 9 downto 0) := "000000100000"
+        threshold_limit : std_logic_vector(PWM_WIDTH - 9 downto 0) := "000000100000"
     );
     port ( 
         clk     : in    std_logic;
         rst     : in    std_logic;
         echo    : in    std_logic;
-        dig_in  : in    std_logic_vector (DR_DATA_WIDTH - 1 downto 0);
-        dig_out : out   std_logic_vector (DR_DATA_WIDTH - 1 downto 0);
+        dig_in  : in    std_logic_vector(DR_DATA_WIDTH - 1 downto 0);
+        dig_out : out   std_logic_vector(DR_DATA_WIDTH - 1 downto 0);
         trig    : out   std_logic
     );
 end top_asip;
