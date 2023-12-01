@@ -2,19 +2,19 @@ library ieee;
 use ieee.std_logic_1164.all;
 use work.constants_pkg.all;
 
-entity top_pwm is
+entity top_echo is
     port (
         clk         : in    std_logic;
         rst         : in    std_logic;
         write       : in    std_logic;
-        pwm_in      : in    std_logic;
+        echo        : in    std_logic;
         threshold   : in    std_logic_vector(PWM_WIDTH - 1 downto 0);
         over_limit  : out   std_logic;
         width_count : out   std_logic_vector(PWM_WIDTH - 1 downto 0)
     );
-end top_pwm;
+end top_echo;
 
-architecture arch of top_pwm is
+architecture arch of top_echo is
     signal top_clr  : std_logic;
     signal top_cnt  : std_logic;
     signal top_ld   : std_logic;
@@ -31,7 +31,7 @@ begin
         uc_q        => top_ucq
     );
     
-    hold_reg : entity work.reg_pwm(arch)
+    hold_reg : entity work.reg_echo(arch)
     port map (
         clk         => clk,
         rst         => rst,
@@ -40,7 +40,7 @@ begin
         reg_q       => top_hrq
     );
     
-    threshold_reg : entity work.reg_pwm(arch)
+    threshold_reg : entity work.reg_echo(arch)
     port map (
         clk         => clk,
         rst         => rst,
@@ -49,11 +49,11 @@ begin
         reg_q       => top_trq
     );
     
-    control : entity work.control_pwm(arch)
+    control : entity work.control_echo(arch)
     port map (
         clk         => clk,
         rst         => rst,
-        pwm_in      => pwm_in,
+        echo        => echo,
         clr         => top_clr,
         cnt         => top_cnt,
         ld          => top_ld

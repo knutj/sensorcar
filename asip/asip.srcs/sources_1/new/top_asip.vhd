@@ -10,9 +10,10 @@ entity top_asip is
     port ( 
         clk     : in    std_logic;
         rst     : in    std_logic;
-        pwm_in  : in    std_logic;
+        echo    : in    std_logic;
         dig_in  : in    std_logic_vector (DR_DATA_WIDTH - 1 downto 0);
-        dig_out : out   std_logic_vector (DR_DATA_WIDTH - 1 downto 0)
+        dig_out : out   std_logic_vector (DR_DATA_WIDTH - 1 downto 0);
+        trig    : out   std_logic
     );
 end top_asip;
 
@@ -37,7 +38,7 @@ architecture arch of top_asip is
     signal out_reg_wr   :   std_logic;
     signal in_mux_out   :   std_logic_vector(DR_DATA_WIDTH - 1 downto 0);
     
-    -- Sensor PWM
+    -- Echo sensor
     signal write        :   std_logic;
     signal threshold    :   std_logic_vector(PWM_WIDTH - 1 downto 0);
     signal over_limit   :   std_logic;
@@ -119,13 +120,13 @@ begin
         reg_q           => dig_out
     );
     
-    -- Sensor PWM
-    pwm : entity work.top_pwm(arch)
+    -- Echo Sensor
+    top_echo : entity work.top_echo(arch)
     port map (
         clk             => clk,
         rst             => rst,
         write           => write,
-        pwm_in          => pwm_in,
+        echo            => echo,
         threshold       => threshold,
         over_limit      => over_limit,
         width_count     => width_count
