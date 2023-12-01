@@ -77,7 +77,11 @@ BEGIN
         echo <= '0';
         wait for 400 ns; -- Adjust the timing as needed
         -- ... Add more test cases as needed ...
-
+        trigger <= '1';
+        wait for 10 ms;
+        echo <= '1';
+        trigger  <= '1';
+        wait for 30 ms;
         wait; -- Will run indefinitely
     END PROCESS;
 
