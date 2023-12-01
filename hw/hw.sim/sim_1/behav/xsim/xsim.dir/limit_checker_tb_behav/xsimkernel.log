@@ -1,7 +1,0 @@
-Running: xsim.dir/limit_checker_tb_behav/xsimk -simmode gui -wdb limit_checker_tb_behav.wdb -simrunnum 0 -socket 56397
-Design successfully loaded
-Design Loading Memory Usage: 23552 KB (Peak: 24116 KB)
-Design Loading CPU Usage: 40 ms
-Simulation completed
-Simulation Memory Usage: 105288 KB (Peak: 162820 KB)
-Simulation CPU Usage: 40 ms

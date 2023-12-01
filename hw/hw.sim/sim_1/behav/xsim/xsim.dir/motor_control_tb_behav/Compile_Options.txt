@@ -1,1 +1,0 @@
---incr --debug "typical" --relax --mt "8" -L "xil_defaultlib" -L "secureip" --snapshot "motor_control_tb_behav" "xil_defaultlib.motor_control_tb" -log "elaborate.log" 
