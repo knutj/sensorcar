@@ -13,9 +13,12 @@ architecture arch of imem is
     type rom_type is array (0 to 2**IM_ADDR_WIDTH - 1) of std_logic_vector(IM_DATA_WIDTH - 1 downto 0);
     
     constant instruction_opcodes : rom_type := (-- # LFLBRFRB
-        x"550080",  -- addr 00:     FW   R1,85     # 01010101(imm) 000(rs2=  ) 000(rs1=  ) 001(rd=R1) 0000000 
-        x"AA0081",  -- addr 01:     BW   R1,170    # 10101010(imm) 000(rs2=  ) 000(rs1=  ) 001(rd=R1) 0000001 
-        x"A50082",  -- addr 02:     TL   R1,165    # 10100101(imm) 000(rs2=  ) 000(rs1=  ) 001(rd=R1) 0000011
+    -- Main:
+        x"550080",  -- addr 00:     LD   R1,85     # 01010101(imm) 000(rs2=  ) 000(rs1=  ) 001(rd=R1) 0000000 
+        x"AA0101",  -- addr 01:     LD   R2,170    # 10101010(imm) 000(rs2=  ) 000(rs1=  ) 010(rd=R2) 0000001 
+        x"A50182",  -- addr 02:     LD   R3,165    # 10100101(imm) 000(rs2=  ) 000(rs1=  ) 011(rd=R3) 0000011
+        
+    -- Forward loop:
         x"FFFFFF",  -- addr 03:     
         x"FFFFFF",  -- addr 04: 
         x"FFFFFF",  -- addr 05:     
