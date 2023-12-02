@@ -9,7 +9,7 @@ entity top_echo is
         write       : in    std_logic;
         echo        : in    std_logic;
         threshold   : in    std_logic_vector(PWM_WIDTH - 1 downto 0);
-        over_limit  : out   std_logic;
+        above_limit : out   std_logic;
         width_count : out   std_logic_vector(PWM_WIDTH - 1 downto 0)
     );
 end top_echo;
@@ -60,7 +60,7 @@ begin
     );
     
     -- Comparator
-    over_limit <= '0' when top_trq > top_hrq else '1';
+    above_limit <= '0' when top_trq > top_hrq else '1';
     
     -- Width measurement
     width_count <= top_hrq;
