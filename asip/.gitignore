@@ -51,7 +51,7 @@
 */*.runs/synth*/*.tcl
 */*.runs/synth*/*.bat
 */*.runs/synth*/*.xdc
-!*/*.runs/synth*/*utilization*.rpt
+*/*.runs/synth*/*utilization*.rpt
 
 *.runs/synth*/*.xml
 *.runs/synth*/*.txt
@@ -59,7 +59,8 @@
 *.runs/synth*/*.tcl
 *.runs/synth*/*.bat
 *.runs/synth*/*.xdc
-!*.runs/synth*/*utilization*.rpt
+*.runs/synth*/*utilization*.rpt
+*.runs/synth*/*__synthesis_is_complete__*
 
 ### project impl
 */*.runs/impl*/*.xml
@@ -68,7 +69,7 @@
 */*.runs/impl*/*.sh
 */*.runs/impl*/*.tcl
 */*.runs/impl*/*.bat
-!*/*.runs/impl*/*utilization*.rpt
+*/*.runs/impl*/*utilization*.rpt
 
 *.runs/impl*/*.xml
 *.runs/impl*/*.html
@@ -76,7 +77,8 @@
 *.runs/impl*/*.sh
 *.runs/impl*/*.tcl
 *.runs/impl*/*.bat
-!*.runs/impl*/*utilization*.rpt
+*.runs/impl*/*utilization*.rpt
+*.runs/impl*/*.bit
 
 ### block design
 */*/bd/*/hdl
@@ -105,4 +107,3 @@
 */*/*/bd/*/ip/*/*.tcl
 hw_handoff
 ipshared
-*.runs
