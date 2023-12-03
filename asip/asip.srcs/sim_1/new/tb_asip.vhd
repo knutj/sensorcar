@@ -49,7 +49,7 @@ begin
    end process;
  
    -- Stimulus process
-   stim_proc: process
+   stim_process: process
    begin		
       rst <= '1';
       wait for clk_period;	
