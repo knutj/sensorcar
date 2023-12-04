@@ -33,6 +33,7 @@ begin
         cnt     <= '0';
         ld      <= '0';
         
+        
         case st_reg is
             when s0 =>
                 clr <= '1';

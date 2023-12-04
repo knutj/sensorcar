@@ -163,8 +163,8 @@ set_property PACKAGE_PIN B15 [get_ports {dig_out[2]}]
 set_property PACKAGE_PIN B16 [get_ports {dig_out[3]}]					
 	set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[3]}]
 ##Sch name = JB7    -- I05 on level shifter     -- ENA on motor board
-set_property PACKAGE_PIN A15 [get_ports {JB[4]}]					
-	set_property IOSTANDARD LVCMOS33 [get_ports {JB[4]}]
+##set_property PACKAGE_PIN A15 [get_ports {JB[4]}]					
+##	set_property IOSTANDARD LVCMOS33 [get_ports {JB[4]}]
 ##Sch name = JB8    -- I06 on level shifter     -- TRIG on echo sensor board
 set_property PACKAGE_PIN A17 [get_ports trig]					
 	set_property IOSTANDARD LVCMOS33 [get_ports trig]

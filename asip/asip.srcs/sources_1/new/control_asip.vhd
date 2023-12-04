@@ -15,7 +15,8 @@ entity control_asip is
         alu_ctr         : out   std_logic_vector(OPCODE_WIDTH - 1 downto 0);
         dreg_mux_ctr    : out   std_logic;
         dmem_write      : out   std_logic;
-        out_reg_write   : out   std_logic
+        out_reg_write   : out   std_logic;
+        max_tick        : out  std_logic;
     );
 end control_asip;
 

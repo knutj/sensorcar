@@ -3,6 +3,10 @@ use ieee.std_logic_1164.all;
 use work.constants_pkg.all;
 
 entity top_echo is
+     generic (
+        N : integer := 9;  -- Number of bits (E.g. 2^N > M)
+        M : integer := 501 -- Modulus M
+    );
     port (
         clk         : in    std_logic;
         rst         : in    std_logic;
@@ -10,7 +14,9 @@ entity top_echo is
         echo        : in    std_logic;
         threshold   : in    std_logic_vector(PWM_WIDTH - 1 downto 0);
         above_limit : out   std_logic;
-        width_count : out   std_logic_vector(PWM_WIDTH - 1 downto 0)
+        width_count : out   std_logic_vector(PWM_WIDTH - 1 downto 0);
+        max_tick    : out   std_logic;
+        mc_q        : out   std_logic_vector(N - 1 downto 0)
     );
 end top_echo;
 
@@ -22,6 +28,16 @@ architecture arch of top_echo is
     signal top_hrq  : std_logic_vector(PWM_WIDTH - 1 downto 0);
     signal top_trq  : std_logic_vector(PWM_WIDTH - 1 downto 0);
 begin
+
+
+    maxcounter : entity work.mod_m_counter(arch)
+    port map (
+        clk => clk,
+        rst => rst,
+        max_tick => max_tick,
+        mc_q  => mc_q 
+        );
+
     up_counter : entity work.up_counter(arch)
     port map (
         clk         => clk,
@@ -56,11 +72,15 @@ begin
         echo        => echo,
         clr         => top_clr,
         cnt         => top_cnt,
-        ld          => top_ld
+        ld          => top_ld,
+        max_tick    => max_tick
     );
     
     -- Comparator
     above_limit <= '0' when top_trq > top_hrq else '1';
+    
+    
+
     
     -- Width measurement
     width_count <= top_hrq;
