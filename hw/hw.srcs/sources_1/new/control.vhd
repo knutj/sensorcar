@@ -22,7 +22,9 @@ entity control is
         ld          : out   std_logic;
         motors      : out   std_logic_vector(MOTOR_WIDTH - 1 downto 0);
         start_bw    : out   std_logic;
-        start_tl    : out   std_logic
+        start_tl    : out   std_logic;
+        trig        : out   std_logic;
+        max_tick    : inout std_logic
 
     );
 end control;
@@ -42,6 +44,17 @@ begin
             echo_reg    <= echo_next;
             motor_reg   <= motor_next;
         end if;
+    end process;
+    
+    process (max_tick)
+    begin
+      if max_tick = '1' then
+        trig <= '1';
+      else
+        trig <= '0';
+       end if;
+    
+      
     end process;
     
     -- State machine for ECHO sensor
