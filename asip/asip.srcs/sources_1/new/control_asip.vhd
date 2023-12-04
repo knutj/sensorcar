@@ -15,9 +15,7 @@ entity control_asip is
         alu_ctr         : out   std_logic_vector(OPCODE_WIDTH - 1 downto 0);
         dreg_mux_ctr    : out   std_logic;
         dmem_write      : out   std_logic;
-        out_reg_write   : out   std_logic;
-        max_tick        : inout  std_logic;
-        trigger         : out  std_logic
+        out_reg_write   : out   std_logic
     );
 end control_asip;
 
@@ -34,12 +32,7 @@ begin
         dmem_write      <= '0';
         out_reg_write   <= '0';
         
-        if max_tick = '1' then
-           trigger <= '1';
-        else
-           trigger <= '0';    
-        end if;
-        
+       
         if opcode=LD_Ri_imm then -- LD Ri,<imm> (load Ri with an immediate value)
             pc_mux_ctr <= '1';    
             dreg_write <= '1'; 
