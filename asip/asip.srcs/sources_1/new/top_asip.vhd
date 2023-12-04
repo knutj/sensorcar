@@ -138,7 +138,7 @@ begin
         write           => write,
         echo            => echo,
         threshold       => threshold,
-        over_limit      => over_limit,
+        above_limit      => over_limit,
         width_count     => width_count
     );
     
