@@ -27,6 +27,7 @@ architecture arch of top_asip is
     signal pc_din       :   std_logic_vector(PC_DATA_WIDTH - 1 downto 0);
     signal pc_dout      :   std_logic_vector(PC_DATA_WIDTH - 1 downto 0);
     signal opcd_out     :   std_logic_vector(IM_DATA_WIDTH - 1 downto 0);
+    signal immediate    :   std_logic_vector(DR_DATA_WIDTH - 1 downto 0);
     signal dr1_dout     :   std_logic_vector(DR_DATA_WIDTH - 1 downto 0);
     signal dr2_dout     :   std_logic_vector(DR_DATA_WIDTH - 1 downto 0);
     signal alu_mux_out  :   std_logic_vector(DR_DATA_WIDTH - 1 downto 0);
@@ -56,7 +57,7 @@ begin
     -- Instruction Memory
     imem : entity work.imem(arch)
     port map (
-        im_addr         => pc_dout(4 downto 0),
+        im_addr         => pc_dout(IM_ADDR_WIDTH - 1 downto 0),
         im_dout         => opcd_out
     );
     
@@ -110,6 +111,15 @@ begin
         alu_ctr         => alu_ctr_in
     );
     
+    -- Modulus M Counter
+--    mod_m_counter : entity work.mod_m_counter(arch)
+--    port map (
+--        clk             => clk,
+--        rst             => rst,
+--        max_tick        => ,
+--        mc_q            => dig_out
+--    );
+    
     -- Output Register
     out_reg : entity work.reg_dr(arch)
     port map (
@@ -128,18 +138,20 @@ begin
         write           => write,
         echo            => echo,
         threshold       => threshold,
-        over_limit      => over_limit,
+        above_limit      => over_limit,
         width_count     => width_count
     );
     
+    immediate <= opcd_out(IM_DATA_WIDTH - 1 downto 16);
+    
     -- Glue pc_mux
     pc_din <= 
-        std_logic_vector(unsigned(pc_dout) + 1)                                 when pc_mux_ctr = '1' else
-        std_logic_vector(unsigned(pc_dout) + unsigned(opcd_out(23 downto 16)))  when opcd_out(23) = '0' else
-        std_logic_vector(unsigned(pc_dout) - not(unsigned(opcd_out(23 downto 16)) - 1));
+        std_logic_vector(unsigned(pc_dout) + 1)                     when pc_mux_ctr = '1' else
+        std_logic_vector(unsigned(pc_dout) + unsigned(immediate))   when opcd_out(IM_DATA_WIDTH - 1) = '0' else
+        std_logic_vector(unsigned(pc_dout) - not(unsigned(immediate) - 1));
 
     -- Glue alu_mux
-    alu_mux_out <= opcd_out(23 downto 16) when alu_mux_ctr = '1' else dr2_dout;
+    alu_mux_out <= immediate when alu_mux_ctr = '1' else dr2_dout;
     
     -- Glue dr_mux
     dr_mux_out <= alu_dout when dreg_mux_ctr = '1' else dm_dout;
@@ -148,6 +160,6 @@ begin
     in_mux_out <= dig_in when in_mux_ctr = '1' else dr_mux_out;
     
     -- Concatenate threshold limit
-    threshold <= threshold_limit & dr2_dout;
+    threshold   <= threshold_limit & dr2_dout;
     
 end arch;

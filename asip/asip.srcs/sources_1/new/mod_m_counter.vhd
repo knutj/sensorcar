@@ -5,19 +5,20 @@ use work.constants_pkg.all;
 
 entity mod_m_counter is
     generic (
+        N : integer := 9;  -- Number of bits (E.g. 2^N > M)
         M : integer := 326 -- Modulus M
     );
     port (
         clk         : in    std_logic;
         rst         : in    std_logic;
         max_tick    : out   std_logic;
-        mc_q        : out   std_logic_vector(DR_DATA_WIDTH - 1 downto 0)
+        mc_q        : out   std_logic_vector(N - 1 downto 0)
     );
 end mod_m_counter;
 
 architecture arch of mod_m_counter is
-    signal r_reg    : unsigned(DR_DATA_WIDTH - 1 downto 0);
-    signal r_next   : unsigned(DR_DATA_WIDTH - 1 downto 0);
+    signal r_reg    : unsigned(N - 1 downto 0);
+    signal r_next   : unsigned(N - 1 downto 0);
 begin
     process (clk, rst)
     begin
