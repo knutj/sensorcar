@@ -74,9 +74,9 @@ begin
     process(clk, rst)
     begin
         if rst = '1' then
-            state <= idle;
+           state <= start_motor;
            counter <= 0;
-            timer <= 0;
+           timer <= 0;
             
             --motor_pwm_a <= '0';
             --motor_pwm_b <= '0';
@@ -87,19 +87,20 @@ begin
         elsif rising_edge(clk) then
             case state is
                 when idle =>
+                    state <= start_motor;
                     trigger <= '0';
                     motor_pwm <= (others => '0');
-                    state <= start_motor;
+                    
 
                 when start_motor =>
                     --motor_dir_a <= "01"; -- Forward
                     --motor_pwm_a <= '1'; -- Full speed
+                    state <= send_trigger;
                     motor_pwm(0) <= '1';
                     motor_pwm(2) <= '1';
                     motor_pwm(4) <= '1';
-                    motor_pwm(6) <= '1';
-                     
-                    state <= send_trigger;
+                    motor_pwm(6) <= '1';   
+                    
 
                 when send_trigger =>
                     trigger <= '1';
@@ -120,7 +121,7 @@ begin
                     --motor_pwm_a <= '0'; -- Stop the motor
                     --motor_dir_a <= "00"; -- Assuming "00" stops the motor
                      motor_pwm <= (others => '0'); --stopmotor
-                    state  <= reverse_motor;
+                     state  <= reverse_motor;
                 
                  when reverse_motor =>
                     --motor_dir_a <= "10"; -- Reverse

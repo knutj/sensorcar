@@ -1,1 +1,0 @@
---incr --debug "typical" --relax --mt "8" -L "xil_defaultlib" -L "xilinx_vip" -L "secureip" -L "xpm" --snapshot "tb_OneCycleCPUwithIO_behav" "xil_defaultlib.tb_OneCycleCPUwithIO" -log "elaborate.log" 
