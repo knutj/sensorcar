@@ -8,7 +8,9 @@ entity control_echo is
         echo    : in    std_logic;
         clr     : out   std_logic;
         cnt     : out   std_logic;
-        ld      : out   std_logic
+        ld      : out   std_logic;
+        max_tick : inout std_logic;
+        trigger :  out std_logic
     );
 end control_echo;
 
@@ -25,8 +27,22 @@ begin
             st_reg <= st_next;
         end if;
     end process;
+    
+    process (max_tick,trigger)
+    begin
+      if max_tick = '1' then
+           trigger <= '1';
+        else
+           trigger <= '0';    
+      end if;
+      
+    end process;
 
     process (st_reg, echo)
+    
+    
+    
+    
     begin
         st_next <= st_reg;
         clr     <= '0';

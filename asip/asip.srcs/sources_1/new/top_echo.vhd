@@ -16,7 +16,7 @@ entity top_echo is
         above_limit : out   std_logic;
         width_count : out   std_logic_vector(PWM_WIDTH - 1 downto 0);
         trigger     : out  std_logic;
-        max_tick    : out   std_logic;
+        max_tick    : inout   std_logic;
         mc_q        : out   std_logic_vector(N - 1 downto 0)
     );
 end top_echo;
