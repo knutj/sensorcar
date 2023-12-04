@@ -19,7 +19,7 @@ entity top_fsmd is
         dig_out : out   std_logic_vector(MOTOR_WIDTH - 1 downto 0);
         an      : out   std_logic_vector(AN_WIDTH - 1 downto 0);
         seg     : out   std_logic_vector(SEG_WIDTH - 1 downto 0);
-        max_t    : buffer   std_logic;
+        max_t    :  out   std_logic;
         mc_q        : out   std_logic_vector(N - 1 downto 0)
     );
 end top_fsmd;
@@ -43,14 +43,12 @@ architecture arch of top_fsmd is
     signal trig_signal : std_logic;
     
 begin
-
-    counterM  : entity work.mod_m_counter(arch) 
+    countM : entity work.mod_m_counter(arch) 
     port map (clk => clk,
               rst => rst,
-              max_t => max_t_signal,
+              max_t => max_t,
               mc_q => mc_q
-              );
-   
+              ); 
    
     echo_timer : entity work.timer(arch)
     generic map (
@@ -144,8 +142,8 @@ begin
         motors      => motors,
         start_bw    => start_bw,
         start_tl    => start_tl,
-        trig        => trig_signal,
-        max_t       =>  max_t_signal
+        trig       => trig_signal,
+        max_t      => max_t_signal
     );
     
     -- Comparator

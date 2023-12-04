@@ -53,7 +53,7 @@ begin
 
 
     r_next      <= r_reg + 1    when r_reg < (M - 1) else (others => '0');
-    max_t    <= '0'          when r_reg < (M - 1) else '1';
+    max_t    <= '0'          when r_reg < (M - 1) else '1'; 
     mc_q        <= std_logic_vector(r_reg);
 
 end arch;
