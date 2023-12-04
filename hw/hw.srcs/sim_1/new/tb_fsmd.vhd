@@ -16,7 +16,7 @@ architecture arch of tb_fsmd is
         clk     : in    std_logic;
         rst     : in    std_logic;
         echo    : in    std_logic;
-        trig    : out   std_logic;
+        trig    : inout   std_logic;
         dig_out : out   std_logic_vector(MOTOR_WIDTH - 1 downto 0);
         an      : out   std_logic_vector(3 downto 0);
         seg     : out   std_logic_vector(7 downto 0)

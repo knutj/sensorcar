@@ -32,6 +32,7 @@ begin
         dmem_write      <= '0';
         out_reg_write   <= '0';
         
+       
         if opcode=LD_Ri_imm then -- LD Ri,<imm> (load Ri with an immediate value)
             pc_mux_ctr <= '1';    
             dreg_write <= '1'; 

@@ -14,7 +14,7 @@ architecture arch of tb_asip is
         echo    :   in std_logic;
         dig_in  :   in std_logic_vector(DR_DATA_WIDTH - 1 downto 0);
         dig_out :   out std_logic_vector(DR_DATA_WIDTH - 1 downto 0);
-        trig    :   out std_logic
+        trig    :   inout std_logic
     );
     END component;
     

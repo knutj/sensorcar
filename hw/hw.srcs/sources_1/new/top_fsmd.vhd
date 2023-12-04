@@ -7,7 +7,9 @@ entity top_fsmd is
         ECHO_COUNTER    : integer := 500;
         BACK_COUNTER    : integer := 1000000;
         TURN_COUNTER    : integer := 500000;
-        THRESHOLD       : std_logic_vector(THRESHOLD_WIDTH - 1 downto 0) := "0000010000000"
+        THRESHOLD       : std_logic_vector(THRESHOLD_WIDTH - 1 downto 0) := "0000010000000";
+        N : integer := 9;  -- Number of bits (E.g. 2^N > M)
+        M : integer := 501 -- Modulus M
     );
     port (
         clk     : in    std_logic;
@@ -16,7 +18,9 @@ entity top_fsmd is
         trig    : out   std_logic;
         dig_out : out   std_logic_vector(MOTOR_WIDTH - 1 downto 0);
         an      : out   std_logic_vector(AN_WIDTH - 1 downto 0);
-        seg     : out   std_logic_vector(SEG_WIDTH - 1 downto 0)
+        seg     : out   std_logic_vector(SEG_WIDTH - 1 downto 0);
+        max_t    :  out   std_logic;
+        mc_q        : out   std_logic_vector(N - 1 downto 0)
     );
 end top_fsmd;
 
@@ -35,8 +39,17 @@ architecture arch of top_fsmd is
     signal timeup_bw    : std_logic;
     signal start_tl     : std_logic;
     signal timeup_tl    : std_logic;
+    signal max_t_signal : std_logic;
+    signal trig_signal : std_logic;
     
 begin
+    countM : entity work.mod_m_counter(arch) 
+    port map (clk => clk,
+              rst => rst,
+              max_t => max_t,
+              mc_q => mc_q
+              ); 
+   
     echo_timer : entity work.timer(arch)
     generic map (
         LIMIT       => ECHO_COUNTER,
@@ -128,7 +141,9 @@ begin
         ld          => top_ld,
         motors      => motors,
         start_bw    => start_bw,
-        start_tl    => start_tl
+        start_tl    => start_tl,
+        trig       => trig_signal,
+        max_t      => max_t_signal
     );
     
     -- Comparator
