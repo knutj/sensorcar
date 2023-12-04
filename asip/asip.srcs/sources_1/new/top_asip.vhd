@@ -139,7 +139,8 @@ begin
         echo            => echo,
         threshold       => threshold,
         above_limit      => over_limit,
-        width_count     => width_count
+        width_count     => width_count,
+        trigger         => trig
     );
     
     immediate <= opcd_out(IM_DATA_WIDTH - 1 downto 16);

@@ -15,6 +15,7 @@ entity top_echo is
         threshold   : in    std_logic_vector(PWM_WIDTH - 1 downto 0);
         above_limit : out   std_logic;
         width_count : out   std_logic_vector(PWM_WIDTH - 1 downto 0);
+        trigger     : out  std_logic;
         max_tick    : out   std_logic;
         mc_q        : out   std_logic_vector(N - 1 downto 0)
     );
@@ -73,7 +74,8 @@ begin
         clr         => top_clr,
         cnt         => top_cnt,
         ld          => top_ld,
-        max_tick    => max_tick
+        max_tick    => max_tick,
+        trigger     => trigger
     );
     
     -- Comparator
