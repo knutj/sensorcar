@@ -1,0 +1,17 @@
+[
+{
+  "directory": "D:/Coding/Projects/sensorcar/sw/app/build",
+  "command": "I:/Xilinx/Vitis/2023.2/gnu/aarch32/nt/gcc-arm-none-eabi/bin/arm-none-eabi-gcc.exe  -isystem D:/Coding/Projects/sensorcar/sw/platform/export/platform/sw/standalone_ps7_cortexa9_0/include -isystem I:/Xilinx/Vitis/2023.2/gnu/aarch32/nt/gcc-arm-none-eabi/x86_64-oesdk-mingw32/usr/lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/12.2.0/include -isystem I:/Xilinx/Vitis/2023.2/gnu/aarch32/nt/gcc-arm-none-eabi/x86_64-oesdk-mingw32/usr/lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/12.2.0/include-fixed -isystem I:/Xilinx/Vitis/2023.2/gnu/aarch32/nt/gcc-arm-none-eabi/aarch32-xilinx-eabi/usr/include  -O2 -DSDT -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard  -MMD -MP -specs=D:/Coding/Projects/sensorcar/sw/platform/export/platform/sw/standalone_ps7_cortexa9_0/Xilinx.spec -ID:/Coding/Projects/sensorcar/sw/platform/export/platform/sw/standalone_ps7_cortexa9_0/include -Wall -Wextra      -O0  -g3     -U__clang__ -o CMakeFiles/app.elf.dir/counter.c.obj -c D:/Coding/Projects/sensorcar/sw/app/src/counter.c",
+  "file": "D:/Coding/Projects/sensorcar/sw/app/src/counter.c"
+},
+{
+  "directory": "D:/Coding/Projects/sensorcar/sw/app/build",
+  "command": "I:/Xilinx/Vitis/2023.2/gnu/aarch32/nt/gcc-arm-none-eabi/bin/arm-none-eabi-gcc.exe  -isystem D:/Coding/Projects/sensorcar/sw/platform/export/platform/sw/standalone_ps7_cortexa9_0/include -isystem I:/Xilinx/Vitis/2023.2/gnu/aarch32/nt/gcc-arm-none-eabi/x86_64-oesdk-mingw32/usr/lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/12.2.0/include -isystem I:/Xilinx/Vitis/2023.2/gnu/aarch32/nt/gcc-arm-none-eabi/x86_64-oesdk-mingw32/usr/lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/12.2.0/include-fixed -isystem I:/Xilinx/Vitis/2023.2/gnu/aarch32/nt/gcc-arm-none-eabi/aarch32-xilinx-eabi/usr/include  -O2 -DSDT -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard  -MMD -MP -specs=D:/Coding/Projects/sensorcar/sw/platform/export/platform/sw/standalone_ps7_cortexa9_0/Xilinx.spec -ID:/Coding/Projects/sensorcar/sw/platform/export/platform/sw/standalone_ps7_cortexa9_0/include -Wall -Wextra      -O0  -g3     -U__clang__ -o CMakeFiles/app.elf.dir/main.c.obj -c D:/Coding/Projects/sensorcar/sw/app/src/main.c",
+  "file": "D:/Coding/Projects/sensorcar/sw/app/src/main.c"
+},
+{
+  "directory": "D:/Coding/Projects/sensorcar/sw/app/build",
+  "command": "I:/Xilinx/Vitis/2023.2/gnu/aarch32/nt/gcc-arm-none-eabi/bin/arm-none-eabi-gcc.exe  -isystem D:/Coding/Projects/sensorcar/sw/platform/export/platform/sw/standalone_ps7_cortexa9_0/include -isystem I:/Xilinx/Vitis/2023.2/gnu/aarch32/nt/gcc-arm-none-eabi/x86_64-oesdk-mingw32/usr/lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/12.2.0/include -isystem I:/Xilinx/Vitis/2023.2/gnu/aarch32/nt/gcc-arm-none-eabi/x86_64-oesdk-mingw32/usr/lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/12.2.0/include-fixed -isystem I:/Xilinx/Vitis/2023.2/gnu/aarch32/nt/gcc-arm-none-eabi/aarch32-xilinx-eabi/usr/include  -O2 -DSDT -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard  -MMD -MP -specs=D:/Coding/Projects/sensorcar/sw/platform/export/platform/sw/standalone_ps7_cortexa9_0/Xilinx.spec -ID:/Coding/Projects/sensorcar/sw/platform/export/platform/sw/standalone_ps7_cortexa9_0/include -Wall -Wextra      -O0  -g3     -U__clang__ -o CMakeFiles/app.elf.dir/platform.c.obj -c D:/Coding/Projects/sensorcar/sw/app/src/platform.c",
+  "file": "D:/Coding/Projects/sensorcar/sw/app/src/platform.c"
+}
+]
