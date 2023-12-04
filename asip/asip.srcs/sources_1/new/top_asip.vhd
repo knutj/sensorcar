@@ -13,7 +13,7 @@ entity top_asip is
         echo    : in    std_logic;
         dig_in  : in    std_logic_vector(DR_DATA_WIDTH - 1 downto 0);
         dig_out : out   std_logic_vector(DR_DATA_WIDTH - 1 downto 0);
-        trig    : out   std_logic
+        trig    : inout   std_logic
     );
 end top_asip;
 
@@ -140,7 +140,7 @@ begin
         threshold       => threshold,
         above_limit      => over_limit,
         width_count     => width_count,
-        trigger         => trig
+        trig         => trig
     );
     
     immediate <= opcd_out(IM_DATA_WIDTH - 1 downto 16);
