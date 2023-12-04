@@ -39,13 +39,15 @@ architecture arch of top_fsmd is
     signal timeup_bw    : std_logic;
     signal start_tl     : std_logic;
     signal timeup_tl    : std_logic;
+    signal max_t_signal : std_logic;
+    signal trig_signal : std_logic;
     
 begin
 
     counterM  : entity work.mod_m_counter(arch) 
     port map (clk => clk,
               rst => rst,
-              max_t => max_t,
+              max_t => max_t_signal,
               mc_q => mc_q
               );
    
@@ -142,8 +144,8 @@ begin
         motors      => motors,
         start_bw    => start_bw,
         start_tl    => start_tl,
-        trig        => trig,
-        max_t   => max_t
+        trig        => trig_signal,
+        max_t       =>  max_t_signal
     );
     
     -- Comparator

@@ -24,13 +24,13 @@ entity control is
         start_bw    : out   std_logic;
         start_tl    : out   std_logic;
         trig        : out   std_logic;
-        max_t    : buffer std_logic
+        max_t    :    in std_logic
 
     );
 end control;
 
 architecture arch of control is
-    type echo_type is (WAITING, MEASURING);
+    type echo_type is (WAITING, MEASURING,SEND_TRIG);
     type motor_type is (IDLE, MOVE_FORWARD, MOVE_BACKWARD, TURN_LEFT);
     signal echo_reg, echo_next : echo_type;
     signal motor_reg, motor_next : motor_type;
@@ -46,26 +46,22 @@ begin
         end if;
     end process;
     
-    process 
-    begin
-      if max_t = '1' then
-        trig <= '1';
-      else
-        trig <= '0';
-       end if;
-    
-      
-    end process;
-    
     -- State machine for ECHO sensor
-    process (echo_reg, echo)
+    process (echo_reg, echo,max_t)
     begin
-        echo_next   <= echo_reg;
+        echo_next   <= SEND_TRIG;
         clr      <= '0';
         cnt      <= '0';
         ld       <= '0';
+        trig     <=  '0';
         
-        case echo_reg is
+        case echo_reg is 
+            when SEND_TRIG =>
+                echo_next <= WAITING; 
+                if max_t = '1' then
+                   trig <= '1';
+                end if;
+       
             when WAITING =>
                 clr <= '1';
                 if echo = '1' then

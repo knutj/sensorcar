@@ -32,7 +32,7 @@ entity mod_m_counter is
     port (
         clk         : in    std_logic;
         rst         : in    std_logic;
-        max_t    :    buffer   std_logic;
+        max_t    :    out   std_logic;
         mc_q        : out   std_logic_vector(N - 1 downto 0)
     );
 end mod_m_counter;
