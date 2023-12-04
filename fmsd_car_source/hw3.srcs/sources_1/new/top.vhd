@@ -75,18 +75,20 @@ begin
     begin
         if rst = '1' then
             state <= idle;
-            counter <= 0;
+           counter <= 0;
             timer <= 0;
-            motor_pwm <= (others => '0');
+            
             --motor_pwm_a <= '0';
             --motor_pwm_b <= '0';
             --motor_dir_a <= "00"; -- Assuming "00" stops the motor
             --motor_dir_b <= "00"; -- Assuming "00" stops the motor
+            --rst <= '0';
             trigger <= '0';
         elsif rising_edge(clk) then
             case state is
                 when idle =>
                     trigger <= '0';
+                    motor_pwm <= (others => '0');
                     state <= start_motor;
 
                 when start_motor =>
