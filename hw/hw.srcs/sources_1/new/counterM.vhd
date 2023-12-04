@@ -32,7 +32,7 @@ entity mod_m_counter is
     port (
         clk         : in    std_logic;
         rst         : in    std_logic;
-        max_tick    : inout   std_logic;
+        max_t    :    buffer   std_logic;
         mc_q        : out   std_logic_vector(N - 1 downto 0)
     );
 end mod_m_counter;
@@ -53,7 +53,7 @@ begin
 
 
     r_next      <= r_reg + 1    when r_reg < (M - 1) else (others => '0');
-    max_tick    <= '0'          when r_reg < (M - 1) else '1';
+    max_t    <= '0'          when r_reg < (M - 1) else '1';
     mc_q        <= std_logic_vector(r_reg);
 
 end arch;

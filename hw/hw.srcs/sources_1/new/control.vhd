@@ -24,7 +24,7 @@ entity control is
         start_bw    : out   std_logic;
         start_tl    : out   std_logic;
         trig        : out   std_logic;
-        max_tick    : inout std_logic
+        max_t    : buffer std_logic
 
     );
 end control;
@@ -46,9 +46,9 @@ begin
         end if;
     end process;
     
-    process (max_tick)
+    process 
     begin
-      if max_tick = '1' then
+      if max_t = '1' then
         trig <= '1';
       else
         trig <= '0';

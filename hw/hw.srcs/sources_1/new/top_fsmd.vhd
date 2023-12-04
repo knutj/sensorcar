@@ -15,11 +15,11 @@ entity top_fsmd is
         clk     : in    std_logic;
         rst     : in    std_logic;
         echo    : in    std_logic;
-        trig    : inout   std_logic;
+        trig    : out   std_logic;
         dig_out : out   std_logic_vector(MOTOR_WIDTH - 1 downto 0);
         an      : out   std_logic_vector(AN_WIDTH - 1 downto 0);
         seg     : out   std_logic_vector(SEG_WIDTH - 1 downto 0);
-        max_tick    : inout   std_logic;
+        max_t    : buffer   std_logic;
         mc_q        : out   std_logic_vector(N - 1 downto 0)
     );
 end top_fsmd;
@@ -45,7 +45,7 @@ begin
     counterM  : entity work.mod_m_counter(arch) 
     port map (clk => clk,
               rst => rst,
-              max_tick => max_tick,
+              max_t => max_t,
               mc_q => mc_q
               );
    
@@ -143,7 +143,7 @@ begin
         start_bw    => start_bw,
         start_tl    => start_tl,
         trig        => trig,
-        max_tick   => max_tick
+        max_t   => max_t
     );
     
     -- Comparator
