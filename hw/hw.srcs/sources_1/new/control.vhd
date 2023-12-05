@@ -64,14 +64,14 @@ begin
        
             when WAITING =>
                 clr <= '1';
-                --trig <= '0';
+                trig <= '0';
                 if echo = '1' then
                     echo_next <= MEASURING;
                 end if;
                 
             when MEASURING =>
                 cnt <= '1';
-                --trig <= '0';
+                trig <= '0';
                 if echo = '0' then
                     ld <= '1';
                     echo_next <= WAITING;
