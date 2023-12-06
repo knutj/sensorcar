@@ -4,6 +4,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+use work.constants_pkg.all;
 
 entity OneCycleCPUwithIO is
    generic(
@@ -19,7 +20,10 @@ entity OneCycleCPUwithIO is
    );
    port(clk, rst: in std_logic;
    dig_in: in std_logic_vector(DRDATA_WIDTH-1 downto 0);
-   dig_out: out std_logic_vector(DRDATA_WIDTH-1 downto 0));
+   trig:   out std_logic;
+   dig_out: out std_logic_vector(DRDATA_WIDTH-1 downto 0);
+   echo : in std_logic;
+   start: in std_logic);
 end OneCycleCPUwithIO;
 
 architecture arch of OneCycleCPUwithIO is
@@ -33,10 +37,41 @@ architecture arch of OneCycleCPUwithIO is
    signal alu_ctr_in: std_logic_vector(OPCODE_WIDTH-1 downto 0);
    signal in_mux_ctr, out_reg_wr: std_logic;
    signal in_mux_out: std_logic_vector(DRDATA_WIDTH-1 downto 0);
-   signal echo_signal: std_logic; 
+   signal start_echo: std_logic; 
+   
+   signal start_motor  : std_logic;
+   signal above_limit  : std_logic;
+   signal motors       : std_logic_vector(7 downto 0);
+   
+   signal top_clr      : std_logic;
+   signal top_cnt      : std_logic;
+   signal top_ld       : std_logic;
+   -- Motor timers
+   signal start_bw     : std_logic;
+   signal timeup_bw    : std_logic;
+   signal start_tl     : std_logic;
+   signal timeup_tl    : std_logic;
 begin
 
-    -- add a timer
+
+--ass motor
+    motor: entity work.motor(arch) 
+    port map (startmotor => start_motor, 
+        clk         => clk,
+        rst         => rst,
+        echo        => echo,
+        above_limit => above_limit,
+        timeup_bw   => timeup_bw,
+        timeup_tl   => timeup_tl,
+        clr         => top_clr,
+        cnt         => top_cnt,
+        ld          => top_ld,
+        motors      => motors,
+        start_bw    => start_bw,
+        start_tl    => start_tl
+    );
+
+   
 -- Add a timer
     echo_timer : entity work.timer(arch)
     generic map (
@@ -46,8 +81,8 @@ begin
     port map (
         clk         => clk,
         rst         => rst,
-        start       => '1',
-        timer_q     => echo_signal
+        start       => start_echo,
+        timer_q     => trig
     );
 
     -- instantiate program counter
@@ -79,7 +114,7 @@ begin
     control: entity work.control(arch)
     port map(clk=>clk, rst=>rst, alu_zero=>alu_zero, 
 		     pc_mux_ctr=>pc_mux_ctr, alu_mux_ctr=>alu_mux_ctr, dreg_mux_ctr=>dreg_mux_ctr, in_mux_ctr=>in_mux_ctr, out_reg_write=>out_reg_wr,
-		     opcode=>opcd_out(OPCODE_WIDTH-1 downto 0), dreg_write=>dr_wr_ctr, dmem_write=>dm_wr_ctr, alu_ctr=>alu_ctr_in);
+		     opcode=>opcd_out(OPCODE_WIDTH-1 downto 0), dreg_write=>dr_wr_ctr, dmem_write=>dm_wr_ctr, alu_ctr=>alu_ctr_in,start=>start_echo,startm=>start_motor);
 		     
     -- instantiate output register
     out_reg: entity work.reg(arch)

@@ -12,7 +12,9 @@ entity control is
       opcode: in std_logic_vector(OPCODE_WIDTH-1 downto 0);
       pc_mux_ctr, dreg_write, alu_mux_ctr, dreg_mux_ctr, dmem_write: out std_logic;
       in_mux_ctr, out_reg_write: out std_logic;
-      alu_ctr: out std_logic_vector(OPCODE_WIDTH-1 downto 0)
+      alu_ctr: out std_logic_vector(OPCODE_WIDTH-1 downto 0);
+      start: out std_logic;
+      startm: out std_logic
    );
 end control;
 
@@ -35,7 +37,8 @@ architecture arch of control is
    constant J_imm:         std_logic_vector(OPCODE_WIDTH-1 downto 0) :="0001110";
    constant LD_Ri_IN:      std_logic_vector(OPCODE_WIDTH-1 downto 0) :="0001111";
    constant ST_Ri_OUT:     std_logic_vector(OPCODE_WIDTH-1 downto 0) :="0010000";
-      
+   constant start_echo:    std_logic_vector(OPCODE_WIDTH-1 downto 0) :="0100000";
+   constant startmotors:    std_logic_vector(OPCODE_WIDTH-1 downto 0) :="1000000";     
    type state_type is (s0);
    signal st_reg, st_next: state_type;
    
@@ -128,7 +131,11 @@ begin
 	            in_mux_ctr <= '1';  
 	         elsif opcode=ST_Ri_OUT then -- ST Ri,OUT (store Ri into digital outputs)
                 pc_mux_ctr <= '1';    
-	            out_reg_write <= '1';   
+	            out_reg_write <= '1';
+	         elsif opcode=start_echo then
+	            start <= '1'; 
+	         elsif opcode=startmotors then
+	            startm <= '1';       
 	         end if;
       end case;
       
