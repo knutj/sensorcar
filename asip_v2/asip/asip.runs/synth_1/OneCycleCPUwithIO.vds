@@ -1,0 +1,283 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Wed Dec  6 12:42:09 2023
+# Process ID: 17062
+# Current directory: /home/knutjb/Vivado/asip_kj/asip/asip.runs/synth_1
+# Command line: vivado -log OneCycleCPUwithIO.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source OneCycleCPUwithIO.tcl
+# Log file: /home/knutjb/Vivado/asip_kj/asip/asip.runs/synth_1/OneCycleCPUwithIO.vds
+# Journal file: /home/knutjb/Vivado/asip_kj/asip/asip.runs/synth_1/vivado.jou
+# Running On: ubuntu.knut, OS: Linux, CPU Frequency: 5425.235 MHz, CPU Physical cores: 32, Host memory: 134225 MB
+#-----------------------------------------------------------
+source OneCycleCPUwithIO.tcl -notrace
+Command: read_checkpoint -auto_incremental -incremental /home/knutjb/Vivado/asip_kj/asip/asip.srcs/utils_1/imports/synth_1/OneCycleCPUwithIO.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from /home/knutjb/Vivado/asip_kj/asip/asip.srcs/utils_1/imports/synth_1/OneCycleCPUwithIO.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top OneCycleCPUwithIO -part xc7z010clg400-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 17519
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1789.691 ; gain = 409.684 ; free physical = 57780 ; free virtual = 235127
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'OneCycleCPUwithIO' [/home/knutjb/Vivado/asip_kj/asip/asip.srcs/sources_1/imports/OneCycleCPUwithIO_files/top.vhd:25]
+INFO: [Synth 8-638] synthesizing module 'timer' [/home/knutjb/Vivado/asip_kj/asip/asip.srcs/sources_1/imports/asip_kj/timer.vhd:17]
+	Parameter LIMIT bound to: 500 - type: integer 
+	Parameter MODE bound to: 1'b0 
+INFO: [Synth 8-256] done synthesizing module 'timer' (0#1) [/home/knutjb/Vivado/asip_kj/asip/asip.srcs/sources_1/imports/asip_kj/timer.vhd:17]
+INFO: [Synth 8-638] synthesizing module 'pc' [/home/knutjb/Vivado/asip_kj/asip/asip.srcs/sources_1/imports/OneCycleCPUwithIO_files/pc.vhd:16]
+INFO: [Synth 8-256] done synthesizing module 'pc' (0#1) [/home/knutjb/Vivado/asip_kj/asip/asip.srcs/sources_1/imports/OneCycleCPUwithIO_files/pc.vhd:16]
+INFO: [Synth 8-638] synthesizing module 'imem' [/home/knutjb/Vivado/asip_kj/asip/asip.srcs/sources_1/imports/OneCycleCPUwithIO_files/imem.vhd:19]
+INFO: [Synth 8-256] done synthesizing module 'imem' (0#1) [/home/knutjb/Vivado/asip_kj/asip/asip.srcs/sources_1/imports/OneCycleCPUwithIO_files/imem.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'dreg' [/home/knutjb/Vivado/asip_kj/asip/asip.srcs/sources_1/imports/OneCycleCPUwithIO_files/dreg.vhd:23]
+INFO: [Synth 8-256] done synthesizing module 'dreg' (0#1) [/home/knutjb/Vivado/asip_kj/asip/asip.srcs/sources_1/imports/OneCycleCPUwithIO_files/dreg.vhd:23]
+INFO: [Synth 8-638] synthesizing module 'alu' [/home/knutjb/Vivado/asip_kj/asip/asip.srcs/sources_1/imports/OneCycleCPUwithIO_files/alu.vhd:19]
+INFO: [Synth 8-256] done synthesizing module 'alu' (0#1) [/home/knutjb/Vivado/asip_kj/asip/asip.srcs/sources_1/imports/OneCycleCPUwithIO_files/alu.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'dmem' [/home/knutjb/Vivado/asip_kj/asip/asip.srcs/sources_1/imports/OneCycleCPUwithIO_files/dmem.vhd:22]
+INFO: [Synth 8-256] done synthesizing module 'dmem' (0#1) [/home/knutjb/Vivado/asip_kj/asip/asip.srcs/sources_1/imports/OneCycleCPUwithIO_files/dmem.vhd:22]
+INFO: [Synth 8-638] synthesizing module 'control' [/home/knutjb/Vivado/asip_kj/asip/asip.srcs/sources_1/imports/OneCycleCPUwithIO_files/control.vhd:19]
+WARNING: [Synth 8-614] signal 'st_reg' is read in the process but is not in the sensitivity list [/home/knutjb/Vivado/asip_kj/asip/asip.srcs/sources_1/imports/OneCycleCPUwithIO_files/control.vhd:54]
+INFO: [Synth 8-256] done synthesizing module 'control' (0#1) [/home/knutjb/Vivado/asip_kj/asip/asip.srcs/sources_1/imports/OneCycleCPUwithIO_files/control.vhd:19]
+INFO: [Synth 8-638] synthesizing module '\reg ' [/home/knutjb/Vivado/asip_kj/asip/asip.srcs/sources_1/imports/OneCycleCPUwithIO_files/out_reg.vhd:16]
+INFO: [Synth 8-256] done synthesizing module '\reg ' (0#1) [/home/knutjb/Vivado/asip_kj/asip/asip.srcs/sources_1/imports/OneCycleCPUwithIO_files/out_reg.vhd:16]
+INFO: [Synth 8-256] done synthesizing module 'OneCycleCPUwithIO' (0#1) [/home/knutjb/Vivado/asip_kj/asip/asip.srcs/sources_1/imports/OneCycleCPUwithIO_files/top.vhd:25]
+WARNING: [Synth 8-7129] Port clk in module control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rst in module control is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1866.629 ; gain = 486.621 ; free physical = 57624 ; free virtual = 234974
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1884.441 ; gain = 504.434 ; free physical = 57625 ; free virtual = 234975
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z010clg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1892.445 ; gain = 512.438 ; free physical = 57625 ; free virtual = 234975
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z010clg400-1
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1909.359 ; gain = 529.352 ; free physical = 57602 ; free virtual = 234953
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input    9 Bit       Adders := 1     
+	   2 Input    8 Bit       Adders := 6     
+	   3 Input    8 Bit       Adders := 3     
++---Registers : 
+	                9 Bit    Registers := 1     
+	                8 Bit    Registers := 3     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input    9 Bit        Muxes := 2     
+	   6 Input    8 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 10    
+	   8 Input    3 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 12    
+	  16 Input    1 Bit        Muxes := 2     
+	  13 Input    1 Bit        Muxes := 2     
+	   4 Input    1 Bit        Muxes := 3     
+	  12 Input    1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 80 (col length:40)
+BRAMs: 120 (col length: RAMB18 40 RAMB36 20)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2031.906 ; gain = 651.898 ; free physical = 57403 ; free virtual = 234801
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+ROM: Preliminary Mapping Report
++------------------+-----------------------+---------------+----------------+
+|Module Name       | RTL Object            | Depth x Width | Implemented As | 
++------------------+-----------------------+---------------+----------------+
+|imem              | instr_opcodes[0]      | 32x20         | LUT            | 
+|OneCycleCPUwithIO | imem/instr_opcodes[0] | 32x20         | LUT            | 
++------------------+-----------------------+---------------+----------------+
+
+
+Distributed RAM: Preliminary Mapping Report (see note below)
++------------------+--------------+-----------+----------------------+----------------+
+|Module Name       | RTL Object   | Inference | Size (Depth x Width) | Primitives     | 
++------------------+--------------+-----------+----------------------+----------------+
+|OneCycleCPUwithIO | dmem/ram_reg | Implied   | 256 x 8              | RAM256X1S x 8  | 
+|OneCycleCPUwithIO | dreg/ram_reg | Implied   | 8 x 8                | RAM32M x 4     | 
++------------------+--------------+-----------+----------------------+----------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2031.906 ; gain = 651.898 ; free physical = 57408 ; free virtual = 234806
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Final Mapping Report
++------------------+--------------+-----------+----------------------+----------------+
+|Module Name       | RTL Object   | Inference | Size (Depth x Width) | Primitives     | 
++------------------+--------------+-----------+----------------------+----------------+
+|OneCycleCPUwithIO | dmem/ram_reg | Implied   | 256 x 8              | RAM256X1S x 8  | 
+|OneCycleCPUwithIO | dreg/ram_reg | Implied   | 8 x 8                | RAM32M x 4     | 
++------------------+--------------+-----------+----------------------+----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2031.906 ; gain = 651.898 ; free physical = 57404 ; free virtual = 234809
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2031.906 ; gain = 651.898 ; free physical = 57412 ; free virtual = 234819
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2031.906 ; gain = 651.898 ; free physical = 57412 ; free virtual = 234819
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2031.906 ; gain = 651.898 ; free physical = 57412 ; free virtual = 234819
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2031.906 ; gain = 651.898 ; free physical = 57412 ; free virtual = 234819
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2031.906 ; gain = 651.898 ; free physical = 57412 ; free virtual = 234819
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2031.906 ; gain = 651.898 ; free physical = 57412 ; free virtual = 234819
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+----------+------+
+|      |Cell      |Count |
++------+----------+------+
+|1     |BUFG      |     1|
+|2     |CARRY4    |     8|
+|3     |LUT2      |     2|
+|4     |LUT3      |    13|
+|5     |LUT4      |    12|
+|6     |LUT5      |    57|
+|7     |LUT6      |    82|
+|8     |RAM256X1S |     8|
+|9     |RAM32M    |     2|
+|10    |RAM32X1D  |     4|
+|11    |FDCE      |    13|
+|12    |IBUF      |    10|
+|13    |OBUF      |     8|
++------+----------+------+
+
+Report Instance Areas: 
++------+----------+-------+------+
+|      |Instance  |Module |Cells |
++------+----------+-------+------+
+|1     |top       |       |   220|
+|2     |  alu     |alu    |     6|
+|3     |  dmem    |dmem   |     8|
+|4     |  dreg    |dreg   |    31|
+|5     |  out_reg |\reg   |     8|
+|6     |  pc      |pc     |   148|
++------+----------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2031.906 ; gain = 651.898 ; free physical = 57412 ; free virtual = 234819
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 4 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2031.906 ; gain = 651.898 ; free physical = 57412 ; free virtual = 234819
+Synthesis Optimization Complete : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2031.914 ; gain = 651.898 ; free physical = 57412 ; free virtual = 234819
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2034.875 ; gain = 0.000 ; free physical = 57689 ; free virtual = 235097
+INFO: [Netlist 29-17] Analyzing 22 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2170.590 ; gain = 0.000 ; free physical = 57626 ; free virtual = 235033
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 14 instances were transformed.
+  RAM256X1S => RAM256X1S (MUXF7(x2), MUXF8, RAMS64E(x4)): 8 instances
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 2 instances
+  RAM32X1D => RAM32X1D (RAMD32(x2)): 4 instances
+
+Synth Design complete | Checksum: 6b9e822d
+INFO: [Common 17-83] Releasing license: Synthesis
+34 Infos, 4 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:09 ; elapsed = 00:00:08 . Memory (MB): peak = 2170.625 ; gain = 800.523 ; free physical = 57620 ; free virtual = 235028
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1362.716; main = 1362.716; forked = 0.000
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 2170.594; main = 2170.594; forked = 0.000
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2194.602 ; gain = 0.000 ; free physical = 57618 ; free virtual = 235026
+INFO: [Common 17-1381] The checkpoint '/home/knutjb/Vivado/asip_kj/asip/asip.runs/synth_1/OneCycleCPUwithIO.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file OneCycleCPUwithIO_utilization_synth.rpt -pb OneCycleCPUwithIO_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed Dec  6 12:42:22 2023...
