@@ -1,3 +1,0 @@
-domain_path: /home/knutjb/Vivado/sw_car/platform_car/zynq_fsbl/zynq_fsbl_bsp
-app_src_dir: /home/knutjb/Xilinx/Vitis/2023.2/data/embeddedsw/lib/sw_apps/zynq_fsbl
-template: zynq_fsbl
