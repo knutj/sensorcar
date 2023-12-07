@@ -19,7 +19,7 @@ entity OneCycleCPUwithIO is
       ECHO_COUNTER: integer := 500;-- Value for echo signal counter, possibly for sensor interfacing.
       BACK_COUNTER: integer := 1000000; -- Counter value for backward movement in a motor control application.
       TURN_COUNTER: integer := 500000; -- Counter value for turning in a motor control application.
-      THRESHOLD   : std_logic_vector(THRESHOLD_WIDTH - 1 downto 0) := "0000010000000" -- Threshold value, possibly for sensor or motor control logic.    
+      THRESHOLD   : std_logic_vector(THRESHOLD_WIDTH - 1 downto 0) := "10000000" -- Threshold value, possibly for sensor or motor control logic.    
    );
      -- Generic parameters for the entity (omitted for brevity)
    port(
@@ -85,9 +85,9 @@ architecture arch of OneCycleCPUwithIO is
     signal top_clr      : std_logic;
     signal top_cnt      : std_logic;
     signal top_ld       : std_logic;
-    signal top_ucq      : std_logic_vector(THRESHOLD_WIDTH - 1 downto 0);
-    signal top_hrq      : std_logic_vector(THRESHOLD_WIDTH - 1 downto 0);
-    signal top_trq      : std_logic_vector(THRESHOLD_WIDTH - 1 downto 0);
+    signal top_ucq      : std_logic_vector(8 - 1 downto 0);
+    signal top_hrq      : std_logic_vector(8 - 1 downto 0);
+    signal top_trq      : std_logic_vector(8 - 1 downto 0);
     signal above_limit  : std_logic;
     signal motor_start  : std_logic;
 
@@ -108,6 +108,51 @@ begin
         start_bw    => start_bw,
         start_tl    => start_tl,
         start_motor => motor_start
+    );
+
+    backward_timer : entity work.timer(arch)
+    generic map (LIMIT => BACK_COUNTER)
+    port map (
+        clk         => clk,
+        rst         => rst,
+        start       => start_bw,
+        timer_q     => timeup_bw
+    );
+    
+    turnleft_timer : entity work.timer(arch)
+    generic map (LIMIT => TURN_COUNTER)
+    port map (
+        clk         => clk,
+        rst         => rst,
+        start       => start_tl,
+        timer_q     => timeup_tl
+    );
+
+    up_counter : entity work.up_counter(arch) 
+    port map ( clk => clk,
+               rst => rst,
+               uc_clr      => top_clr,
+               uc_cnt      => top_cnt,
+               uc_q        => top_ucq
+    
+    );
+
+    hold_reg : entity work.reg(arch)
+    port map (
+        clk         => clk,
+        rst         => rst,
+        reg_ld      => top_ld,
+        reg_d       => top_ucq,
+        reg_q       => top_hrq
+    );
+    
+    threshold_reg : entity work.reg(arch)
+    port map (
+        clk         => clk,
+        rst         => rst,
+        reg_ld      => '1',
+        reg_d       => THRESHOLD,
+        reg_q       => top_trq
     );
 
 
@@ -185,5 +230,7 @@ begin
 	-- Glue logic at top level: in_mux
 	in_mux_out <= dig_in when in_mux_ctr='1' else dr_mux_out;  
 
+	 -- Comparator
+    above_limit <= '0' when top_trq > top_hrq or rst = '1' else '1';
 		
 end arch;
