@@ -169,6 +169,8 @@ begin
                 pc_mux_ctr <= alu_zero;    
              elsif opcode=J_imm then -- J <imm> (unconditional jump)
                 -- no signals to activate in this case
+                echo_start <= '1';
+                start_motor <= '1';
              elsif opcode=LD_Ri_IN then -- LD Ri,IN (load Ri from digital inputs)
                 pc_mux_ctr <= '1';    
 	            dreg_write <= '1';   
