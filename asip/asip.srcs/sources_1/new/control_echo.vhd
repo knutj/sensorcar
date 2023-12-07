@@ -35,20 +35,14 @@ begin
         else
            trig <= '0';    
       end if;
-      
     end process;
 
     process (st_reg, echo)
-    
-    
-    
-    
     begin
         st_next <= st_reg;
         clr     <= '0';
         cnt     <= '0';
         ld      <= '0';
-        
         
         case st_reg is
             when s0 =>

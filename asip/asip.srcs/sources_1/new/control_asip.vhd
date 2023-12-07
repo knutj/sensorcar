@@ -8,6 +8,10 @@ entity control_asip is
         rst             : in    std_logic;
         alu_zero        : in    std_logic;
         opcode          : in    std_logic_vector(OPCODE_WIDTH - 1 downto 0);
+        above_limit     : in    std_logic;
+        m_cnt_mt_bw     : in    std_logic;
+        m_cnt_mt_tl     : in    std_logic;
+        
         pc_mux_ctr      : out   std_logic;
         in_mux_ctr      : out   std_logic;
         dreg_write      : out   std_logic;
@@ -15,7 +19,9 @@ entity control_asip is
         alu_ctr         : out   std_logic_vector(OPCODE_WIDTH - 1 downto 0);
         dreg_mux_ctr    : out   std_logic;
         dmem_write      : out   std_logic;
-        out_reg_write   : out   std_logic
+        out_reg_write   : out   std_logic;
+        m_cnt_ld_bw     : out   std_logic;
+        m_cnt_ld_tl     : out   std_logic
     );
 end control_asip;
 
@@ -31,72 +37,100 @@ begin
         dreg_mux_ctr    <= '0';
         dmem_write      <= '0';
         out_reg_write   <= '0';
+        m_cnt_ld_bw     <= '0';
+        m_cnt_ld_tl     <= '0';
         
-       
-        if opcode=LD_Ri_imm then -- LD Ri,<imm> (load Ri with an immediate value)
+        if opcode = LD_Ri_imm then -- LD Ri,<imm> (load Ri with an immediate value)
             pc_mux_ctr <= '1';    
             dreg_write <= '1'; 
             alu_mux_ctr <= '1';  
             dreg_mux_ctr <= '1';
-        elsif opcode=LD_Ri_Rj then -- LD Ri,Rj (copy the value of Rj into Ri)
+            
+        elsif opcode = LD_Ri_Rj then -- LD Ri,Rj (copy the value of Rj into Ri)
             pc_mux_ctr <= '1';    
             dreg_write <= '1';   
             dreg_mux_ctr <= '1';  
-         elsif opcode=LD_Ri_X_Rj then -- LD Ri,X(Rj) (load Ri from data memory)
+            
+         elsif opcode = LD_Ri_X_Rj then -- LD Ri,X(Rj) (load Ri from data memory)
             pc_mux_ctr <= '1';    
             dreg_write <= '1'; 
             alu_mux_ctr <= '1';  
-         elsif opcode=ST_Ri_X_Rj then -- ST Ri,X(Rj) (store Ri into data memory)
+            
+         elsif opcode = ST_Ri_X_Rj then -- ST Ri,X(Rj) (store Ri into data memory)
             pc_mux_ctr <= '1';    
             alu_mux_ctr <= '1';  
             dmem_write <= '1';
-         elsif opcode=DEC_Ri then -- DEC Ri (decrement Ri)
+            
+         elsif opcode = DEC_Ri then -- DEC Ri (decrement Ri)
             pc_mux_ctr <= '1';    
             dreg_write <= '1';  
             dreg_mux_ctr <= '1';  
-         elsif opcode=INC_Ri then -- INC Ri (increment Ri)
+            
+         elsif opcode = INC_Ri then -- INC Ri (increment Ri)
             pc_mux_ctr <= '1';    
             dreg_write <= '1';  
             dreg_mux_ctr <= '1';
-         elsif opcode=ADD_Ri_Rj_Rk then -- ADD Ri,Rj,Rk (Ri = Rj + Rk))
+            
+         elsif opcode = ADD_Ri_Rj_Rk then -- ADD Ri,Rj,Rk (Ri = Rj + Rk))
             pc_mux_ctr <= '1';    
             dreg_write <= '1';   
             dreg_mux_ctr <= '1';  
-         elsif opcode=SUB_Ri_Rj_Rk then -- SUB Ri,Rj,Rk (Ri = Rj - Rk))
+            
+         elsif opcode = SUB_Ri_Rj_Rk then -- SUB Ri,Rj,Rk (Ri = Rj - Rk))
             pc_mux_ctr <= '1';    
             dreg_write <= '1';   
             dreg_mux_ctr <= '1';
-         elsif opcode=ORR_Ri_Rj_Rk then -- ORR Ri,Rj,Rk (Ri = Rj OR Rk)
+            
+         elsif opcode = ORR_Ri_Rj_Rk then -- ORR Ri,Rj,Rk (Ri = Rj OR Rk)
             pc_mux_ctr <= '1';    
             dreg_write <= '1';   
             dreg_mux_ctr <= '1';  
-         elsif opcode=ORI_Ri_Rj_imm then -- ORI Ri,Rj,<imm> (Ri = Rj OR <imm>)
+            
+         elsif opcode = ORI_Ri_Rj_imm then -- ORI Ri,Rj,<imm> (Ri = Rj OR <imm>)
             pc_mux_ctr <= '1';    
             dreg_write <= '1'; 
             alu_mux_ctr <= '1';  
             dreg_mux_ctr <= '1';  
-         elsif opcode=ANR_Ri_Rj_Rk then -- ANR Ri,Rj,Rk (Ri = Rj AND Rk)
+            
+         elsif opcode = ANR_Ri_Rj_Rk then -- ANR Ri,Rj,Rk (Ri = Rj AND Rk)
             pc_mux_ctr <= '1';    
             dreg_write <= '1';   
             dreg_mux_ctr <= '1';
-         elsif opcode=ANI_Ri_Rj_imm then -- ANI Ri,Rj,<imm> (Ri = Rj AND <imm>)
+            
+         elsif opcode = ANI_Ri_Rj_imm then -- ANI Ri,Rj,<imm> (Ri = Rj AND <imm>)
             pc_mux_ctr <= '1';    
             dreg_write <= '1'; 
             alu_mux_ctr <= '1';  
             dreg_mux_ctr <= '1';
-         elsif opcode=JRZ_Ri_imm then -- JRZ Ri,<imm> (jump if Ri is zero)
-            pc_mux_ctr <= not(alu_zero);    
-         elsif opcode=JRNZ_Ri_imm then -- JRNZ Ri,<imm> (jump if Ri is not zero)
-            pc_mux_ctr <= alu_zero;    
-         elsif opcode=J_imm then -- J <imm> (unconditional jump)
-            -- no signals to activate in this case
-         elsif opcode=LD_Ri_IN then -- LD Ri,IN (load Ri from digital inputs)
+            
+         elsif opcode = JRZ_Ri_imm then -- JRZ Ri,<imm> (jump if Ri is zero)
+            pc_mux_ctr <= not(alu_zero);  
+              
+         elsif opcode = JRNZ_Ri_imm then -- JRNZ Ri,<imm> (jump if Ri is not zero)
+            pc_mux_ctr <= alu_zero; 
+               
+         elsif opcode = J_imm then -- J <imm> (unconditional jump)
+            -- Handle above limit here -> If above, switch to pc_mux_ctr = '0' so that it jumps to immediate value
+            
+         elsif opcode = LD_Ri_IN then -- LD Ri,IN (load Ri from digital inputs)
             pc_mux_ctr <= '1';    
             dreg_write <= '1';   
             in_mux_ctr <= '1';  
-         elsif opcode=ST_Ri_OUT then -- ST Ri,OUT (store Ri into digital outputs)
+            
+         elsif opcode = ST_Ri_OUT then -- ST Ri,OUT (store Ri into digital outputs)
             pc_mux_ctr <= '1';    
-            out_reg_write <= '1';   
+            out_reg_write <= '1';
+            
+         elsif opcode = FORWARD then
+            pc_mux_ctr <= '1';
+            
+         elsif opcode = BACKWARD then
+            pc_mux_ctr <= '1';
+            m_cnt_ld_bw <= '1';
+            
+         elsif opcode = TURNLEFT then
+            pc_mux_ctr <= '1';
+            m_cnt_ld_tl <= '1';
          end if;
     end process;
 end arch;

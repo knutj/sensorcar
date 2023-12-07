@@ -11,9 +11,9 @@ entity top_asip is
         clk     : in    std_logic;
         rst     : in    std_logic;
         echo    : in    std_logic;
-        dig_in  : in    std_logic_vector(DR_DATA_WIDTH - 1 downto 0);
-        dig_out : out   std_logic_vector(DR_DATA_WIDTH - 1 downto 0);
-        trig    : inout   std_logic
+        dig_in  : in    std_logic_vector(DIG_DATA_WIDTH - 1 downto 0);
+        dig_out : out   std_logic_vector(DIG_DATA_WIDTH - 1 downto 0);
+        trig    : out   std_logic
     );
 end top_asip;
 
@@ -42,14 +42,25 @@ architecture arch of top_asip is
     -- Echo sensor
     signal write        :   std_logic;
     signal threshold    :   std_logic_vector(PWM_WIDTH - 1 downto 0);
-    signal over_limit   :   std_logic;
+    signal above_limit  :   std_logic;
     signal width_count  :   std_logic_vector(PWM_WIDTH - 1 downto 0);
+    
+    -- Move Backward / Left Turn Modulus M Counter
+    signal m_cnt_ld_bw  :   std_logic;
+    signal m_cnt_ld_tl  :   std_logic;
+    signal m_cnt_mt_bw  :   std_logic;
+    signal m_cnt_mt_tl  :   std_logic;
+    
+    -- Motor directions
+    signal motors       :   std_logic_vector(DM_DATA_WIDTH - 1 downto 0);
+    
 begin
     -- Program Counter
     pc : entity work.pc(arch)
     port map (
         clk             => clk,
         rst             => rst,
+        above_limit     => above_limit,
         pc_din          => pc_din,
         pc_dout         => pc_dout
     );
@@ -100,34 +111,54 @@ begin
         clk             => clk,
         rst             => rst,
         alu_zero        => alu_zero,
+        opcode          => opcd_out(OPCODE_WIDTH - 1 downto 0), 
+        above_limit     => above_limit,
+        m_cnt_mt_bw     => m_cnt_mt_bw,
+        m_cnt_mt_tl     => m_cnt_mt_tl,
+        
         pc_mux_ctr      => pc_mux_ctr,
         alu_mux_ctr     => alu_mux_ctr,
         dreg_mux_ctr    => dreg_mux_ctr,
         in_mux_ctr      => in_mux_ctr,
         out_reg_write   => out_reg_wr,
-        opcode          => opcd_out(OPCODE_WIDTH - 1 downto 0), 
         dreg_write      => dr_wr_ctr, 
         dmem_write      => dm_wr_ctr,
-        alu_ctr         => alu_ctr_in
+        alu_ctr         => alu_ctr_in,
+        m_cnt_ld_bw     => m_cnt_ld_bw,
+        m_cnt_ld_tl     => m_cnt_ld_tl
     );
     
-    -- Modulus M Counter
---    mod_m_counter : entity work.mod_m_counter(arch)
---    port map (
---        clk             => clk,
---        rst             => rst,
---        max_tick        => ,
---        mc_q            => dig_out
---    );
+    -- Backward (Reversing) Mod M Counter
+    bw_counter : entity work.mod_m_counter(arch)
+    generic map (N => 9, M => 326)
+    port map (
+        clk             => clk,
+        rst             => rst,
+        ld              => m_cnt_ld_bw,
+        max_tick        => m_cnt_mt_bw,
+        mc_q            => dig_out -- change
+    );
+    
+    -- Turn Left Mod M Counter
+    tl_counter : entity work.mod_m_counter(arch)
+    generic map (N => 9, M => 326)
+    port map (
+        clk             => clk,
+        rst             => rst,
+        ld              => m_cnt_ld_tl,
+        max_tick        => m_cnt_mt_tl,
+        mc_q            => dig_out -- Change
+    );
     
     -- Output Register
-    out_reg : entity work.reg_dr(arch)
+    out_reg : entity work.reg(arch)
+    generic map (REG_WIDTH => DR_DATA_WIDTH)
     port map (
         clk             => clk,
         rst             => rst,
         reg_ld          => out_reg_wr,
         reg_d           => dr2_dout,
-        reg_q           => dig_out
+        reg_q           => motors
     );
     
     -- Echo Sensor
@@ -138,9 +169,8 @@ begin
         write           => write,
         echo            => echo,
         threshold       => threshold,
-        above_limit      => over_limit,
-        width_count     => width_count,
-        trig         => trig
+        above_limit     => above_limit,
+        width_count     => width_count
     );
     
     immediate <= opcd_out(IM_DATA_WIDTH - 1 downto 16);
@@ -161,6 +191,9 @@ begin
     in_mux_out <= dig_in when in_mux_ctr = '1' else dr_mux_out;
     
     -- Concatenate threshold limit
-    threshold   <= threshold_limit & dr2_dout;
+    threshold  <= threshold_limit & dr2_dout;
+    
+    -- Concatenate bit set to 1 to motors
+    dig_out <= '1' & motors;
     
 end arch;
