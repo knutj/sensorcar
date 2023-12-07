@@ -85,12 +85,27 @@ BEGIN
         rst <= '0';
         echo <= '1';
         -- Insert stimulus here e.g., set digital inputs, echo signal etc.
-
+        wait for 10 ns;
+        echo <= '1';
+        wait for 10 us;
         -- Wait for enough time to observe the outputs
         wait for clk_period*100;
         echo <='0';
         -- Add more test cases as needed
+         echo <= '1';
+--        wait for 1us;
+--        echo <= '0';
+--        wait for 5us;
 
+--        echo <= '1';
+--        wait for 3us;
+--        echo <= '0';
+--        wait for 5us;
+    
+--        echo <= '1';
+--        wait for 5us;
+--        echo <= '0';
+--        wait for 5us;
         wait;
     end process;
 

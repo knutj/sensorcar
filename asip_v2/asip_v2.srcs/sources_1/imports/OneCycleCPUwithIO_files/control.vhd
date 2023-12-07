@@ -64,6 +64,7 @@ architecture arch of control is
    constant ST_Ri_OUT:     std_logic_vector(OPCODE_WIDTH-1 downto 0) :="0010000";
    constant start_echo:    std_logic_vector(OPCODE_WIDTH-1 downto 0) :="0100000";
    constant start_m:       std_logic_vector(OPCODE_WIDTH-1 downto 0) :="1000000";
+   constant check_if_echo:  std_logic_vector(OPCODE_WIDTH-1 downto 0) :="1000001";
 -- LD_Ri_imm: Load immediate value into register Ri.
 --LD_Ri_Rj: Load the value from register Rj into register Ri.
 --LD_Ri_X_Rj: Load the value from memory at address specified by the contents of Rj into register Ri.
@@ -182,6 +183,8 @@ begin
 	               echo_start <='1' ;
 	         elsif opcode=start_m then
 	              start_motor <= '1';
+	         elsif opcode=check_if_echo then
+	               ---     
 	         end if;
       end case;
       

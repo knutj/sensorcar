@@ -27,6 +27,7 @@ architecture arch of imem is
       -- These instructions are represented in hexadecimal format
       -- addr 00 to 31: Representing 32 instructions (or void spaces) in the memory
       -- Main:
+      --- x"000041", -- addr 07: New instruction check_if_echo with opcode 1000001
       x"000020", -- addr 01: New instruction with opcode 0100000
       x"000040", -- addr 02: New instruction with opcode 1000000
 	  x"FFFFFF",  -- addr 03: (void)
