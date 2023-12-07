@@ -8,9 +8,7 @@ entity reg is
    );
    port(clk, rst, reg_ld: in std_logic;
         reg_d: in std_logic_vector(DRDATA_WIDTH-1 downto 0);
-        reg_q: out std_logic_vector(DRDATA_WIDTH-1 downto 0);
-        dig_out:out std_logic_vector(DRDATA_WIDTH-1 downto 0)
-        );
+        reg_q: out std_logic_vector(DRDATA_WIDTH-1 downto 0));
 end reg;
 
 architecture arch of reg is
@@ -23,7 +21,6 @@ begin
       elsif rising_edge(clk) then
 			if (reg_ld='1') then
 				reg_q <= reg_d;
-				dig_out <= reg_d;
 			end if;
       end if;
    end process;

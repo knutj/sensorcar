@@ -16,14 +16,16 @@ entity OneCycleCPUwithIO is
       DMADDR_WIDTH: integer:=8;
       DMDATA_WIDTH: integer:=8;
       OPCODE_WIDTH: integer:=7;
-      ECHO_COUNTER:    integer:=500      
+      ECHO_COUNTER    : integer := 500;
+      BACK_COUNTER    : integer := 1000000;
+      TURN_COUNTER    : integer := 500000;
+      THRESHOLD       : std_logic_vector(THRESHOLD_WIDTH - 1 downto 0) := "0000010000000"      
    );
    port(clk, rst: in std_logic;
    dig_in: in std_logic_vector(DRDATA_WIDTH-1 downto 0);
-   trig:   out std_logic;
-   dig_out: out std_logic_vector(DRDATA_WIDTH-1 downto 0);
-   echo : in std_logic;
-   start: in std_logic);
+   trig    : out   std_logic;
+   echo   :in std_logic;
+   dig_out: out std_logic_vector(DRDATA_WIDTH-1 downto 0));
 end OneCycleCPUwithIO;
 
 architecture arch of OneCycleCPUwithIO is
@@ -37,26 +39,65 @@ architecture arch of OneCycleCPUwithIO is
    signal alu_ctr_in: std_logic_vector(OPCODE_WIDTH-1 downto 0);
    signal in_mux_ctr, out_reg_wr: std_logic;
    signal in_mux_out: std_logic_vector(DRDATA_WIDTH-1 downto 0);
-   signal start_echo: std_logic; 
-   
-   signal start_motor  : std_logic;
-   signal above_limit  : std_logic;
+   signal start_echo: std_logic;
+--dr_wr_ctr: Data Register Write Control. This signal could be used to control the writing operation to a data register.
+
+--dm_wr_ctr: Data Memory Write Control. This signal might control write operations to a block of data memory.
+
+--alu_zero: ALU Zero Flag. Typically used in arithmetic logic units (ALUs) to indicate a zero result from the last operation.
+
+--pc_mux_ctr: Program Counter Multiplexer Control. This might control a multiplexer that selects the next value for the program counter.
+
+--alu_mux_ctr: ALU Multiplexer Control. This signal could control a multiplexer that selects inputs for the ALU.
+
+--dreg_mux_ctr: Data Register Multiplexer Control. Likely controls a multiplexer for selecting data register inputs.
+
+--pc_din: Program Counter Data Input. Represents the input data to the program counter.
+
+--pc_dout: Program Counter Data Output. Represents the output data from the program counter.
+
+--opcd_out: Opcode Output. This could be the output signal containing the operation code from an instruction memory or decoder.
+
+--immediate: Immediate Value. Often used in instruction sets to represent a direct value.
+
+--dr1_dout, dr2_dout: Data Register 1 and 2 Data Outputs. These are outputs from two data registers.
+
+--alu_mux_out: ALU Multiplexer Output. The output from a multiplexer that feeds into the ALU.
+
+--alu_dout: ALU Data Output. The output result from the ALU.
+
+--dm_dout: Data Memory Data Output. The output from a block of data memory.
+
+--dr_mux_out: Data Register Multiplexer Output. The output from a multiplexer related to data registers.
+
+--alu_ctr_in: ALU Control Input. Control signals input to the ALU, likely determining the operation to be performed.
+
+--in_mux_ctr: Input Multiplexer Control. Controls a multiplexer for selecting input data.
+
+--out_reg_wr: Output Register Write. Control signal for writing data to an output register.
+
+--in_mux_out: Input Multiplexer Output. The output from a multiplexer selecting input data.
    signal motors       : std_logic_vector(7 downto 0);
-   
-   signal top_clr      : std_logic;
-   signal top_cnt      : std_logic;
-   signal top_ld       : std_logic;
-   -- Motor timers
-   signal start_bw     : std_logic;
-   signal timeup_bw    : std_logic;
-   signal start_tl     : std_logic;
-   signal timeup_tl    : std_logic;
+    
+    -- Motor timers
+    signal start_bw     : std_logic;
+    signal timeup_bw    : std_logic;
+    signal start_tl     : std_logic;
+    signal timeup_tl    : std_logic;
+    
+        signal top_clr      : std_logic;
+    signal top_cnt      : std_logic;
+    signal top_ld       : std_logic;
+    signal top_ucq      : std_logic_vector(THRESHOLD_WIDTH - 1 downto 0);
+    signal top_hrq      : std_logic_vector(THRESHOLD_WIDTH - 1 downto 0);
+    signal top_trq      : std_logic_vector(THRESHOLD_WIDTH - 1 downto 0);
+    signal above_limit  : std_logic;
+    signal motor_start  : std_logic;
+
 begin
 
-
---ass motor
-    motor: entity work.motor(arch) 
-    port map (startmotor => start_motor, 
+    motor : entity work.motor(arch)
+    port map (
         clk         => clk,
         rst         => rst,
         echo        => echo,
@@ -68,22 +109,33 @@ begin
         ld          => top_ld,
         motors      => motors,
         start_bw    => start_bw,
-        start_tl    => start_tl
+        start_tl    => start_tl,
+        start_motor => motor_start
     );
 
-   
--- Add a timer
+
+    motor_reg : entity work.reg(arch)
+    port map (
+        clk         => clk,
+        rst         => rst,
+        reg_ld      => '1',
+        reg_d       => motors,
+        reg_q       => dig_out
+    );
+
+
     echo_timer : entity work.timer(arch)
     generic map (
         LIMIT       => ECHO_COUNTER,
         MODE        => '0'
     )
-    port map (
+     port map (
         clk         => clk,
         rst         => rst,
         start       => start_echo,
         timer_q     => trig
     );
+    
 
     -- instantiate program counter
     pc: entity work.pc(arch)
@@ -114,7 +166,7 @@ begin
     control: entity work.control(arch)
     port map(clk=>clk, rst=>rst, alu_zero=>alu_zero, 
 		     pc_mux_ctr=>pc_mux_ctr, alu_mux_ctr=>alu_mux_ctr, dreg_mux_ctr=>dreg_mux_ctr, in_mux_ctr=>in_mux_ctr, out_reg_write=>out_reg_wr,
-		     opcode=>opcd_out(OPCODE_WIDTH-1 downto 0), dreg_write=>dr_wr_ctr, dmem_write=>dm_wr_ctr, alu_ctr=>alu_ctr_in,start=>start_echo,startm=>start_motor);
+		     opcode=>opcd_out(OPCODE_WIDTH-1 downto 0), dreg_write=>dr_wr_ctr, dmem_write=>dm_wr_ctr, alu_ctr=>alu_ctr_in,echo_start=>start_echo,start_motor=>motor_start);
 		     
     -- instantiate output register
     out_reg: entity work.reg(arch)

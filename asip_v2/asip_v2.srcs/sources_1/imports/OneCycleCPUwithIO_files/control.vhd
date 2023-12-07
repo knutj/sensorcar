@@ -12,11 +12,36 @@ entity control is
       opcode: in std_logic_vector(OPCODE_WIDTH-1 downto 0);
       pc_mux_ctr, dreg_write, alu_mux_ctr, dreg_mux_ctr, dmem_write: out std_logic;
       in_mux_ctr, out_reg_write: out std_logic;
-      alu_ctr: out std_logic_vector(OPCODE_WIDTH-1 downto 0);
-      start: out std_logic;
-      startm: out std_logic
+      echo_start : out std_logic;
+      start_motor : out std_logic;
+      alu_ctr: out std_logic_vector(OPCODE_WIDTH-1 downto 0)
    );
 end control;
+--clk: Clock signal. Used to synchronize the operations of the digital system or processor.
+
+--rst: Reset signal. Used to initialize or reset the state of the system to a known starting condition.
+
+--alu_zero: ALU Zero flag. Typically an output from an Arithmetic Logic Unit (ALU), indicating that the result of the last operation was zero.
+
+--opcode: Opcode signal. Represents the operation code, which is a binary value instructing the processor which operation to perform.
+
+--pc_mux_ctr: Program Counter MUX Control. A control signal that likely determines the source of the next program counter value, e.g., whether to jump to a new location or continue to the next sequential address.
+
+--dreg_write: Data Register Write control. A control signal that enables writing to a data register.
+
+--alu_mux_ctr: ALU MUX Control. A control signal for a multiplexer that selects one of the inputs to the ALU.
+
+--dreg_mux_ctr: Data Register MUX Control. A control signal for a multiplexer that selects the data to be written into a data register.
+
+--dmem_write: Data Memory Write control. A control signal that enables writing to data memory.
+
+--in_mux_ctr: Input MUX Control. A control signal for a multiplexer that selects between different input sources.
+
+--out_reg_write: Output Register Write control. A control signal that enables writing to an output register.
+
+--echo_start: Echo Start. This might be a control signal to start an echo operation, possibly related to measuring distance or time in a system like an ultrasonic sensor.
+
+--alu_ctr: ALU Control. A set of control signals for the ALU that determines which operation it should perform (e.g., add, subtract, AND, OR).
 
 architecture arch of control is
 -- constant declaration for instruction opcodes:
@@ -38,7 +63,26 @@ architecture arch of control is
    constant LD_Ri_IN:      std_logic_vector(OPCODE_WIDTH-1 downto 0) :="0001111";
    constant ST_Ri_OUT:     std_logic_vector(OPCODE_WIDTH-1 downto 0) :="0010000";
    constant start_echo:    std_logic_vector(OPCODE_WIDTH-1 downto 0) :="0100000";
-   constant startmotors:    std_logic_vector(OPCODE_WIDTH-1 downto 0) :="1000000";     
+   constant start_m:       std_logic_vector(OPCODE_WIDTH-1 downto 0) :="1000000";
+-- LD_Ri_imm: Load immediate value into register Ri.
+--LD_Ri_Rj: Load the value from register Rj into register Ri.
+--LD_Ri_X_Rj: Load the value from memory at address specified by the contents of Rj into register Ri.
+--ST_Ri_X_Rj: Store the value from register Ri into memory at the address specified by the contents of Rj.
+--DEC_Ri: Decrement the value in register Ri.
+--INC_Ri: Increment the value in register Ri.
+--ADD_Ri_Rj_Rk: Add the values in registers Rj and Rk, and store the result in register Ri.
+--SUB_Ri_Rj_Rk: Subtract the value in Rk from Rj and store the result in Ri.
+--ORR_Ri_Rj_Rk: Perform bitwise OR on values in Rj and Rk, and store the result in Ri.
+--ORI_Ri_Rj_imm: Perform bitwise OR on the value in Rj and an immediate value, and store the result in Ri.
+--ANR_Ri_Rj_Rk: Perform bitwise AND on values in Rj and Rk, and store the result in Ri.
+--ANI_Ri_Rj_imm: Perform bitwise AND on the value in Rj and an immediate value, and store the result in Ri.
+--JRZ_Ri_imm: Jump to the address specified by an immediate value if the value in Ri is zero.
+--JRNZ_Ri_imm: Jump to the address specified by an immediate value if the value in Ri is not zero.
+--J_imm: Unconditional jump to the address specified by an immediate value.
+--LD_Ri_IN: Load a value from an input device into register Ri.
+--ST_Ri_OUT: Store the value from register Ri to an output device.
+   
+      
    type state_type is (s0);
    signal st_reg, st_next: state_type;
    
@@ -131,11 +175,11 @@ begin
 	            in_mux_ctr <= '1';  
 	         elsif opcode=ST_Ri_OUT then -- ST Ri,OUT (store Ri into digital outputs)
                 pc_mux_ctr <= '1';    
-	            out_reg_write <= '1';
+	            out_reg_write <= '1';   
 	         elsif opcode=start_echo then
-	            start <= '1'; 
-	         elsif opcode=startmotors then
-	            startm <= '1';       
+	               echo_start <='1' ;
+	         elsif opcode=start_m then
+	              start_motor <= '1';
 	         end if;
       end case;
       

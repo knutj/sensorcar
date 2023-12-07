@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 12/06/2023 07:55:25 PM
+-- Create Date: 12/07/2023 06:33:36 AM
 -- Design Name: 
--- Module Name: motor - arch
+-- Module Name: motor - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -28,10 +28,9 @@ entity motor is
         STOP        : std_logic_vector(MOTOR_WIDTH - 1 downto 0) := "00000000";
         FORWARD     : std_logic_vector(MOTOR_WIDTH - 1 downto 0) := "01010101";
         BACKWARD    : std_logic_vector(MOTOR_WIDTH - 1 downto 0) := "10101010";
-        TURNLEFT    : std_logic_vector(MOTOR_WIDTH - 1 downto 0) := "10100101"   
+        TURNLEFT    : std_logic_vector(MOTOR_WIDTH - 1 downto 0) := "10100101"
     );
     port (
-        startmotor  : in    std_logic;
         clk         : in    std_logic;
         rst         : in    std_logic;
         echo        : in    std_logic;
@@ -44,7 +43,8 @@ entity motor is
         ld          : out   std_logic;
         motors      : out   std_logic_vector(MOTOR_WIDTH - 1 downto 0);
         start_bw    : out   std_logic;
-        start_tl    : out   std_logic
+        start_tl    : out   std_logic;
+        start_motor : in    std_logic
     );
 end motor;
 
@@ -59,8 +59,7 @@ begin
         if rst = '1' then
             echo_reg    <= WAITING;
             motor_reg   <= MOVE_FORWARD;
-        elsif rising_edge(clk) and startmotor = '1' then
-             
+        elsif rising_edge(clk) and start_motor = '1' then
             echo_reg    <= echo_next;
             motor_reg   <= motor_next;
         end if;
