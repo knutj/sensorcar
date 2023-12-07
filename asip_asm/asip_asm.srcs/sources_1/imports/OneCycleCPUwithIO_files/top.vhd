@@ -39,22 +39,22 @@ architecture arch of OneCycleCPUwithIO is
     signal in_mux_ctr, out_reg_wr: std_logic;
     signal in_mux_out: std_logic_vector(DRDATA_WIDTH-1 downto 0);
 
-    signal top_clr      : std_logic;
-    signal top_cnt      : std_logic;
-    signal above_limit  : std_logic; 
-    signal top_clr      : std_logic;
-    signal top_cnt      : std_logic;
-    signal top_ucq      : std_logic_vector(8 - 1 downto 0);
+--    signal top_clr      : std_logic;
+--    signal top_cnt      : std_logic;
+--    signal above_limit  : std_logic; 
+--    signal top_clr      : std_logic;
+--    signal top_cnt      : std_logic;
+--    signal top_ucq      : std_logic_vector(8 - 1 downto 0);
 begin
     
-    up_counter : entity work.up_counter(arch) 
-    port map ( clk => clk,
-               rst => rst,
-               uc_clr      => top_clr,
-               uc_cnt      => top_cnt,
-               uc_q        => top_ucq
+--    up_counter : entity work.up_counter(arch) 
+--    port map ( clk => clk,
+--               rst => rst,
+--               uc_clr      => top_clr,
+--               uc_cnt      => top_cnt,
+--               uc_q        => top_ucq
     
-    );
+--    );
    
 
     -- instantiate program counter
@@ -109,6 +109,6 @@ begin
 	in_mux_out <= dig_in when in_mux_ctr='1' else dr_mux_out;  
 
      -- Comparator
-    above_limit <= '0' when top_trq > top_hrq or rst = '1' else '1';
+--    above_limit <= '0' when top_trq > top_hrq or rst = '1' else '1';
 		
 end arch;
