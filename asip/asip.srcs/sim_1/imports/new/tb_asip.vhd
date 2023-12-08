@@ -53,35 +53,31 @@ begin
  
    -- Stimulus process
     stim_process: process
-        constant MIN_ECHO_DURATION : integer := 20;
-        constant MAX_ECHO_DURATION : integer := 100;
+        constant MIN_ECHO_DURATION : integer := 55000;
+        constant MAX_ECHO_DURATION : integer := 150000;
         variable echo_duration: integer range 0 to MAX_ECHO_DURATION;
     begin
-        rst <= '1';
-        wait for clk_period / 2;
-        rst <= '0';
-        wait for clk_period / 2;
-        
+        -- Initialize
         echo <= '0';
-        wait for clk_period / 2;
+        wait for 10 us;
     
-        -- Decreasing Echo Duration (Object getting closer)
-        echo_duration := MAX_ECHO_DURATION;  -- Start with maximum duration
+        -- Towards obstacle
+        echo_duration := MAX_ECHO_DURATION;
         while echo_duration > MIN_ECHO_DURATION loop
             echo <= '1';
-            wait for echo_duration * 9 us;  -- Echo signal high
+            wait for echo_duration * 1 us;
             echo <= '0';
-            wait for 1 ms - (echo_duration * 2 us);  -- Echo signal low, within 1 ms period
-            echo_duration := echo_duration - 10;
+            wait for 100 ms - (echo_duration * 1 us);
+            echo_duration := echo_duration - 100; 
         end loop;
     
-        -- Increasing Echo Duration (Object moving away)
+        -- Away from obstacle
         while echo_duration < MAX_ECHO_DURATION loop
             echo <= '1';
-            wait for echo_duration * 1 us;  -- Echo signal high
+            wait for echo_duration * 1 us;
             echo <= '0';
-            wait for 1 ms - (echo_duration * 1 us);  -- Echo signal low, within 1 ms period
-            echo_duration := echo_duration + 10;
+            wait for 100 ms - (echo_duration * 1 us);
+            echo_duration := echo_duration + 100;
         end loop;
     
         -- End simulation (optional)

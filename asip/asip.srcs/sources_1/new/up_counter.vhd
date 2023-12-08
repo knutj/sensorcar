@@ -4,18 +4,21 @@ use ieee.numeric_std.all;
 use work.constants_pkg.all;
 
 entity up_counter is
+    generic (
+        CNT_WIDTH : integer
+    );
     port (
         clk     : in    std_logic;
         rst     : in    std_logic;
         uc_clr  : in    std_logic;
         uc_cnt  : in    std_logic;
-        uc_q    : out   std_logic_vector(PWM_WIDTH - 1 downto 0)
+        uc_q    : out   std_logic_vector(CNT_WIDTH - 1 downto 0)
     );
 end up_counter;
 
 architecture arch of up_counter is
-    signal r_reg : unsigned(PWM_WIDTH - 1 downto 0);
-    signal r_next: unsigned(PWM_WIDTH - 1 downto 0);
+    signal r_reg : unsigned(CNT_WIDTH - 1 downto 0);
+    signal r_next: unsigned(CNT_WIDTH - 1 downto 0);
 begin
     process (clk, rst)
     begin

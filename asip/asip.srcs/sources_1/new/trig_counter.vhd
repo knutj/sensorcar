@@ -11,8 +11,8 @@ entity trig_counter is
 end trig_counter;
 
 architecture arch of trig_counter is
-    constant TRIG_LIMIT : integer := 500;       -- 500 cycles = 5us
-    constant WAIT_LIMIT : integer := 10000000;  -- 10m cycles = 100ms
+    constant TRIG_LIMIT : integer := 500;       -- Equals 10us (20ns per rising clock - 1us = 10^3 ns)
+    constant WAIT_LIMIT : integer := 5000000;   -- Equals 100ms (20ns per rising clock - 1ms = 10^6 ns)
     
     signal trig_counter : integer range 0 to TRIG_LIMIT := 0;     
     signal wait_counter : integer range 0 to WAIT_LIMIT := 0; 
