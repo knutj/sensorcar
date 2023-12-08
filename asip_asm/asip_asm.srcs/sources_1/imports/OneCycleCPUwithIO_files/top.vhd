@@ -4,6 +4,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+use work.constants_pkg.all;
 
 entity OneCycleCPUwithIO is
    generic(
@@ -16,7 +17,8 @@ entity OneCycleCPUwithIO is
         DMDATA_WIDTH: integer := 8;  -- Data Memory Data Width
         OPCODE_WIDTH: integer := 7   -- Opcode Width    
    );
-   port(clk, rst: in std_logic;                        -- Clock and reset signals
+   port(clk, rst: in std_logic;
+                            -- Clock and reset signals
         dig_in: in std_logic_vector(DRDATA_WIDTH-1 downto 0); -- Digital input
         dig_out: out std_logic_vector(DRDATA_WIDTH-1 downto 0) -- Digital output
     );
@@ -39,22 +41,48 @@ architecture arch of OneCycleCPUwithIO is
     signal in_mux_ctr, out_reg_wr: std_logic;
     signal in_mux_out: std_logic_vector(DRDATA_WIDTH-1 downto 0);
 
---    signal top_clr      : std_logic;
---    signal top_cnt      : std_logic;
---    signal above_limit  : std_logic; 
---    signal top_clr      : std_logic;
---    signal top_cnt      : std_logic;
---    signal top_ucq      : std_logic_vector(8 - 1 downto 0);
+    signal start_motor  : std_logic;
+    signal top_clr      : std_logic;
+    signal top_cnt      : std_logic;
+    signal above_limit  : std_logic; 
+    signal top_trq      : std_logic;
+    signal top_hrq      : std_logic;
+    signal top_ucq      : std_logic_vector(8 - 1 downto 0);
+    
+    signal motors        :std_logic_vector(MOTOR_WIDTH - 1 downto 0);
+    signal start_bw     : std_logic;
+    signal timeup_bw    : std_logic;
+    signal start_tl     : std_logic;
+    signal timeup_tl    : std_logic;
+    signal echo_S: std_logic;
+    signal top_ld       : std_logic;
 begin
     
---    up_counter : entity work.up_counter(arch) 
---    port map ( clk => clk,
---               rst => rst,
---               uc_clr      => top_clr,
---               uc_cnt      => top_cnt,
---               uc_q        => top_ucq
+    sens_eecho : entity work.echo(arch)
+    port map (echo=> '1', echo_out => in_mux_out,rst =>rst,above =>above_limit, clk=>clk );
     
---    );
+    
+    up_counter : entity work.up_counter(arch) 
+    port map ( clk => clk,
+               rst => rst,
+               uc_clr      => top_clr,
+               uc_cnt      => top_cnt,
+               uc_q        => top_ucq
+    
+    );
+    
+    
+    motor : entity work.motor(arch)
+    port map (clk => clk,rst => rst,
+        echo => echo_S,
+        above_limit => above_limit,
+        timeup_bw =>timeup_bw,
+        timeup_tl   => timeup_tl,
+        clr         => top_clr,
+        cnt         => top_cnt,
+        ld          => top_ld,
+        motors      => dr2_dout,
+        start_motor => start_motor);
    
 
     -- instantiate program counter
@@ -106,9 +134,9 @@ begin
 	dr_mux_out <= alu_dout when dreg_mux_ctr='1' else dm_dout;  
 	
 	-- Glue logic at top level: in_mux
-	in_mux_out <= dig_in when in_mux_ctr='1' else dr_mux_out;  
-
+	in_mux_out <= dig_in when in_mux_ctr='1' or above_limit='1' else dr_mux_out;  
+    
      -- Comparator
---    above_limit <= '0' when top_trq > top_hrq or rst = '1' else '1';
+     above_limit <= '0' when top_trq > top_hrq or rst = '1' else '1';
 		
 end arch;
