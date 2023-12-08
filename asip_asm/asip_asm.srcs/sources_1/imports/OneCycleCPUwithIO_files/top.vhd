@@ -20,6 +20,7 @@ entity OneCycleCPUwithIO is
    port(clk, rst: in std_logic;
                             -- Clock and reset signals
         dig_in: in std_logic_vector(DRDATA_WIDTH-1 downto 0); -- Digital input
+        echo_pulse : in std_logic;
         dig_out: out std_logic_vector(DRDATA_WIDTH-1 downto 0) -- Digital output
     );
 end OneCycleCPUwithIO;
@@ -59,7 +60,7 @@ architecture arch of OneCycleCPUwithIO is
 begin
     
     sens_eecho : entity work.echo(arch)
-    port map (echo=> '1', echo_out => in_mux_out,rst =>rst,above =>above_limit, clk=>clk );
+    port map (echo=> echo_pulse, echo_out => in_mux_out,rst =>rst,above =>above_limit, clk=>clk );
     
     
     up_counter : entity work.up_counter(arch) 
