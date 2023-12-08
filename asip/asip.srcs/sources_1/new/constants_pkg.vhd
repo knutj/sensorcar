@@ -32,4 +32,6 @@ package constants_pkg is
     constant J_imm          : std_logic_vector(OPCODE_WIDTH - 1 downto 0) := "0001110";
     constant LD_Ri_IN       : std_logic_vector(OPCODE_WIDTH - 1 downto 0) := "0001111";
     constant ST_Ri_OUT      : std_logic_vector(OPCODE_WIDTH - 1 downto 0) := "0010000";
+    constant ST_Ri_TL       : std_logic_vector(OPCODE_WIDTH - 1 downto 0) := "0010001";
+    constant JAL_imm        : std_logic_vector(OPCODE_WIDTH - 1 downto 0) := "0010010";
 end package constants_pkg;
