@@ -2,26 +2,29 @@ library ieee;
 use ieee.std_logic_1164.all;
 use work.constants_pkg.all;
 
-entity top_echo is
+entity top_sensor is
+    generic (
+        SENSOR_WIDTH : integer
+    );
     port (
         clk         : in    std_logic;
         rst         : in    std_logic;
         write       : in    std_logic;
         echo        : in    std_logic;
-        threshold   : in    std_logic_vector(PWM_WIDTH - 1 downto 0);
+        threshold   : in    std_logic_vector(SENSOR_WIDTH - 1 downto 0);
+        trig        : out   std_logic;
         above_limit : out   std_logic;
-        width_count : out   std_logic_vector(PWM_WIDTH - 1 downto 0);
-        trig        : out   std_logic
+        width_count : out   std_logic_vector(SENSOR_WIDTH - 1 downto 0)
     );
-end top_echo;
+end top_sensor;
 
-architecture arch of top_echo is
+architecture arch of top_sensor is
     signal top_clr  : std_logic;
     signal top_cnt  : std_logic;
     signal top_ld   : std_logic;
-    signal top_ucq  : std_logic_vector(PWM_WIDTH - 1 downto 0);
-    signal top_hrq  : std_logic_vector(PWM_WIDTH - 1 downto 0);
-    signal top_trq  : std_logic_vector(PWM_WIDTH - 1 downto 0);
+    signal top_ucq  : std_logic_vector(SENSOR_WIDTH - 1 downto 0);
+    signal top_hrq  : std_logic_vector(SENSOR_WIDTH - 1 downto 0);
+    signal top_trq  : std_logic_vector(SENSOR_WIDTH - 1 downto 0);
     
 begin
     trig_counter : entity work.trig_counter(arch)
@@ -42,7 +45,7 @@ begin
     );
     
     hold_reg : entity work.reg(arch)
-    generic map (REG_WIDTH => PWM_WIDTH)
+    generic map (REG_WIDTH => SENSOR_WIDTH)
     port map (
         clk         => clk,
         rst         => rst,
@@ -52,7 +55,7 @@ begin
     );
     
     threshold_reg : entity work.reg(arch)
-    generic map (REG_WIDTH => PWM_WIDTH)
+    generic map (REG_WIDTH => SENSOR_WIDTH)
     port map (
         clk         => clk,
         rst         => rst,
@@ -61,7 +64,7 @@ begin
         reg_q       => top_trq
     );
     
-    control : entity work.control_echo(arch)
+    control_sensor : entity work.control_sensor(arch)
     port map (
         clk         => clk,
         rst         => rst,

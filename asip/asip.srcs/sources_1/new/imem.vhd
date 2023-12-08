@@ -12,23 +12,21 @@ end imem;
 architecture arch of imem is
     type rom_type is array (0 to 2**IM_ADDR_WIDTH - 1) of std_logic_vector(IM_DATA_WIDTH - 1 downto 0);
     
-    constant instruction_opcodes : rom_type := (-- # LFLBRFRB -- Engine composiiton LF - Left Forward
-    -- Startup:
-        x"550080",  -- addr 00:     LD   R1,85     # 01010101(imm) 000(rs2=  ) 000(rs1=  ) 001(rd=R1) 0000000 
-        x"AA0101",  -- addr 01:     LD   R2,170    # 10101010(imm) 000(rs2=  ) 000(rs1=  ) 010(rd=R2) 0000001 
-        x"A50182",  -- addr 02:     LD   R3,165    # 10100101(imm) 000(rs2=  ) 000(rs1=  ) 011(rd=R3) 0000011
-        
-    -- Forward loop:
-        x"FFFFFF",  -- addr 03:     
-        x"FFFFFF",  -- addr 04: 
-        x"FFFFFF",  -- addr 05:     
-        x"FFFFFF",  -- addr 06:     
-        x"FFFFFF",  -- addr 07:     
-        x"FFFFFF",  -- addr 08:     
-        x"FFFFFF",  -- addr 09:     
+    constant instruction_opcodes : rom_type := (--  # LFLBRFRB -- Motor composiiton LF - Left Forward
+    -- Load motor directions:
+        x"550080",  -- addr 00:     LD  R1,85   # 01010101(imm) 000(rs2=  ) 000(rs1=  ) 001(rd=R1) 0000000 
+        x"AA0100",  -- addr 01:     LD  R2,170  # 10101010(imm) 000(rs2=  ) 000(rs1=  ) 010(rd=R2) 0000000 
+        x"A50180",  -- addr 02:     LD  R3,165  # 10100101(imm) 000(rs2=  ) 000(rs1=  ) 011(rd=R3) 0000000
+        x"FF0200",  -- addr 03:     LD  R4,123  # 00000000(imm) 000(rs2=  ) 000(rs1=  ) 100(rd=R4) 0000000
+        x"008011",  -- addr 04:     ST  R4,TL   # 00000000(imm) 100(rs2=TL) 000(rs1=  ) 000(rd=  ) 0010001
+        x"030012",  -- addr 05: L1: JAL L2      # 00000011(imm) 000(rs2=  ) 000(rs1=  ) 000(rd=  ) 0010010
+        x"002010",  -- addr 06:     ST  R1,OUT  # 00000000(imm) 001(rs2=R1) 000(rs1=  ) 000(rd=  ) 0010000
+        x"FB000E",  -- addr 07:     J   L1      # 11111011(imm) 000(rs2=  ) 000(rs1=  ) 000(rd=  ) 0001110
+        x"030012",  -- addr 08: L2: JAL L3      # 00000011(imm) 000(rs2=  ) 000(rs1=  ) 000(rd=  ) 0010010
+        x"004010",  -- addr 09:     ST  R2,OUT  # 00000000(imm) 010(rs2=R2) 000(rs1=  ) 000(rd=  ) 0010000 
         x"FFFFFF",  -- addr 10:     
-        x"FFFFFF",  -- addr 11:     
-        x"FFFFFF",  -- addr 12:     
+        x"FFFFFF",  -- addr 11: L3: 
+        x"FFFFFF",  -- addr 12:        
         x"FFFFFF",  -- addr 13:
         x"FFFFFF",  -- addr 14:     
         x"FFFFFF",  -- addr 15:     
