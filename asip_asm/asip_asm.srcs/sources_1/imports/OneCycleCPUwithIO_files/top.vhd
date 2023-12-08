@@ -17,8 +17,8 @@ entity OneCycleCPUwithIO is
         DMDATA_WIDTH: integer := 8;  -- Data Memory Data Width
         OPCODE_WIDTH: integer := 7   -- Opcode Width    
    );
-   port(clk, rst: in std_logic;                        -- Clock and reset signals
-        echo : in std_logic;
+   port(clk, rst: in std_logic;
+                            -- Clock and reset signals
         dig_in: in std_logic_vector(DRDATA_WIDTH-1 downto 0); -- Digital input
         dig_out: out std_logic_vector(DRDATA_WIDTH-1 downto 0) -- Digital output
     );
@@ -59,8 +59,7 @@ architecture arch of OneCycleCPUwithIO is
 begin
     
     sens_eecho : entity work.echo(arch)
-    port map (echo  => echo,
-     echo_out => in_mux_out,rst =>rst,above =>above_limit, clk=>clk );
+    port map (echo=> '1', echo_out => in_mux_out,rst =>rst,above =>above_limit, clk=>clk );
     
     
     up_counter : entity work.up_counter(arch) 
