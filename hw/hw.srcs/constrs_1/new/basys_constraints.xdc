@@ -4,37 +4,46 @@
 ## - rename the used ports (in each line, after get_ports) according to the top level signal names in the project
 
 ## Clock signal
-set_property PACKAGE_PIN W5 [get_ports clk]
-    set_property IOSTANDARD LVCMOS33 [get_ports clk]
-    create_clock -add -name sys_clk_pin -period 10.00 -waveform {0 5} [get_ports clk]
+set_property PACKAGE_PIN W5 [get_ports clk]							
+	set_property IOSTANDARD LVCMOS33 [get_ports clk]
+	create_clock -add -name sys_clk_pin -period 10.00 -waveform {0 5} [get_ports clk]
 
 
 
 ## Switches
-set_property PACKAGE_PIN V17 [get_ports {sw[0]}]
-    set_property IOSTANDARD LVCMOS33 [get_ports {sw[0]}]
+set_property PACKAGE_PIN V17 [get_ports en]
+    set_property IOSTANDARD LVCMOS33 [get_ports en]
 
 
 
-## LEDs -- Represents the digital output signal for the motors
-set_property PACKAGE_PIN U16 [get_ports {dig_out[0]}]          # IN1 Left Side Motors
-	set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[0]}]  # IN1 Left Side Motors
-set_property PACKAGE_PIN E19 [get_ports {dig_out[1]}]          # IN2 Left Side Motors				
-	set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[1]}]  # IN2 Left Side Motors
-set_property PACKAGE_PIN U19 [get_ports {dig_out[2]}]          # IN3 Left Side Motors		
-	set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[2]}]  # IN3 Left Side Motors
-set_property PACKAGE_PIN V19 [get_ports {dig_out[3]}]          # IN4 Left Side Motors	
-	set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[3]}]  # IN4 Left Side Motors
-set_property PACKAGE_PIN W18 [get_ports {dig_out[4]}]          # IN1 Right Side Motors
-	set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[4]}]  # IN1 Right Side Motors
-set_property PACKAGE_PIN U15 [get_ports {dig_out[5]}]		   # IN2 Right Side Motors		
-	set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[5]}]  # IN2 Right Side Motors
-set_property PACKAGE_PIN U14 [get_ports {dig_out[6]}]		   # IN3 Right Side Motors		
-	set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[6]}]  # IN3 Right Side Motors
-set_property PACKAGE_PIN V14 [get_ports {dig_out[7]}]		   # IN4 Right Side Motors		
-	set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[7]}]  # IN4 Right Side Motors
-set_property PACKAGE_PIN V13 [get_ports {dig_out[8]}]		   # ENA/ENB All Motors	
-	set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[8]}]  # ENA/ENB All Motors
+##LEDs -- Represents the digital output signal for the motors
+##IN1 Left Side Motors
+set_property PACKAGE_PIN U16 [get_ports {dig_out[0]}]          
+	set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[0]}]
+##IN2 Left Side Motors
+set_property PACKAGE_PIN E19 [get_ports {dig_out[1]}]          		
+	set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[1]}]
+##IN3 Left Side Motors
+set_property PACKAGE_PIN U19 [get_ports {dig_out[2]}]          
+	set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[2]}]
+##IN4 Left Side Motors
+set_property PACKAGE_PIN V19 [get_ports {dig_out[3]}]          	
+	set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[3]}]
+##IN1 Right Side Motors
+set_property PACKAGE_PIN W18 [get_ports {dig_out[4]}]          
+	set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[4]}]
+##IN2 Right Side Motors
+set_property PACKAGE_PIN U15 [get_ports {dig_out[5]}]
+	set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[5]}]  
+##IN3 Right Side Motors
+set_property PACKAGE_PIN U14 [get_ports {dig_out[6]}]		   	
+	set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[6]}]
+##IN4 Right Side Motors
+set_property PACKAGE_PIN V14 [get_ports {dig_out[7]}]		   
+	set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[7]}]
+##ENA/ENB Both Motors		
+set_property PACKAGE_PIN V13 [get_ports {dig_out[8]}]
+	set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[8]}]
 
 
 
@@ -84,21 +93,21 @@ set_property PACKAGE_PIN A16 [get_ports {dig_out[1]}]
 ##Sch name = JB3    -- I03 on level shifter     -- IN3 on motor board
 set_property PACKAGE_PIN B15 [get_ports {dig_out[2]}]
     set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[2]}]
-##Sch name = JB4    -- I04 on level shifter    -- N4 on motor board
+##Sch name = JB4    -- I04 on level shifter     -- IN4 on motor board
 set_property PACKAGE_PIN B16 [get_ports {dig_out[3]}]
     set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[3]}]
 ##Sch name = JB7    -- I05 on level shifter     -- ENA on motor board
 set_property PACKAGE_PIN A15 [get_ports {dig_out[8]}]					
-	set_property IOSTANDARD LVCMOS33 [get_ports {dig_outB[8]}]
-##Sch name = JB8    -- I06 on level shifter     -- TRIG on echo sensor board
-set_property PACKAGE_PIN A17 [get_ports trig]
-    set_property IOSTANDARD LVCMOS33 [get_ports trig]
-##Sch name = JB9    -- I07 on level shifter     -- ECHO on echo sensor board
-set_property PACKAGE_PIN C15 [get_ports echo]
-    set_property IOSTANDARD LVCMOS33 [get_ports echo]
-##Sch name = JB10   -- I08 on level shifter     -- ENA on motor board
-set_property PACKAGE_PIN C16 [get_ports {dig_out[8]}]					
 	set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[8]}]
+##Sch name = JB8    -- I06 on level shifter     -- ENB on motor board
+set_property PACKAGE_PIN A17 [get_ports {dig_out[8]}]
+    set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[8]}]
+##Sch name = JB9    -- I07 on level shifter     -- TRIG on echo sensor board
+set_property PACKAGE_PIN C15 [get_ports trig]
+    set_property IOSTANDARD LVCMOS33 [get_ports trig]
+##Sch name = JB10   -- I08 on level shifter     -- ECHO on echo sensor board
+set_property PACKAGE_PIN C16 [get_ports echo]					
+	set_property IOSTANDARD LVCMOS33 [get_ports echo]
 
 
 
@@ -118,12 +127,6 @@ set_property PACKAGE_PIN P18 [get_ports {dig_out[7]}]
 ##Sch name = JC7    -- I05 on level shifter     -- ENA on motor board
 set_property PACKAGE_PIN L17 [get_ports {dig_out[8]}]					
 	set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[8]}]
-##Sch name = JC8
-#set_property PACKAGE_PIN M19 [get_ports {JC[5]}]
-    #set_property IOSTANDARD LVCMOS33 [get_ports {JC[5]}]
-##Sch name = JC9
-#set_property PACKAGE_PIN P17 [get_ports {JC[6]}]
-    #set_property IOSTANDARD LVCMOS33 [get_ports {JC[6]}]
-##Sch name = JC10    -- I08 on level shifter     -- ENB on motor board
-set_property PACKAGE_PIN R18 [get_ports {dig_out[8]}]					
-	set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[8]}]
+##Sch name = JC8    -- I06 on level shifter     -- ENB on motor board
+set_property PACKAGE_PIN M19 [get_ports {dig_out[8]}]
+    set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[8]}]

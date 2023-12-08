@@ -4,10 +4,13 @@ use ieee.numeric_std.all;
 use work.constants_pkg.all;
 
 entity display is
+    generic (
+        NUM_WIDTH : integer := 8
+    );
     port (
         clk : in    std_logic;
         rst : in    std_logic;
-        num : in    std_logic_vector(THRESHOLD_WIDTH - 1 downto 0);
+        num : in    std_logic_vector(NUM_WIDTH - 1 downto 0);
         an  : out   std_logic_vector(AN_WIDTH - 1 downto 0);
         seg : out   std_logic_vector(SEG_WIDTH - 1 downto 0)
     );
