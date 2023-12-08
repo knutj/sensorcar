@@ -1,11 +1,9 @@
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 use work.constants_pkg.all;
 
 entity top_sensor is
-    generic (
-        SENSOR_WIDTH : integer
-    );
     port (
         clk         : in    std_logic;
         rst         : in    std_logic;
@@ -14,7 +12,9 @@ entity top_sensor is
         threshold   : in    std_logic_vector(SENSOR_WIDTH - 1 downto 0);
         trig        : out   std_logic;
         above_limit : out   std_logic;
-        width_count : out   std_logic_vector(SENSOR_WIDTH - 1 downto 0)
+        width_count : out   std_logic_vector(SENSOR_WIDTH - 1 downto 0);
+        an          : out   std_logic_vector(AN_WIDTH - 1 downto 0);
+        seg         : out   std_logic_vector(SEG_WIDTH - 1 downto 0)
     );
 end top_sensor;
 
@@ -25,6 +25,7 @@ architecture arch of top_sensor is
     signal top_ucq  : std_logic_vector(SENSOR_WIDTH - 1 downto 0);
     signal top_hrq  : std_logic_vector(SENSOR_WIDTH - 1 downto 0);
     signal top_trq  : std_logic_vector(SENSOR_WIDTH - 1 downto 0);
+    signal distance : std_logic_vector(SENSOR_WIDTH - 1 downto 0);
     
 begin
     trig_counter : entity work.trig_counter(arch)
@@ -36,6 +37,7 @@ begin
     );
 
     up_counter : entity work.up_counter(arch)
+    generic map (CNT_WIDTH => SENSOR_WIDTH)
     port map (
         clk         => clk,
         rst         => rst,
@@ -64,6 +66,16 @@ begin
         reg_q       => top_trq
     );
     
+    distance_display : entity work.display(arch)
+    generic map (NUM_WIDTH => SENSOR_WIDTH)
+    port map (
+        clk         => clk,
+        rst         => rst,
+        num         => distance,
+        an          => an,
+        seg         => seg
+    );
+    
     control_sensor : entity work.control_sensor(arch)
     port map (
         clk         => clk,
@@ -75,9 +87,12 @@ begin
     );
     
     -- Comparator
-    above_limit <= '0' when top_trq > top_hrq else '1';
+    above_limit <= '0' when top_trq >= top_hrq else '1';
     
     -- Width measurement
     width_count <= top_hrq;
+
+    -- Calculate distance by taking the up counter * clk period (20ns) * (343 / 10000000 = 0.0000343) divided by 2 due to the echo going back and forth the same distance
+    distance <= std_logic_vector(to_unsigned((to_integer(unsigned(top_ucq)) * 20 * 343) / (2 * 10000000), SENSOR_WIDTH));
 
 end arch;
