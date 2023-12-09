@@ -6,11 +6,10 @@ entity tb_car is
 end tb_car;
 
 architecture arch of tb_car is
-    component top_fsmd
+    component top_car
     generic (
         BACK_COUNTER    : integer := 100;
-        TURN_COUNTER    : integer := 50;
-        THRESHOLD       : std_logic_vector(THRESHOLD_WIDTH - 1 downto 0) := "0000000000100"
+        TURN_COUNTER    : integer := 50
     );
     port (
         clk     : in    std_logic;
@@ -67,7 +66,7 @@ begin
         variable echo_pulse_width   : time := 100us;
         variable pulse_variation    : time := 10us;
         variable threshold_time     : time := 1000us;
-        variable reversing : boolean := false;
+        variable reversing          : boolean := false;
     begin
         rst <= '1';
         wait for clk_period;
