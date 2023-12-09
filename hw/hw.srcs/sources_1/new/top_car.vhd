@@ -5,7 +5,7 @@ use work.constants_pkg.all;
 entity top_car is
     generic (
         BACK_COUNTER    : integer := 100000000; -- Every 2s given 10ns length per clock and 2 x 10ns per rising edge
-        TURN_COUNTER    : integer := 50000000  -- Every 1s given 10ns length per clock and 2 x 10ns per rising edge
+        TURN_COUNTER    : integer := 50000000   -- Every 1s given 10ns length per clock and 2 x 10ns per rising edge
     );
     port (
         clk     : in    std_logic;
