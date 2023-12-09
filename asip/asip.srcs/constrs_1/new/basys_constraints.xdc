@@ -94,8 +94,8 @@ set_property PACKAGE_PIN G2 [get_ports {dig_out[7]}]
 set_property PACKAGE_PIN H1 [get_ports {dig_out[8]}]					
 	set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[8]}]
 ##Sch name = JA8    -- I06 on level shifter     -- ENB on motor board
-set_property PACKAGE_PIN K2 [get_ports enb_r]					
-	set_property IOSTANDARD LVCMOS33 [get_ports enb_r]
+set_property PACKAGE_PIN K2 [get_ports {dig_out[8]}]					
+	set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[8]}]
 
 
 
@@ -113,11 +113,11 @@ set_property PACKAGE_PIN M2 [get_ports {dig_out[2]}]
 set_property PACKAGE_PIN N2 [get_ports {dig_out[3]}]				
 	set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[3]}]
 ##Sch name = XA1_N      -- I05 on level shifter     -- ENA on motor board
-set_property PACKAGE_PIN K3 [get_ports ena_l]				
-	set_property IOSTANDARD LVCMOS33 [get_ports ena_l]
+set_property PACKAGE_PIN K3 [get_ports {dig_out[8]}]				
+	set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[8]}]
 ##Sch name = XA2_N      -- I06 on level shifter     -- ENB on motor board
-set_property PACKAGE_PIN M3 [get_ports enb_l]				
-	set_property IOSTANDARD LVCMOS33 [get_ports enb_l]
+set_property PACKAGE_PIN M3 [get_ports {dig_out[8]}]				
+	set_property IOSTANDARD LVCMOS33 [get_ports {dig_out[8]}]
 ##Sch name = XA3_N      -- I07 on level shifter     -- TRIG IN on sensor board
 set_property PACKAGE_PIN M1 [get_ports trig]				
 	set_property IOSTANDARD LVCMOS33 [get_ports trig]
