@@ -7,6 +7,7 @@ entity top_sensor is
     port (
         clk         : in    std_logic;
         rst         : in    std_logic;
+        threshold   : in    std_logic_vector(SENSOR_WIDTH - 1 downto 0);
         echo        : in    std_logic;
         trig        : out   std_logic;
         above_limit : out   std_logic;
@@ -16,15 +17,12 @@ entity top_sensor is
 end top_sensor;
 
 architecture arch of top_sensor is
-    constant SENSOR_WIDTH : integer := 20;
-
     signal top_clr  : std_logic;
     signal top_cnt  : std_logic;
     signal top_ld   : std_logic;
     signal top_ucq  : std_logic_vector(SENSOR_WIDTH - 1 downto 0);
     signal top_hrq  : std_logic_vector(SENSOR_WIDTH - 1 downto 0);
     signal top_trq  : std_logic_vector(SENSOR_WIDTH - 1 downto 0);
-    signal threshold: std_logic_vector(SENSOR_WIDTH - 1 downto 0);
     signal distance : std_logic_vector(SENSOR_WIDTH - 1 downto 0);
    
 begin
@@ -85,7 +83,7 @@ begin
         ld          => top_ld
     );
 
-    -- Comparator
+    -- Comparator to check if counter is higher than threshold
     above_limit <= '0' when top_trq > top_hrq else '1';
 
      -- Calculate distance by taking the up counter * clk period (20ns) * (343 / 10000000 = 0.0000343) divided by 2 due to the echo going back and forth the same distance

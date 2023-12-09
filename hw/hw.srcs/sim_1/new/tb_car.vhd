@@ -9,7 +9,9 @@ architecture arch of tb_car is
     component top_car
     generic (
         BACK_COUNTER    : integer := 100;
-        TURN_COUNTER    : integer := 50
+        TURN_COUNTER    : integer := 50;
+        FW_THRESHOLD    : std_logic_vector(SENSOR_WIDTH - 1 downto 0) := "00001110" & "000000000000";
+        BW_THRESHOLD    : std_logic_vector(SENSOR_WIDTH - 1 downto 0) := "00100011" & "000000000000"
     );
     port (
         clk     : in    std_logic;

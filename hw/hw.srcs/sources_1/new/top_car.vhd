@@ -5,7 +5,9 @@ use work.constants_pkg.all;
 entity top_car is
     generic (
         BACK_COUNTER    : integer := 100000000; -- Every 2s given 10ns length per clock and 2 x 10ns per rising edge
-        TURN_COUNTER    : integer := 50000000   -- Every 1s given 10ns length per clock and 2 x 10ns per rising edge
+        TURN_COUNTER    : integer := 50000000;  -- Every 1s given 10ns length per clock and 2 x 10ns per rising edge
+        FW_THRESHOLD    : std_logic_vector(SENSOR_WIDTH - 1 downto 0) := "00001110" & "000000000000";
+        BW_THRESHOLD    : std_logic_vector(SENSOR_WIDTH - 1 downto 0) := "00100011" & "000000000000"
     );
     port (
         clk     : in    std_logic;
@@ -25,6 +27,8 @@ architecture arch of top_car is
     signal mot_lfw      : std_logic;
     signal mot_rfw      : std_logic;
     signal mot_q        : std_logic_vector(MOTOR_WIDTH - 1 downto 0);
+    
+    signal threshold    : std_logic_vector(SENSOR_WIDTH - 1 downto 0);
     signal above_limit  : std_logic;
     
     -- Motor timers
@@ -94,6 +98,7 @@ begin
     port map (
         clk         => clk,
         rst         => rst,
+        threshold   => threshold,
         echo        => echo,
         trig        => trig,
         above_limit => above_limit,
@@ -101,6 +106,10 @@ begin
         seg         => seg
     );
 
+    -- Set threshold based on direction of vehicle
+    threshold <= BW_THRESHOLD when mot_en = '1' and mot_lfw = '0' and mot_rfw = '0' else FW_THRESHOLD;
+
+    -- Set digital signal out going to PMODs as well as the same values to the LEDs to indicate motor direction
     dig_out <= dig_out_tmp;
     led <= dig_out_tmp;
 
