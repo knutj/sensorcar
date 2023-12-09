@@ -2,6 +2,13 @@ library ieee;
 use ieee.std_logic_1164.all;
 use work.constants_pkg.all;
 
+-- Regarding threshold limits, the values below are concatenations between 12 0-bits and any value (As in the ASIP)
+-- Choosing 20 cm as minimum and 50 cm as maximum, for forward and backward limits respectively
+-- The equation is range = (time * speed) / 2, where time is the time for echo in high and speed is 340m/s = 34,000cm/s = 0.034cm/us = 0.000034cm/ns
+-- Time is calculated using the up counter, and its counts on each rising clock, which means it counts every 20ns (As the clock high is 10ns)
+-- Time = 2 * range / speed = 2 * 20 cm / 0.000034 cm/ns = 1,176,470 ns => divided by 20 gives about 58,823
+-- 1110 0000 0000 0000 is equal to 57,344, close to the value above, therefore FW_THRESHOLD is set to 1110 + 12 0-bits
+
 entity top_car is
     generic (
         BACK_COUNTER    : integer := 100000000; -- Every 2s given 10ns length per clock and 2 x 10ns per rising edge
