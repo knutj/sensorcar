@@ -6,8 +6,7 @@ entity tb_car is
 end tb_car;
 
 architecture arch of tb_car is
-
-    component top_fsmd
+    component top_car
     generic (
         BACK_COUNTER    : integer := 100;
         TURN_COUNTER    : integer := 50;
