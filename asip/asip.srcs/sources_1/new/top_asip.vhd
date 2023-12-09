@@ -4,46 +4,57 @@ use ieee.numeric_std.all;
 use work.constants_pkg.all;
 
 entity top_asip is
-    generic (
-        threshold_limit : std_logic_vector(PWM_WIDTH - 9 downto 0) := "000000100000"
-    );
     port ( 
         clk     : in    std_logic;
         rst     : in    std_logic;
         echo    : in    std_logic;
-        dig_in  : in    std_logic_vector(DR_DATA_WIDTH - 1 downto 0);
-        dig_out : out   std_logic_vector(DR_DATA_WIDTH - 1 downto 0);
-        trig    : inout   std_logic
+        dig_in  : in    std_logic_vector(DIG_DATA_WIDTH - 1 downto 0);
+        dig_out : out   std_logic_vector(DIG_DATA_WIDTH - 1 downto 0);
+        led     : out   std_logic_vector(DIG_DATA_WIDTH - 1 downto 0);
+        trig    : out   std_logic;
+        an      : out   std_logic_vector(AN_WIDTH - 1 downto 0);
+        seg     : out   std_logic_vector(SEG_WIDTH - 1 downto 0);
+        ena_l   : out   std_logic := '1';    
+        enb_l   : out   std_logic := '1';       
+        enb_r   : out   std_logic := '1'  
     );
 end top_asip;
 
 architecture arch of top_asip is
-    signal dr_wr_ctr    :   std_logic;
-    signal dm_wr_ctr    :   std_logic;
-    signal alu_zero     :   std_logic;
-    signal pc_mux_ctr   :   std_logic;
-    signal alu_mux_ctr  :   std_logic;
-    signal dreg_mux_ctr :   std_logic;
-    signal pc_din       :   std_logic_vector(PC_DATA_WIDTH - 1 downto 0);
-    signal pc_dout      :   std_logic_vector(PC_DATA_WIDTH - 1 downto 0);
-    signal opcd_out     :   std_logic_vector(IM_DATA_WIDTH - 1 downto 0);
-    signal immediate    :   std_logic_vector(DR_DATA_WIDTH - 1 downto 0);
-    signal dr1_dout     :   std_logic_vector(DR_DATA_WIDTH - 1 downto 0);
-    signal dr2_dout     :   std_logic_vector(DR_DATA_WIDTH - 1 downto 0);
-    signal alu_mux_out  :   std_logic_vector(DR_DATA_WIDTH - 1 downto 0);
-    signal alu_dout     :   std_logic_vector(DR_DATA_WIDTH - 1 downto 0);
-    signal dm_dout      :   std_logic_vector(DM_DATA_WIDTH - 1 downto 0);
-    signal dr_mux_out   :   std_logic_vector(DM_DATA_WIDTH - 1 downto 0);
-    signal alu_ctr_in   :   std_logic_vector(OPCODE_WIDTH - 1 downto 0);
-    signal in_mux_ctr   :   std_logic;
-    signal out_reg_wr   :   std_logic;
-    signal in_mux_out   :   std_logic_vector(DR_DATA_WIDTH - 1 downto 0);
+    constant TURN_LIMIT     : integer := 500000000;     -- Equals 1 second (20ns per rising clock - 1s = 10^9 ns)
+
+    signal dr_wr_ctr        :   std_logic;
+    signal dm_wr_ctr        :   std_logic;
+    signal alu_zero         :   std_logic;
+    signal pc_mux_ctr       :   std_logic;
+    signal alu_mux_ctr      :   std_logic;
+    signal dreg_mux_ctr     :   std_logic;
+    signal pc_din           :   std_logic_vector(PC_DATA_WIDTH - 1 downto 0);
+    signal pc_dout          :   std_logic_vector(PC_DATA_WIDTH - 1 downto 0);
+    signal opcd_out         :   std_logic_vector(IM_DATA_WIDTH - 1 downto 0);
+    signal immediate        :   std_logic_vector(DR_DATA_WIDTH - 1 downto 0);
+    signal dr1_dout         :   std_logic_vector(DR_DATA_WIDTH - 1 downto 0);
+    signal dr2_dout         :   std_logic_vector(DR_DATA_WIDTH - 1 downto 0);
+    signal alu_mux_out      :   std_logic_vector(DR_DATA_WIDTH - 1 downto 0);
+    signal alu_dout         :   std_logic_vector(DR_DATA_WIDTH - 1 downto 0);
+    signal dm_dout          :   std_logic_vector(DM_DATA_WIDTH - 1 downto 0);
+    signal dr_mux_out       :   std_logic_vector(DM_DATA_WIDTH - 1 downto 0);
+    signal alu_ctr_in       :   std_logic_vector(OPCODE_WIDTH - 1 downto 0);
+    signal in_mux_ctr       :   std_logic;
+    signal out_reg_wr       :   std_logic;
+    signal in_mux_out       :   std_logic_vector(DR_DATA_WIDTH - 1 downto 0);
     
     -- Echo sensor
-    signal write        :   std_logic;
-    signal threshold    :   std_logic_vector(PWM_WIDTH - 1 downto 0);
-    signal over_limit   :   std_logic;
-    signal width_count  :   std_logic_vector(PWM_WIDTH - 1 downto 0);
+    signal threshold_limit  :   std_logic_vector(SENSOR_WIDTH - 1 downto 0);
+    signal write_limit      :   std_logic;
+    signal above_limit      :   std_logic;
+    signal width_count      :   std_logic_vector(SENSOR_WIDTH - 1 downto 0);
+    
+    -- Motors
+    signal motors           :   std_logic_vector(DM_DATA_WIDTH - 1 downto 0);
+    signal timer_start      :   std_logic;
+    signal timer_done       :   std_logic;
+    
 begin
     -- Program Counter
     pc : entity work.pc(arch)
@@ -100,52 +111,60 @@ begin
         clk             => clk,
         rst             => rst,
         alu_zero        => alu_zero,
+        opcode          => opcd_out(OPCODE_WIDTH - 1 downto 0), 
+        above_limit     => above_limit,
+        timer_done      => timer_done,
+        
         pc_mux_ctr      => pc_mux_ctr,
         alu_mux_ctr     => alu_mux_ctr,
         dreg_mux_ctr    => dreg_mux_ctr,
         in_mux_ctr      => in_mux_ctr,
         out_reg_write   => out_reg_wr,
-        opcode          => opcd_out(OPCODE_WIDTH - 1 downto 0), 
         dreg_write      => dr_wr_ctr, 
         dmem_write      => dm_wr_ctr,
-        alu_ctr         => alu_ctr_in
+        alu_ctr         => alu_ctr_in,
+        write_limit     => write_limit,
+        timer_start     => timer_done
     );
     
-    -- Modulus M Counter
---    mod_m_counter : entity work.mod_m_counter(arch)
---    port map (
---        clk             => clk,
---        rst             => rst,
---        max_tick        => ,
---        mc_q            => dig_out
---    );
-    
     -- Output Register
-    out_reg : entity work.reg_dr(arch)
+    out_reg : entity work.reg(arch)
+    generic map (REG_WIDTH => DR_DATA_WIDTH)
     port map (
         clk             => clk,
         rst             => rst,
         reg_ld          => out_reg_wr,
         reg_d           => dr2_dout,
-        reg_q           => dig_out
+        reg_q           => motors
     );
     
-    -- Echo Sensor
-    top_echo : entity work.top_echo(arch)
+    turn_timer : entity work.timer(arch)
+    generic map (LIMIT => TURN_LIMIT)
     port map (
         clk             => clk,
         rst             => rst,
-        write           => write,
+        start           => timer_start,
+        done            => timer_done
+    );
+    
+    -- Echo Sensor
+    top_sensor : entity work.top_sensor(arch)
+    port map (
+        clk             => clk,
+        rst             => rst,
+        write           => write_limit,
         echo            => echo,
-        threshold       => threshold,
-        above_limit      => over_limit,
+        threshold       => threshold_limit,
+        trig            => trig,
+        above_limit     => above_limit,
         width_count     => width_count,
-        trig         => trig
+        an              => an,
+        seg             => seg
     );
     
     immediate <= opcd_out(IM_DATA_WIDTH - 1 downto 16);
     
-    -- Glue pc_mux
+    -- Glue pc_mux - Note that MSB only plays a role on pos/neg number if it is a jump instruction
     pc_din <= 
         std_logic_vector(unsigned(pc_dout) + 1)                     when pc_mux_ctr = '1' else
         std_logic_vector(unsigned(pc_dout) + unsigned(immediate))   when opcd_out(IM_DATA_WIDTH - 1) = '0' else
@@ -158,9 +177,13 @@ begin
     dr_mux_out <= alu_dout when dreg_mux_ctr = '1' else dm_dout;
     
     -- Glue in_mux
-    in_mux_out <= dig_in when in_mux_ctr = '1' else dr_mux_out;
+    in_mux_out <= dig_in(DR_DATA_WIDTH - 1 downto 0) when in_mux_ctr = '1' else dr_mux_out;
     
-    -- Concatenate threshold limit
-    threshold   <= threshold_limit & dr2_dout;
+    -- Concatenate to create threshold limit with 12 rightmost bits equal to 0
+    threshold_limit  <= dr2_dout & "000000000000" when write_limit = '1' else threshold_limit;
+    
+    -- Concatenate 1 to motor direction to start motors - PWM for motors is not in use
+    dig_out <= '1' & motors when motors /= "00000000" else (others => '0');
+    led     <= '1' & motors when motors /= "00000000" else (others => '0');
     
 end arch;

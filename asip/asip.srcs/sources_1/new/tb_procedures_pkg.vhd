@@ -13,9 +13,9 @@ package tb_procedures_pkg is
         mp2             : in integer
     );
     procedure pwm_threshold (
-        signal threshold: out std_logic_vector(PWM_WIDTH - 1 downto 0); 
+        signal threshold: out std_logic_vector(SENSOR_WIDTH - 1 downto 0); 
         signal write    : out std_logic;
-        new_threshold   : in std_logic_vector(PWM_WIDTH - 1 downto 0);
+        new_threshold   : in std_logic_vector(SENSOR_WIDTH - 1 downto 0);
         clk_period      : in time
     );
 end package tb_procedures_pkg;
@@ -39,9 +39,9 @@ package body tb_procedures_pkg is
     end procedure pwm_loop;
     
     procedure pwm_threshold (
-        signal threshold: out std_logic_vector(PWM_WIDTH - 1 downto 0); 
+        signal threshold: out std_logic_vector(SENSOR_WIDTH - 1 downto 0); 
         signal write    : out std_logic;
-        new_threshold   : in std_logic_vector(PWM_WIDTH - 1 downto 0);
+        new_threshold   : in std_logic_vector(SENSOR_WIDTH - 1 downto 0);
         clk_period      : in time
     ) is
     begin

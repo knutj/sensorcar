@@ -100,12 +100,27 @@
         </FileInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/new/control_car.vhd">
+<<<<<<< HEAD
+=======
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/new/control_sensor.vhd">
+>>>>>>> main
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/control_sensor.vhd">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/motors.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -142,6 +157,15 @@
         </FileInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/new/top_sensor.vhd">
+<<<<<<< HEAD
+=======
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/top_car.vhd">
+>>>>>>> main
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -179,7 +203,12 @@
       </Config>
     </FileSet>
     <FileSet Name="sim_1" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/sim_1" RelGenDir="$PGENDIR/sim_1">
+<<<<<<< HEAD
       <File Path="$PSRCDIR/sim_1/imports/new/tb_car.vhd">
+=======
+      <Filter Type="Srcs"/>
+      <File Path="$PSRCDIR/sim_1/new/tb_car.vhd">
+>>>>>>> main
         <FileInfo>
           <Attr Name="ImportPath" Val="$PSRCDIR/sim_1/new/tb_car.vhd"/>
           <Attr Name="ImportTime" Val="1701958749"/>
