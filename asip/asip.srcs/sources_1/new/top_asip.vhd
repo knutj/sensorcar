@@ -10,9 +10,13 @@ entity top_asip is
         echo    : in    std_logic;
         dig_in  : in    std_logic_vector(DIG_DATA_WIDTH - 1 downto 0);
         dig_out : out   std_logic_vector(DIG_DATA_WIDTH - 1 downto 0);
+        led     : out   std_logic_vector(DIG_DATA_WIDTH - 1 downto 0);
         trig    : out   std_logic;
         an      : out   std_logic_vector(AN_WIDTH - 1 downto 0);
-        seg     : out   std_logic_vector(SEG_WIDTH - 1 downto 0)      
+        seg     : out   std_logic_vector(SEG_WIDTH - 1 downto 0);
+        ena_l   : out   std_logic := '1';    
+        enb_l   : out   std_logic := '1';       
+        enb_r   : out   std_logic := '1'  
     );
 end top_asip;
 
@@ -137,10 +141,10 @@ begin
     turn_timer : entity work.timer(arch)
     generic map (LIMIT => TURN_LIMIT)
     port map (
-        clk => clk,
-        rst => rst,
-        start => timer_start,
-        done => timer_done
+        clk             => clk,
+        rst             => rst,
+        start           => timer_start,
+        done            => timer_done
     );
     
     -- Echo Sensor
@@ -151,6 +155,7 @@ begin
         write           => write_limit,
         echo            => echo,
         threshold       => threshold_limit,
+        trig            => trig,
         above_limit     => above_limit,
         width_count     => width_count,
         an              => an,
@@ -179,5 +184,6 @@ begin
     
     -- Concatenate 1 to motor direction to start motors - PWM for motors is not in use
     dig_out <= '1' & motors when motors /= "00000000" else (others => '0');
+    led     <= '1' & motors when motors /= "00000000" else (others => '0');
     
 end arch;
