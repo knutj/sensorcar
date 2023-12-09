@@ -1,7 +1,0 @@
-Breakpoint File Version 1.0
-123,true,"/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/new/motor.vhd"
-124,true,"/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/new/motor.vhd"
-125,true,"/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/new/motor.vhd"
-115,true,"/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/new/motor.vhd"
-117,true,"/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/new/motor.vhd"
-116,true,"/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/new/motor.vhd"

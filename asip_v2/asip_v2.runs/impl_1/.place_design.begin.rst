@@ -1,5 +1,0 @@
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command=".planAhead." Owner="knutjb" Host="ubuntu.knut" Pid="1280234">
-    </Process>
-</ProcessHandle>

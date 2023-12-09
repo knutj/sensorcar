@@ -1,4 +1,0 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/new/motor.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'motor'
-INFO: [VRFC 10-163] Analyzing VHDL file "/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/imports/OneCycleCPUwithIO_files/top.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'OneCycleCPUwithIO'

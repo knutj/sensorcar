@@ -1,7 +1,0 @@
-Running: xsim.dir/tb_OneCycleCPUwithIO_behav/xsimk -simmode gui -wdb tb_OneCycleCPUwithIO_behav.wdb -simrunnum 0 -socket 45215
-Design successfully loaded
-Design Loading Memory Usage: 23596 KB (Peak: 24128 KB)
-Design Loading CPU Usage: 50 ms
-Simulation completed
-Simulation Memory Usage: 113532 KB (Peak: 162864 KB)
-Simulation CPU Usage: 50 ms
