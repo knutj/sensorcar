@@ -14,6 +14,7 @@ entity top_car is
         echo    : in    std_logic;
         trig    : out   std_logic;
         dig_out : out   std_logic_vector(MOTOR_WIDTH - 1 downto 0);
+        led     : out   std_logic_vector(MOTOR_WIDTH - 1 downto 0);
         an      : out   std_logic_vector(AN_WIDTH - 1 downto 0);
         seg     : out   std_logic_vector(SEG_WIDTH - 1 downto 0)
     );
@@ -31,6 +32,9 @@ architecture arch of top_car is
     signal done_bw      : std_logic;
     signal start_tl     : std_logic;
     signal done_tl      : std_logic;
+    
+    -- Hold value for assignment to dig_out and led
+    signal dig_out_tmp  : std_logic_vector(MOTOR_WIDTH - 1 downto 0);
    
 begin
     motors : entity work.motors(arch)
@@ -50,7 +54,7 @@ begin
         rst         => rst,
         reg_ld      => '1',
         reg_d       => mot_q,
-        reg_q       => dig_out
+        reg_q       => dig_out_tmp
     );
     
     backward_timer : entity work.timer(arch)
@@ -70,15 +74,6 @@ begin
         start       => start_tl,
         done        => done_tl
     );
-    
---    display : entity work.display(arch)
---    port map (
---        clk         => clk,
---        rst         => rst,
---        num         => top_ucq,
---        an          => an,
---        seg         => seg
---    );
 
     control_car : entity work.control_car(arch)
     port map (
@@ -101,7 +96,12 @@ begin
         rst         => rst,
         echo        => echo,
         trig        => trig,
-        above_limit => above_limit
+        above_limit => above_limit,
+        an          => an,
+        seg         => seg
     );
+
+    dig_out <= dig_out_tmp;
+    led <= dig_out_tmp;
 
 end arch;
