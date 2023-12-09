@@ -44,6 +44,8 @@ end timer;
 
 architecture arch of timer is
     signal counter : integer range 0 to LIMIT;
+    --type timer_state_type is (IDLE, COUNTING, TIMEOUT);
+    --signal timer_state : timer_state_type;
 begin
     process (clk, rst)
     begin
@@ -65,4 +67,7 @@ begin
             end if;
         end if;
     end process;
+-- Reset state machine and counter
+
+
 end arch;

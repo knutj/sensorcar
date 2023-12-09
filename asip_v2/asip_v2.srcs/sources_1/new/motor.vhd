@@ -44,7 +44,8 @@ entity motor is
         motors      : out   std_logic_vector(MOTOR_WIDTH - 1 downto 0);
         start_bw    : out   std_logic;
         start_tl    : out   std_logic;
-        start_motor : in    std_logic
+        start_motor : in    std_logic;
+        start_reverse: in   std_logic
     );
 end motor;
 
@@ -59,6 +60,7 @@ begin
         if rst = '1' then
             echo_reg    <= WAITING;
             motor_reg   <= MOVE_FORWARD;
+          
         elsif rising_edge(clk) and start_motor = '1' then
             echo_reg    <= echo_next;
             motor_reg   <= motor_next;
@@ -96,6 +98,7 @@ begin
         motor_next  <= motor_reg;
         start_bw    <= '0';
         start_tl    <= '0';
+       
         
         case motor_reg is
             when IDLE =>
@@ -104,7 +107,7 @@ begin
 
             when MOVE_FORWARD =>
                 motors <= FORWARD;
-                if above_limit = '1' then
+                if above_limit = '1' or start_reverse  = '1' or echo ='1'  then
                     motor_next <= MOVE_BACKWARD;
                 end if;
                 

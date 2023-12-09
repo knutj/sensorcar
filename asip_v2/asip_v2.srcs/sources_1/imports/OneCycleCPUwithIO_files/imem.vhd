@@ -30,9 +30,10 @@ architecture arch of imem is
       --- x"000041", -- addr 07: New instruction check_if_echo with opcode 1000001
       x"000020", -- addr 01: New instruction with opcode 0100000
       x"000040", -- addr 02: New instruction with opcode 1000000
-	  x"FFFFFF",  -- addr 03: (void)
-	  x"FFFFFF",  -- addr 04: (void)
-	  x"FFFFFF",  -- addr 05: (void)
+	  x"000041",  -- addr 03: (void)
+	  x"00000E",
+	  x"00000E",
+	  x"000040",  -- addr 04: (void)
 	  x"FFFFFF",  -- addr 06: (void)
 	  x"FFFFFF",  -- addr 07: (void)
 	  x"FFFFFF",  -- addr 08: (void)
@@ -58,8 +59,7 @@ architecture arch of imem is
 	  x"FFFFFF",  -- addr 28: (void)
 	  x"FFFFFF",  -- addr 29: (void)
 	  x"FFFFFF",  -- addr 20: (void)
-	  x"FFFFFF",  -- addr 30: (void)
-	  x"FFFFFF"   -- addr 31: (void) 
+	  x"FFFFFF"  -- addr 30: (void)
    );
 
 begin

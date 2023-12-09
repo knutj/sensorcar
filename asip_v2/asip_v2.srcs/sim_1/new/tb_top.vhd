@@ -93,19 +93,23 @@ BEGIN
         echo <='0';
         -- Add more test cases as needed
          echo <= '1';
---        wait for 1us;
---        echo <= '0';
---        wait for 5us;
+         wait for 1us;
+         echo <= '0';
+         wait for 5us;
 
---        echo <= '1';
---        wait for 3us;
---        echo <= '0';
---        wait for 5us;
+         echo <= '1';
+         wait for 3us;
+         echo <= '0';
+         wait for 5us;
     
---        echo <= '1';
---        wait for 5us;
---        echo <= '0';
---        wait for 5us;
+         echo <= '1';
+         wait for 5us;
+         echo <= '0';
+         wait for 5us;
+         --start_reverse<= '1';
+         -- Report the value of m_dig_out
+         --report "Value of m_dig_out: " & std_logic_vector'image(m_dig_out);
+         
         wait;
     end process;
 

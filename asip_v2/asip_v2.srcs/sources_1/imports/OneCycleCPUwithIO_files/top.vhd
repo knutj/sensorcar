@@ -17,8 +17,8 @@ entity OneCycleCPUwithIO is
       DMDATA_WIDTH: integer:=8;    -- Width of the data memory data. Determines the size of data held in data memory.
       OPCODE_WIDTH: integer:=7;    -- Width of the operation code (opcode). Determines the size of opcodes used in instructions.
       ECHO_COUNTER: integer := 500;-- Value for echo signal counter, possibly for sensor interfacing.
-      BACK_COUNTER: integer := 1000000; -- Counter value for backward movement in a motor control application.
-      TURN_COUNTER: integer := 500000; -- Counter value for turning in a motor control application.
+      BACK_COUNTER: integer := 100; -- Counter value for backward movement in a motor control application.
+      TURN_COUNTER: integer := 200; -- Counter value for turning in a motor control application.
       THRESHOLD   : std_logic_vector(THRESHOLD_WIDTH - 1 downto 0) := "10000000" -- Threshold value, possibly for sensor or motor control logic.    
    );
      -- Generic parameters for the entity (omitted for brevity)
@@ -90,6 +90,7 @@ architecture arch of OneCycleCPUwithIO is
     signal top_trq      : std_logic_vector(8 - 1 downto 0);
     signal above_limit  : std_logic;
     signal motor_start  : std_logic;
+    signal reverse      : std_logic;
 
 begin
 
@@ -107,7 +108,8 @@ begin
         motors      => motors,
         start_bw    => start_bw,
         start_tl    => start_tl,
-        start_motor => motor_start
+        start_motor => motor_start,
+        start_reverse => reverse
     );
 
     backward_timer : entity work.timer(arch)
@@ -141,7 +143,7 @@ begin
     port map (
         clk         => clk,
         rst         => rst,
-        reg_ld      => top_ld,
+        reg_ld      =>  top_ld,
         reg_d       => top_ucq,
         reg_q       => top_hrq
     );
@@ -208,7 +210,8 @@ begin
     control: entity work.control(arch)
     port map(clk=>clk, rst=>rst, alu_zero=>alu_zero, 
 		     pc_mux_ctr=>pc_mux_ctr, alu_mux_ctr=>alu_mux_ctr, dreg_mux_ctr=>dreg_mux_ctr, in_mux_ctr=>in_mux_ctr, out_reg_write=>out_reg_wr,
-		     opcode=>opcd_out(OPCODE_WIDTH-1 downto 0), dreg_write=>dr_wr_ctr, dmem_write=>dm_wr_ctr, alu_ctr=>alu_ctr_in,echo_start=>start_echo,start_motor=>motor_start);
+		     opcode=>opcd_out(OPCODE_WIDTH-1 downto 0), dreg_write=>dr_wr_ctr, dmem_write=>dm_wr_ctr,echo_start=>start_echo,start_motor=>motor_start,start_reverse=>reverse,above_limit =>above_limit,
+		     alu_ctr=>alu_ctr_in);
 		     
     -- instantiate output register
     out_reg: entity work.reg(arch)

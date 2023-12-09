@@ -14,6 +14,8 @@ entity control is
       in_mux_ctr, out_reg_write: out std_logic;
       echo_start : out std_logic;
       start_motor : out std_logic;
+      start_reverse : out std_logic;
+      above_limit   : in std_logic;
       alu_ctr: out std_logic_vector(OPCODE_WIDTH-1 downto 0)
    );
 end control;
@@ -171,7 +173,7 @@ begin
              elsif opcode=J_imm then -- J <imm> (unconditional jump)
                 -- no signals to activate in this case
                 echo_start <= '1';
-                start_motor <= '1';
+                start_reverse <= '1';
              elsif opcode=LD_Ri_IN then -- LD Ri,IN (load Ri from digital inputs)
                 pc_mux_ctr <= '1';    
 	            dreg_write <= '1';   
@@ -184,7 +186,7 @@ begin
 	         elsif opcode=start_m then
 	              start_motor <= '1';
 	         elsif opcode=check_if_echo then
-	               ---     
+	              start_reverse <= '1';    
 	         end if;
       end case;
       

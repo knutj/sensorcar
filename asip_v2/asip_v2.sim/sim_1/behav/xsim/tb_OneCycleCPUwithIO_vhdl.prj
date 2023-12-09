@@ -1,0 +1,18 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../asip_v2.srcs/sources_1/imports/OneCycleCPUwithIO_files/alu.vhd" \
+"../../../../asip_v2.srcs/sources_1/imports/asip/constants_pkg.vhd" \
+"../../../../asip_v2.srcs/sources_1/imports/OneCycleCPUwithIO_files/control.vhd" \
+"../../../../asip_v2.srcs/sources_1/imports/OneCycleCPUwithIO_files/dmem.vhd" \
+"../../../../asip_v2.srcs/sources_1/imports/OneCycleCPUwithIO_files/dreg.vhd" \
+"../../../../asip_v2.srcs/sources_1/imports/OneCycleCPUwithIO_files/imem.vhd" \
+"../../../../asip_v2.srcs/sources_1/new/motor.vhd" \
+"../../../../asip_v2.srcs/sources_1/imports/OneCycleCPUwithIO_files/out_reg.vhd" \
+"../../../../asip_v2.srcs/sources_1/imports/OneCycleCPUwithIO_files/pc.vhd" \
+"../../../../asip_v2.srcs/sources_1/new/timer.vhd" \
+"../../../../asip_v2.srcs/sources_1/new/up_counter.vhd" \
+"../../../../asip_v2.srcs/sources_1/imports/OneCycleCPUwithIO_files/top.vhd" \
+"../../../../asip_v2.srcs/sim_1/new/tb_top.vhd" \
+
+# Do not sort compile order
+nosort

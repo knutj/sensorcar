@@ -1,0 +1,17 @@
+0.7
+2020.2
+Oct 13 2023
+20:21:30
+/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sim_1/new/tb_top.vhd,1702105370,vhdl,,,,tb_onecyclecpuwithio,,,,,,,,
+/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/imports/OneCycleCPUwithIO_files/alu.vhd,1701943162,vhdl,/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/imports/OneCycleCPUwithIO_files/top.vhd,,,alu,,,,,,,,
+/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/imports/OneCycleCPUwithIO_files/control.vhd,1702109292,vhdl,/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/imports/OneCycleCPUwithIO_files/top.vhd,,,control,,,,,,,,
+/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/imports/OneCycleCPUwithIO_files/dmem.vhd,1696660318,vhdl,/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/imports/OneCycleCPUwithIO_files/top.vhd,,,dmem,,,,,,,,
+/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/imports/OneCycleCPUwithIO_files/dreg.vhd,1701940613,vhdl,/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/imports/OneCycleCPUwithIO_files/top.vhd,,,dreg,,,,,,,,
+/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/imports/OneCycleCPUwithIO_files/imem.vhd,1702109542,vhdl,/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/imports/OneCycleCPUwithIO_files/top.vhd,,,imem,,,,,,,,
+/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/imports/OneCycleCPUwithIO_files/out_reg.vhd,1696991606,vhdl,/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/imports/OneCycleCPUwithIO_files/top.vhd,,,reg,,,,,,,,
+/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/imports/OneCycleCPUwithIO_files/pc.vhd,1701941726,vhdl,/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/imports/OneCycleCPUwithIO_files/top.vhd,,,pc,,,,,,,,
+/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/imports/OneCycleCPUwithIO_files/top.vhd,1702118025,vhdl,,,,onecyclecpuwithio,,,,,,,,
+/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/imports/asip/constants_pkg.vhd,1701958861,vhdl,/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/imports/OneCycleCPUwithIO_files/top.vhd;/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/new/motor.vhd;/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/new/up_counter.vhd,,,constants_pkg,,,,,,,,
+/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/new/motor.vhd,1702121361,vhdl,/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/imports/OneCycleCPUwithIO_files/top.vhd,,,motor,,,,,,,,
+/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/new/timer.vhd,1702114437,vhdl,/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/imports/OneCycleCPUwithIO_files/top.vhd,,,timer,,,,,,,,
+/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/new/up_counter.vhd,1701958750,vhdl,/home/knutjb/Vivado/asip_v2/asip_v2.srcs/sources_1/imports/OneCycleCPUwithIO_files/top.vhd,,,up_counter,,,,,,,,
