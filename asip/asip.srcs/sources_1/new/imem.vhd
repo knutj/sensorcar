@@ -34,7 +34,7 @@ architecture arch of imem is
         x"FE000E",  -- addr 08:     J   L1      # 11111110(imm) 000(rs2=  ) 000(rs1=  ) 000(rd=  ) 0001110      -- Jump to L1 to restart loop
     -- Backward threshold and loop
         x"00A011",  -- addr 09: T2: ST  R5,TL   # 00000000(imm) 101(rs2=R5) 000(rs1=  ) 000(rd=  ) 0010001      -- T2: Store MAX threshold in threshold register
-        x"030013",  -- addr 10: L2: JBL L3      # 00000011(imm) 000(rs2=  ) 000(rs1=  ) 000(rd=  ) 0010011      -- L2: Jump to T3 if below limit
+        x"030013",  -- addr 10: L2: JBL T3      # 00000011(imm) 000(rs2=  ) 000(rs1=  ) 000(rd=  ) 0010011      -- L2: Jump to T3 if below limit
         x"004010",  -- addr 11:     ST  R2,OUT  # 00000000(imm) 010(rs2=R2) 000(rs1=  ) 000(rd=  ) 0010000      -- Send R2 out via dr2_dout -> dig_out
         x"FE000E",  -- addr 12:     J   L2      # 11111110(imm) 000(rs2=  ) 000(rs1=  ) 000(rd=  ) 0001110      -- Jump to L2 to restart loop
     -- Turn left loop
