@@ -11,9 +11,9 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="4,870,900.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="4,872,068.571 ns"></ZoomEndTime>
-      <Cursor1Time time="162.020 ns"></Cursor1Time>
+      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="211.800001 us"></ZoomEndTime>
+      <Cursor1Time time="100.150000 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="276"></NameColumnWidth>
@@ -52,6 +52,7 @@
    <wvobject fp_name="/tb_car/seg" type="array">
       <obj_property name="ElementShortName">seg[7:0]</obj_property>
       <obj_property name="ObjectShortName">seg[7:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_car/uut/motors/mot_en" type="logic">
       <obj_property name="ElementShortName">mot_en</obj_property>
