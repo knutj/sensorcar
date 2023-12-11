@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_car_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="constants_pkg" />
+            <top_module name="tb_car" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="211.800001 us"></ZoomEndTime>
+      <Cursor1Time time="100.150000 us"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="276"></NameColumnWidth>
+      <ValueColumnWidth column_width="64"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="18" />
+   <wvobject fp_name="/tb_car/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_car/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_car/en" type="logic">
+      <obj_property name="ElementShortName">en</obj_property>
+      <obj_property name="ObjectShortName">en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_car/echo" type="logic">
+      <obj_property name="ElementShortName">echo</obj_property>
+      <obj_property name="ObjectShortName">echo</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_car/trig" type="logic">
+      <obj_property name="ElementShortName">trig</obj_property>
+      <obj_property name="ObjectShortName">trig</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_car/dig_out" type="array">
+      <obj_property name="ElementShortName">dig_out[8:0]</obj_property>
+      <obj_property name="ObjectShortName">dig_out[8:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_car/an" type="array">
+      <obj_property name="ElementShortName">an[3:0]</obj_property>
+      <obj_property name="ObjectShortName">an[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_car/seg" type="array">
+      <obj_property name="ElementShortName">seg[7:0]</obj_property>
+      <obj_property name="ObjectShortName">seg[7:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_car/uut/motors/mot_en" type="logic">
+      <obj_property name="ElementShortName">mot_en</obj_property>
+      <obj_property name="ObjectShortName">mot_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_car/uut/motors/mot_lfw" type="logic">
+      <obj_property name="ElementShortName">mot_lfw</obj_property>
+      <obj_property name="ObjectShortName">mot_lfw</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_car/uut/motors/mot_rfw" type="logic">
+      <obj_property name="ElementShortName">mot_rfw</obj_property>
+      <obj_property name="ObjectShortName">mot_rfw</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_car/uut/motors/mot_q" type="array">
+      <obj_property name="ElementShortName">mot_q[8:0]</obj_property>
+      <obj_property name="ObjectShortName">mot_q[8:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_car/uut/start_bw" type="logic">
+      <obj_property name="ElementShortName">start_bw</obj_property>
+      <obj_property name="ObjectShortName">start_bw</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_car/uut/done_bw" type="logic">
+      <obj_property name="ElementShortName">done_bw</obj_property>
+      <obj_property name="ObjectShortName">done_bw</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_car/uut/start_tl" type="logic">
+      <obj_property name="ElementShortName">start_tl</obj_property>
+      <obj_property name="ObjectShortName">start_tl</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_car/uut/done_tl" type="logic">
+      <obj_property name="ElementShortName">done_tl</obj_property>
+      <obj_property name="ObjectShortName">done_tl</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_car/uut/top_sensor/top_hrq" type="array">
+      <obj_property name="ElementShortName">top_hrq[19:0]</obj_property>
+      <obj_property name="ObjectShortName">top_hrq[19:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_car/uut/top_sensor/top_trq" type="array">
+      <obj_property name="ElementShortName">top_trq[19:0]</obj_property>
+      <obj_property name="ObjectShortName">top_trq[19:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+</wave_config>

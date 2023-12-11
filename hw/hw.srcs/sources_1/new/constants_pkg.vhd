@@ -2,8 +2,8 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 package constants_pkg is
-    constant MOTOR_WIDTH        : integer := 8;
-    constant THRESHOLD_WIDTH    : integer := 13;
+    constant MOTOR_WIDTH        : integer := 9;
+    constant SENSOR_WIDTH       : integer := 20;
     constant AN_WIDTH           : integer := 4;
     constant SEG_WIDTH          : integer := 8;
     
