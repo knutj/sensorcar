@@ -12,15 +12,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="899,960.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="900,400.601 ns"></ZoomEndTime>
+      <ZoomStartTime time="899,950.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="900,390.692 ns"></ZoomEndTime>
       <Cursor1Time time="900,075.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="276"></NameColumnWidth>
-      <ValueColumnWidth column_width="72"></ValueColumnWidth>
+      <ValueColumnWidth column_width="68"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="18" />
+   <WVObjectSize size="20" />
    <wvobject fp_name="/tb_asip/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -99,5 +99,13 @@
    <wvobject fp_name="/tb_asip/uut/top_sensor/above_limit" type="logic">
       <obj_property name="ElementShortName">above_limit</obj_property>
       <obj_property name="ObjectShortName">above_limit</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_asip/uut/timer_start" type="logic">
+      <obj_property name="ElementShortName">timer_start</obj_property>
+      <obj_property name="ObjectShortName">timer_start</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_asip/uut/timer_done" type="logic">
+      <obj_property name="ElementShortName">timer_done</obj_property>
+      <obj_property name="ObjectShortName">timer_done</obj_property>
    </wvobject>
 </wave_config>
